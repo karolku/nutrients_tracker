@@ -17,5 +17,4 @@ public class FoodItem implements Serializable {
     private boolean isDinner;
     private boolean isSnack;
 
-
 }
