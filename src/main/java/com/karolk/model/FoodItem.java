@@ -1,13 +1,21 @@
 package com.karolk.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 
+@XmlRootElement
+@Entity
 public class FoodItem implements Serializable {
 
-    //form the oracle documentation about the serialization.
+    //from the oracle documentation about the serialization.
     private static final long serialVersionUID = 42L;
 
+    @Id
+    @GeneratedValue
     private long id;
     private String name;
     private float amount;
