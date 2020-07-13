@@ -11,7 +11,7 @@
             <th>Food Name</th>
             <th>Amount (in grams)</th>
         </tr>
-        <tr th:each="foodItem: ${fooditems}">
+        <tr th:each="foodItem: ${foodItemsList}">
             <td th:text="${foodItem.name}"></td>
             <td th:text="${foodItem.amount}"></td>
         </tr>
