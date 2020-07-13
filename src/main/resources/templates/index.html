@@ -9,8 +9,8 @@
         <p th:text="${messageFoodItemAdded}"></p>
         <h1>Add your food item:</h1>
         <form th:action="@{/fooditems}" th:object="${foodItemModel}" method="post">
-            <p><input type="text" th:field="*{name}" placeholder="Name of the food" /></p>
-            <p><input type="text" th:field="*{amount}" placeholder="Amount in grams"></p>
+            <p><input type="text" th:field="*{name}" placeholder="Name of the food"/></p>
+            <p><input type="number" th:field="*{amount}" placeholder="Amount in grams"/></p>
             <p><input type="submit" value="Add food item"/></p>
         </form>
 
