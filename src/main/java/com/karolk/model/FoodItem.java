@@ -19,20 +19,12 @@ public class FoodItem implements Serializable {
     private long id;
     private String name;
     private float amount;
-    private boolean isBreakfast;
-    private boolean isLunch;
-    private boolean isDinner;
-    private boolean isSnack;
 
     public FoodItem(){}
 
-    public FoodItem(String name, float amount, boolean isBreakfast, boolean isLunch, boolean isDinner, boolean isSnack){
+    public FoodItem(String name, float amount){
         this.name = name;
         this.amount = amount;
-        this.isBreakfast = isBreakfast;
-        this.isLunch = isLunch;
-        this.isDinner = isDinner;
-        this.isSnack = isSnack;
     }
 
 
@@ -58,37 +50,5 @@ public class FoodItem implements Serializable {
 
     public void setAmount(float amount) {
         this.amount = amount;
-    }
-
-    public boolean isBreakfast() {
-        return isBreakfast;
-    }
-
-    public void setBreakfast(boolean breakfast) {
-        isBreakfast = breakfast;
-    }
-
-    public boolean isLunch() {
-        return isLunch;
-    }
-
-    public void setLunch(boolean lunch) {
-        isLunch = lunch;
-    }
-
-    public boolean isDinner() {
-        return isDinner;
-    }
-
-    public void setDinner(boolean dinner) {
-        isDinner = dinner;
-    }
-
-    public boolean isSnack() {
-        return isSnack;
-    }
-
-    public void setSnack(boolean snack) {
-        isSnack = snack;
     }
 }
