@@ -20,5 +20,7 @@ public class FoodItemControllerMvc {
 
     @GetMapping
     public String listFoodItems(Model model){
+        return "foodlist";
     }
+
 }
