@@ -26,8 +26,8 @@ public class FoodItemControllerMvc {
 
     @GetMapping
     public String listFoodItems(Model model){
-        List<FoodItem> foodItemsList = foodItemRepository.findAll();
-        model.addAttribute("foodItemsList", foodItemsList);
+        List<FoodItem> foodItems = foodItemRepository.findAll();
+        model.addAttribute("foodItemsList", foodItems);
         return "foodlist";
     }
 
