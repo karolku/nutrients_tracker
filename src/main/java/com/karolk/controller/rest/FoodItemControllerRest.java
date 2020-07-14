@@ -4,10 +4,8 @@ import com.karolk.model.FoodItem;
 import com.karolk.repository.FoodItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
 import java.util.List;
@@ -32,5 +30,12 @@ public class FoodItemControllerRest {
             foodItems.sort(Comparator.comparing(FoodItem::getAmount));
         }
         return foodItems;
+    }
+
+    @GetMapping(path= "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<FoodItem> getFoodItem(@PathVariable Long id){
+        return foodItemRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(()-> ResponseEntity.notFound().build());
     }
 }
