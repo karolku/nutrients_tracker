@@ -43,4 +43,9 @@ public class FoodItemControllerRest {
     public void saveFoodItem(@RequestBody FoodItem foodItem){
         foodItemRepository.save(foodItem);
     }
+
+    @DeleteMapping
+    public void deleteFoodItem(@PathVariable long id){
+        foodItemRepository.deleteById(id);
+    }
 }
