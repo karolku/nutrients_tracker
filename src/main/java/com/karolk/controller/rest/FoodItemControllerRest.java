@@ -38,4 +38,9 @@ public class FoodItemControllerRest {
                 .map(ResponseEntity::ok)
                 .orElseGet(()-> ResponseEntity.notFound().build());
     }
+
+    @PostMapping
+    public void saveFoodItem(@RequestBody FoodItem foodItem){
+        foodItemRepository.save(foodItem);
+    }
 }
