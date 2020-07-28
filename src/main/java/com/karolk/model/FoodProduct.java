@@ -59,4 +59,15 @@ public class FoodProduct {
     public void setFoodsList(List<Foods> foodsList) {
         this.foodsList = foodsList;
     }
+
+    @Override
+    public String toString() {
+        return "FoodProduct{" +
+                "foodSearchCriteria=" + foodSearchCriteria +
+                ", totalHits=" + totalHits +
+                ", currentPage=" + currentPage +
+                ", totalPages=" + totalPages +
+                ", foodsList=" + foodsList +
+                '}';
+    }
 }
