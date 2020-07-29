@@ -58,7 +58,13 @@ public class FoodEntry {
     }
 
     public void setMealTime(String mealTime) {
-        this.mealTime = mealTime;
+        if(mealTime.equals("Breakfast") ||
+                mealTime.equals("Lunch") ||
+                mealTime.equals("Dinner") ||
+                mealTime.equals("Snack"))
+                this.mealTime = mealTime;
+        else
+            System.out.println("Some exception will be send to the client.");
     }
 
     @Override
