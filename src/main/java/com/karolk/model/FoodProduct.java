@@ -1,9 +1,11 @@
 package com.karolk.model;
 
+import java.util.List;
+
 public class FoodProduct {
 
     private FoodSearchCriteria foodSearchCriteria;
-    private TotalHits totalHits;
+    private int totalHits;
     private int currentPage;
     private int totalPages;
     private List<Foods> foodsList;
@@ -11,7 +13,7 @@ public class FoodProduct {
     public FoodProduct() {
     }
 
-    public FoodProduct(FoodSearchCriteria foodSearchCriteria, TotalHits totalHits,
+    public FoodProduct(FoodSearchCriteria foodSearchCriteria, int totalHits,
                        int currentPage, int totalPages, List<Foods> foodsList) {
         this.foodSearchCriteria = foodSearchCriteria;
         this.totalHits = totalHits;
@@ -28,11 +30,11 @@ public class FoodProduct {
         this.foodSearchCriteria = foodSearchCriteria;
     }
 
-    public TotalHits getTotalHits() {
+    public int getTotalHits() {
         return totalHits;
     }
 
-    public void setTotalHits(TotalHits totalHits) {
+    public void setTotalHits(int totalHits) {
         this.totalHits = totalHits;
     }
 
