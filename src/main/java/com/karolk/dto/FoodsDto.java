@@ -4,10 +4,10 @@ import com.karolk.model.FoodNutrients;
 
 import java.util.List;
 
-public class FoodProductDto {
+public class FoodsDto {
     private List<FoodNutrients> foodNutrients;
 
-    public FoodProductDto(List<FoodNutrients> foodNutrients) {
+    public FoodsDto(List<FoodNutrients> foodNutrients) {
         this.foodNutrients = foodNutrients;
     }
 
