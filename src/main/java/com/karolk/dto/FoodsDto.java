@@ -28,4 +28,28 @@ public class FoodsDto {
     public void setFoodNutrients(List<FoodNutrients> foodNutrients) {
         this.foodNutrients = foodNutrients;
     }
+
+    public Long getFdcId() {
+        return fdcId;
+    }
+
+    public void setFdcId(Long fdcId) {
+        this.fdcId = fdcId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getBrandOwner() {
+        return brandOwner;
+    }
+
+    public void setBrandOwner(String brandOwner) {
+        this.brandOwner = brandOwner;
+    }
 }
