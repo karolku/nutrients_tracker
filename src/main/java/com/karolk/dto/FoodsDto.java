@@ -14,7 +14,10 @@ public class FoodsDto {
 
     public FoodsDto(){}
 
-    public FoodsDto(List<FoodNutrients> foodNutrients) {
+    public FoodsDto(Long fdcId, String description, String brandOwner, List<FoodNutrients> foodNutrients) {
+        this.fdcId = fdcId;
+        this.description = description;
+        this.brandOwner = brandOwner;
         this.foodNutrients = foodNutrients;
     }
 
