@@ -5,17 +5,17 @@ import com.karolk.model.FoodNutrients;
 import java.util.List;
 
 public class FoodProductDto {
-    private List<FoodNutrients> foodsList;
+    private List<FoodNutrients> foodNutrients;
 
-    public FoodProductDto(List<FoodNutrients> foodsList) {
-        this.foodsList = foodsList;
+    public FoodProductDto(List<FoodNutrients> foodNutrients) {
+        this.foodNutrients = foodNutrients;
     }
 
-    public List<FoodNutrients> getFoodsList() {
-        return foodsList;
+    public List<FoodNutrients> getFoodNutrients() {
+        return foodNutrients;
     }
 
-    public void setFoodsList(List<FoodNutrients> foodsList) {
-        this.foodsList = foodsList;
+    public void setFoodNutrients(List<FoodNutrients> foodNutrients) {
+        this.foodNutrients = foodNutrients;
     }
 }
