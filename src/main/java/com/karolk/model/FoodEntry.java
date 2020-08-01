@@ -8,17 +8,19 @@ public class FoodEntry {
     private User userId;
     private Foods fdcId;
     private double amountOfServing; // all data will be provided per 100 grams. so amount of 1 = 100 grams.
+    private String servingType;
     private Timestamp timestamp;
     private String mealTime;
 
     public FoodEntry() {
     }
 
-    public FoodEntry(User userId, Foods fdcId, double quantity,
+    public FoodEntry(User userId, Foods fdcId, double quantity, String servingType,
                      Timestamp timestamp, String mealTime) {
         this.userId = userId;
         this.fdcId = fdcId;
         this.amountOfServing = quantity;
+        this.servingType = servingType;
         this.timestamp = timestamp;
         this.mealTime = mealTime;
     }
