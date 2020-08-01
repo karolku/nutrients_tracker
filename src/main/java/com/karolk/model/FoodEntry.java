@@ -71,6 +71,14 @@ public class FoodEntry {
             System.out.println("Some exception will be send to the client.");
     }
 
+    public String getServingType() {
+        return servingType;
+    }
+
+    public void setServingType(String servingType) {
+        this.servingType = servingType;
+    }
+
     @Override
     public String toString() {
         return "FoodEntry{" +
