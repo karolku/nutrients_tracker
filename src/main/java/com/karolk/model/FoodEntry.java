@@ -3,6 +3,8 @@ package com.karolk.model;
 import java.sql.Timestamp;
 
 public class FoodEntry {
+
+    private Long id;
     private User userId;
     private Foods fdcId;
     private double quantity;
