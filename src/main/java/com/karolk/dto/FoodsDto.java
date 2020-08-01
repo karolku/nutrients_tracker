@@ -6,6 +6,10 @@ import com.karolk.model.FoodNutrients;
 import java.util.List;
 
 public class FoodsDto {
+
+    private Long fdcId;
+    private String description;
+    private String brandOwner;
     private List<FoodNutrients> foodNutrients;
 
     public FoodsDto(){}
