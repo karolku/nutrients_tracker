@@ -7,7 +7,7 @@ public class FoodEntry {
     private Long id;
     private User userId;
     private Foods fdcId;
-    private double quantity;
+    private double amountOfServing;
     private Timestamp timestamp;
     private String mealTime;
 
@@ -18,7 +18,7 @@ public class FoodEntry {
                      Timestamp timestamp, String mealTime) {
         this.userId = userId;
         this.fdcId = fdcId;
-        this.quantity = quantity;
+        this.amountOfServing = quantity;
         this.timestamp = timestamp;
         this.mealTime = mealTime;
     }
@@ -39,12 +39,12 @@ public class FoodEntry {
         this.fdcId = fdcId;
     }
 
-    public double getQuantity() {
-        return quantity;
+    public double getAmountOfServing() {
+        return amountOfServing;
     }
 
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
+    public void setAmountOfServing(double amountOfServing) {
+        this.amountOfServing = amountOfServing;
     }
 
     public Timestamp getTimestamp() {
@@ -74,7 +74,7 @@ public class FoodEntry {
         return "FoodEntry{" +
                 "userId=" + userId +
                 ", fdcId=" + fdcId +
-                ", quantity=" + quantity +
+                ", quantity=" + amountOfServing +
                 ", timestamp=" + timestamp +
                 ", mealTime='" + mealTime + '\'' +
                 '}';
