@@ -7,7 +7,7 @@ public class FoodEntry {
     private Long id;
     private User userId;
     private Foods fdcId;
-    private double amountOfServing;
+    private double amountOfServing; // all data will be provided per 100 grams. so amount of 1 = 100 grams.
     private Timestamp timestamp;
     private String mealTime;
 
