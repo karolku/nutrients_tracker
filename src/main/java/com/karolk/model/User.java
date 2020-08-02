@@ -1,6 +1,8 @@
 package com.karolk.model;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "user")
@@ -11,8 +13,15 @@ public class User {
     private Long id;
     private String firstName;
     private String lastName;
+    private String gender;
+    private Date birthdayDate;
     private String password;
     private String email;
+    private Timestamp accountCreatedTime;
+    private Timestamp lastUpdatedtime;
+    private double weightInKg;
+    private double heightInCm;
+    private double activityLevel;
 
     public User() {
     }
