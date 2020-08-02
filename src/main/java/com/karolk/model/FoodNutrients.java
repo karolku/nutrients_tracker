@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "food_nutrients")
+@Table(name = "nutrients")
 public class FoodNutrients implements Serializable {
 
     private static final long serialVersionUID = 42L;
