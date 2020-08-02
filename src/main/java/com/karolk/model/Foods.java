@@ -1,12 +1,13 @@
 package com.karolk.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "food_items")
-public class Foods {
+public class Foods implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
