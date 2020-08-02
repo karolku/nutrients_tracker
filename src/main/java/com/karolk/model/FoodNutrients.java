@@ -1,6 +1,7 @@
 package com.karolk.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "food_nutrients")
@@ -108,6 +109,27 @@ public class FoodNutrients {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FoodNutrients that = (FoodNutrients) o;
+        return nutrientId == that.nutrientId &&
+                Double.compare(that.value, value) == 0 &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(nutrientName, that.nutrientName) &&
+                Objects.equals(nutrientNumber, that.nutrientNumber) &&
+                Objects.equals(unitName, that.unitName) &&
+                Objects.equals(derivationCode, that.derivationCode) &&
+                Objects.equals(derivationDescription, that.derivationDescription);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nutrientId, nutrientName, nutrientNumber, unitName,
+                derivationCode, derivationDescription, value);
     }
 
     @Override
