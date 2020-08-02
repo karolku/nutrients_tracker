@@ -26,11 +26,21 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String password, String email) {
+    public User(String firstName, String lastName, String gender, Date birthdayDate,
+                String password, String email, Timestamp accountCreatedTime,
+                Timestamp lastUpdatedtime, double weightInKg, double heightInCm,
+                double activityLevel) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.gender = gender;
+        this.birthdayDate = birthdayDate;
         this.password = password;
         this.email = email;
+        this.accountCreatedTime = accountCreatedTime;
+        this.lastUpdatedtime = lastUpdatedtime;
+        this.weightInKg = weightInKg;
+        this.heightInCm = heightInCm;
+        this.activityLevel = activityLevel;
     }
 
     public Long getId() {
