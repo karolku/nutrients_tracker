@@ -3,6 +3,8 @@ package com.karolk.model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -41,6 +43,9 @@ public class User {
 
     @Column(name = "activity_level")
     private double activityLevel;
+
+    @OneToMany(mappedBy = "user")
+    private List<FoodEntry> foodEntries = new ArrayList<>();
 
     public User() {
     }
