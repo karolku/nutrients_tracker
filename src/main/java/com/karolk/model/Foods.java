@@ -18,11 +18,23 @@ public class Foods implements Serializable {
     private Long id;
     private Long fdcId;
     private String description;
+
+    @Column(name = "data_type")
     private String dataType;
+
+    @Column(name= "gtin_upc")
     private String gtinUpc;
+
+    @Column(name = "published_date")
     private String publishedDate;
+
+    @Column(name = "brand_owner")
     private String brandOwner;
+
+    @Column(name = "ingridients")
     private List<String> ingridients;
+
+    @Column(name = "food_nutrients")
     private List<FoodNutrients> foodNutrients;
 
     public Foods() {
