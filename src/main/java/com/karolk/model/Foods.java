@@ -31,9 +31,9 @@ public class Foods implements Serializable {
     @Column(name = "brand_owner")
     private String brandOwner;
 
-    @Column(name = "ingridients")
+    @Column(name = "ingredients")
     @ManyToMany
-    private List<String> ingridients;
+    private List<String> ingredients;
 
     @Column(name = "food_nutrients")
     private List<FoodNutrients> foodNutrients;
@@ -42,7 +42,7 @@ public class Foods implements Serializable {
     }
 
     public Foods(Long fdcId, String description, String dataType, String gtinUpc,
-                 String publishedDate, String brandOwner, List<String> ingridients,
+                 String publishedDate, String brandOwner, List<String> ingredients,
                  List<FoodNutrients> foodNutrients) {
         this.fdcId = fdcId;
         this.description = description;
@@ -50,7 +50,7 @@ public class Foods implements Serializable {
         this.gtinUpc = gtinUpc;
         this.publishedDate = publishedDate;
         this.brandOwner = brandOwner;
-        this.ingridients = ingridients;
+        this.ingredients = ingredients;
         this.foodNutrients = foodNutrients;
     }
 
@@ -102,12 +102,12 @@ public class Foods implements Serializable {
         this.brandOwner = brandOwner;
     }
 
-    public List<String> getIngridients() {
-        return ingridients;
+    public List<String> getIngredients() {
+        return ingredients;
     }
 
-    public void setIngridients(List<String> ingridients) {
-        this.ingridients = ingridients;
+    public void setIngredients(List<String> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public List<FoodNutrients> getFoodNutrients() {
@@ -138,14 +138,14 @@ public class Foods implements Serializable {
                 Objects.equals(gtinUpc, foods.gtinUpc) &&
                 Objects.equals(publishedDate, foods.publishedDate) &&
                 Objects.equals(brandOwner, foods.brandOwner) &&
-                Objects.equals(ingridients, foods.ingridients) &&
+                Objects.equals(ingredients, foods.ingredients) &&
                 Objects.equals(foodNutrients, foods.foodNutrients);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, fdcId, description, dataType, gtinUpc,
-                publishedDate, brandOwner, ingridients, foodNutrients);
+                publishedDate, brandOwner, ingredients, foodNutrients);
     }
 
     @Override
@@ -157,7 +157,7 @@ public class Foods implements Serializable {
                 ", gtinUpc='" + gtinUpc + '\'' +
                 ", publishedDate='" + publishedDate + '\'' +
                 ", brandOwner='" + brandOwner + '\'' +
-                ", ingridients=" + ingridients +
+                ", ingridients=" + ingredients +
                 ", foodNutrients=" + foodNutrients +
                 '}';
     }
