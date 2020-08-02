@@ -20,7 +20,7 @@ public class FoodEntry {
 
     @ManyToOne
     @JoinColumn(name = "fdcId")
-    private Foods foods;
+    private Foods fdcId;
 
     @Column(name = "amount_of_serving")
     private double amountOfServing; // all data will be provided per 100 grams. so amount of 1 = 100 grams.
@@ -37,10 +37,10 @@ public class FoodEntry {
     public FoodEntry() {
     }
 
-    public FoodEntry(User userId, Foods foods, double quantity, String servingType,
+    public FoodEntry(User userId, Foods fdcId, double quantity, String servingType,
                      Timestamp timestamp, String mealTime) {
         this.userId = userId;
-        this.foods = foods;
+        this.fdcId = fdcId;
         this.amountOfServing = quantity;
         this.servingType = servingType;
         this.timestamp = timestamp;
@@ -55,12 +55,12 @@ public class FoodEntry {
         this.userId = userId;
     }
 
-    public Foods getFoods() {
-        return foods;
+    public Foods getFdcId() {
+        return fdcId;
     }
 
-    public void setFoods(Foods foods) {
-        this.foods = foods;
+    public void setFdcId(Foods fdcId) {
+        this.fdcId = fdcId;
     }
 
     public double getAmountOfServing() {
@@ -109,7 +109,7 @@ public class FoodEntry {
         return Double.compare(foodEntry.amountOfServing, amountOfServing) == 0 &&
                 Objects.equals(id, foodEntry.id) &&
                 Objects.equals(userId, foodEntry.userId) &&
-                Objects.equals(foods, foodEntry.foods) &&
+                Objects.equals(fdcId, foodEntry.fdcId) &&
                 Objects.equals(servingType, foodEntry.servingType) &&
                 Objects.equals(timestamp, foodEntry.timestamp) &&
                 Objects.equals(mealTime, foodEntry.mealTime);
@@ -117,14 +117,14 @@ public class FoodEntry {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, foods, amountOfServing, servingType, timestamp, mealTime);
+        return Objects.hash(id, userId, fdcId, amountOfServing, servingType, timestamp, mealTime);
     }
 
     @Override
     public String toString() {
         return "FoodEntry{" +
                 "userId=" + userId +
-                ", fdcId=" + foods +
+                ", fdcId=" + fdcId +
                 ", quantity=" + amountOfServing +
                 ", timestamp=" + timestamp +
                 ", mealTime='" + mealTime + '\'' +
