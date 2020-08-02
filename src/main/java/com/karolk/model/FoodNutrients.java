@@ -1,11 +1,15 @@
 package com.karolk.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "food_nutrients")
-public class FoodNutrients {
+public class FoodNutrients implements Serializable {
+
+    private static final long serialVersionUID = 42L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "food_nutrient_id")
