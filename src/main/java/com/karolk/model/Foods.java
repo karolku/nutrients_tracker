@@ -33,6 +33,7 @@ public class Foods implements Serializable {
 
     @Column(name = "ingredients")
     @ManyToMany
+    @JoinTable(name = "foods_nutrients")
     private List<String> ingredients;
 
     @Column(name = "food_nutrients")
