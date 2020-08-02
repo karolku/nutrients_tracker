@@ -2,6 +2,7 @@ package com.karolk.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -35,6 +36,8 @@ public class FoodNutrients implements Serializable {
 
     @Column(name = "value")
     private double value;
+
+    private List<Foods> foodsList;
 
     public FoodNutrients() {
     }
