@@ -7,13 +7,28 @@ import javax.persistence.*;
 public class FoodNutrients {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "food_nutrient_id")
     private Long id;
+
+    @Column(name = "nutrient_id")
     private long nutrientId;
+
+    @Column(name = "nutrient_name")
     private String nutrientName;
+
+    @Column(name = "nutrient_number")
     private String nutrientNumber;
+
+    @Column(name = "unit_name")
     private String unitName;
+
+    @Column(name = "derivation_code")
     private String derivationCode;
+
+    @Column(name = "derivation_description")
     private String derivationDescription;
+
+    @Column(name = "value")
     private double value;
 
     public FoodNutrients() {
