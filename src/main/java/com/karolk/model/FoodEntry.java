@@ -14,8 +14,12 @@ public class FoodEntry {
     private Long id;
 
     @Column(name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id" )
     private User userId;
 
+    @ManyToOne
+    @JoinColumn(name = "fdcId")
     private Foods foods;
 
     @Column(name = "amount_of_serving")
