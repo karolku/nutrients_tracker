@@ -11,16 +11,34 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
     private String gender;
+
+    @Column(name = "birthday_date")
     private Date birthdayDate;
+
     private String password;
     private String email;
+
+    @Column(name = "account_created_time")
     private Timestamp accountCreatedTime;
+
+    @Column(name = "last_updated_time")
     private Timestamp lastUpdatedtime;
+
+    @Column(name = "wieght_in_kg")
     private double weightInKg;
+
+    @Column(name = "height_in_cm")
     private double heightInCm;
+
+    @Column(name = "activity_level")
     private double activityLevel;
 
     public User() {
