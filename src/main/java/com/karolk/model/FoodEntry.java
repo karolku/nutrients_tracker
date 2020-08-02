@@ -10,6 +10,7 @@ public class FoodEntry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "food_entry_id")
     private Long id;
 
     @Column(name = "user_id")
