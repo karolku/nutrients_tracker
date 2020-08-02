@@ -83,6 +83,62 @@ public class User {
         this.email = email;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Date getBirthdayDate() {
+        return birthdayDate;
+    }
+
+    public void setBirthdayDate(Date birthdayDate) {
+        this.birthdayDate = birthdayDate;
+    }
+
+    public Timestamp getAccountCreatedTime() {
+        return accountCreatedTime;
+    }
+
+    public void setAccountCreatedTime(Timestamp accountCreatedTime) {
+        this.accountCreatedTime = accountCreatedTime;
+    }
+
+    public Timestamp getLastUpdatedtime() {
+        return lastUpdatedtime;
+    }
+
+    public void setLastUpdatedtime(Timestamp lastUpdatedtime) {
+        this.lastUpdatedtime = lastUpdatedtime;
+    }
+
+    public double getWeightInKg() {
+        return weightInKg;
+    }
+
+    public void setWeightInKg(double weightInKg) {
+        this.weightInKg = weightInKg;
+    }
+
+    public double getHeightInCm() {
+        return heightInCm;
+    }
+
+    public void setHeightInCm(double heightInCm) {
+        this.heightInCm = heightInCm;
+    }
+
+    public double getActivityLevel() {
+        return activityLevel;
+    }
+
+    public void setActivityLevel(double activityLevel) {
+        this.activityLevel = activityLevel;
+    }
+
     @Override
     public String toString() {
         return "User{" +
