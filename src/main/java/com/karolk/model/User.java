@@ -3,6 +3,7 @@ package com.karolk.model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 @Entity
 @Table(name = "user")
@@ -155,6 +156,32 @@ public class User {
 
     public void setActivityLevel(double activityLevel) {
         this.activityLevel = activityLevel;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Double.compare(user.weightInKg, weightInKg) == 0 &&
+                Double.compare(user.heightInCm, heightInCm) == 0 &&
+                Double.compare(user.activityLevel, activityLevel) == 0 &&
+                Objects.equals(id, user.id) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(lastName, user.lastName) &&
+                Objects.equals(gender, user.gender) &&
+                Objects.equals(birthdayDate, user.birthdayDate) &&
+                Objects.equals(password, user.password) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(accountCreatedTime, user.accountCreatedTime) &&
+                Objects.equals(lastUpdatedtime, user.lastUpdatedtime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, gender, birthdayDate,
+                password, email, accountCreatedTime, lastUpdatedtime, weightInKg,
+                heightInCm, activityLevel);
     }
 
     @Override
