@@ -1,8 +1,11 @@
 package com.karolk.model;
 
+import javax.persistence.Entity;
 import java.util.List;
 
+@Entity
 public class Foods {
+
     private Long fdcId;
     private String description;
     private String dataType;
