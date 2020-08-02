@@ -32,6 +32,7 @@ public class Foods implements Serializable {
     private String brandOwner;
 
     @Column(name = "ingridients")
+    @ManyToMany
     private List<String> ingridients;
 
     @Column(name = "food_nutrients")
