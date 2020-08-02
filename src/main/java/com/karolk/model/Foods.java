@@ -9,6 +9,9 @@ import java.util.Objects;
 @Table(name = "food_items")
 public class Foods implements Serializable {
 
+    //from the oracle documentation about the serialization.
+    private static final long serialVersionUID = 42L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "food_id")
