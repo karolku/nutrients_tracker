@@ -1,9 +1,14 @@
 package com.karolk.model;
 
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "food_entry")
 public class FoodEntry {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private User userId;
     private Foods foods;
@@ -15,10 +20,10 @@ public class FoodEntry {
     public FoodEntry() {
     }
 
-    public FoodEntry(User userId, Foods fdcId, double quantity, String servingType,
+    public FoodEntry(User userId, Foods foods, double quantity, String servingType,
                      Timestamp timestamp, String mealTime) {
         this.userId = userId;
-        this.fdcId = fdcId;
+        this.foods = foods;
         this.amountOfServing = quantity;
         this.servingType = servingType;
         this.timestamp = timestamp;
@@ -33,12 +38,12 @@ public class FoodEntry {
         this.userId = userId;
     }
 
-    public Foods getFdcId() {
-        return fdcId;
+    public Foods getFoods() {
+        return foods;
     }
 
-    public void setFdcId(Foods fdcId) {
-        this.fdcId = fdcId;
+    public void setFoods(Foods foods) {
+        this.foods = foods;
     }
 
     public double getAmountOfServing() {
@@ -83,7 +88,7 @@ public class FoodEntry {
     public String toString() {
         return "FoodEntry{" +
                 "userId=" + userId +
-                ", fdcId=" + fdcId +
+                ", fdcId=" + foods +
                 ", quantity=" + amountOfServing +
                 ", timestamp=" + timestamp +
                 ", mealTime='" + mealTime + '\'' +
