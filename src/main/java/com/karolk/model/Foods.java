@@ -6,6 +6,7 @@ import java.util.List;
 @Entity
 public class Foods {
 
+    private Long id;
     private Long fdcId;
     private String description;
     private String dataType;
