@@ -32,9 +32,9 @@ public class Foods implements Serializable {
     private String brandOwner;
 
     @Column(name = "ingredients")
+    @ElementCollection(targetClass = String.class)
     private List<String> ingredients;
 
-    @Column(name = "food_nutrients")
     @ManyToMany
     @JoinTable(name = "foods_nutrients")
     private List<FoodNutrients> foodNutrients;
