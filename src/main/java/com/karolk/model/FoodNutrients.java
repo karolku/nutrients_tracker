@@ -1,5 +1,8 @@
 package com.karolk.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class FoodNutrients {
     private Long nutrientId;
     private String nutrientName;
