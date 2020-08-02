@@ -37,8 +37,6 @@ public class FoodNutrients implements Serializable {
     @Column(name = "value")
     private double value;
 
-    private List<Foods> foodsList;
-
     public FoodNutrients() {
     }
 
