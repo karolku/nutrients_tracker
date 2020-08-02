@@ -1,10 +1,16 @@
 package com.karolk.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class FoodNutrients {
-    private Long nutrientId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private long nutrientId;
     private String nutrientName;
     private String nutrientNumber;
     private String unitName;
@@ -15,7 +21,7 @@ public class FoodNutrients {
     public FoodNutrients() {
     }
 
-    public FoodNutrients(Long nutrientId, String nutrientName, String nutrientNumber,
+    public FoodNutrients(long nutrientId, String nutrientName, String nutrientNumber,
                          String unitName, String derivationCode, String derivationDescription,
                          double value) {
         this.nutrientId = nutrientId;
@@ -27,7 +33,7 @@ public class FoodNutrients {
         this.value = value;
     }
 
-    public Long getNutrientId() {
+    public long getNutrientId() {
         return nutrientId;
     }
 
@@ -81,6 +87,14 @@ public class FoodNutrients {
 
     public void setValue(double value) {
         this.value = value;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
