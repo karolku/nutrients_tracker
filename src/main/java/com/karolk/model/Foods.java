@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Foods {
@@ -107,6 +108,28 @@ public class Foods {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Foods foods = (Foods) o;
+        return Objects.equals(id, foods.id) &&
+                Objects.equals(fdcId, foods.fdcId) &&
+                Objects.equals(description, foods.description) &&
+                Objects.equals(dataType, foods.dataType) &&
+                Objects.equals(gtinUpc, foods.gtinUpc) &&
+                Objects.equals(publishedDate, foods.publishedDate) &&
+                Objects.equals(brandOwner, foods.brandOwner) &&
+                Objects.equals(ingridients, foods.ingridients) &&
+                Objects.equals(foodNutrients, foods.foodNutrients);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, fdcId, description, dataType, gtinUpc,
+                publishedDate, brandOwner, ingridients, foodNutrients);
     }
 
     @Override
