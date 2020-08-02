@@ -10,6 +10,7 @@ public class Foods {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "food_id")
     private Long id;
     private Long fdcId;
     private String description;
