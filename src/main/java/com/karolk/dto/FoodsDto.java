@@ -1,6 +1,5 @@
 package com.karolk.dto;
 
-import com.karolk.model.FoodItem;
 import com.karolk.model.FoodNutrients;
 
 import java.util.List;
@@ -51,5 +50,15 @@ public class FoodsDto {
 
     public void setBrandOwner(String brandOwner) {
         this.brandOwner = brandOwner;
+    }
+
+    @Override
+    public String toString() {
+        return "FoodsDto{" +
+                "fdcId=" + fdcId +
+                ", description='" + description + '\'' +
+                ", brandOwner='" + brandOwner + '\'' +
+                ", foodNutrients=" + foodNutrients +
+                '}';
     }
 }
