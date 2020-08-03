@@ -38,13 +38,13 @@ public class FoodEntry implements Serializable {
     private Timestamp timestamp;
 
     @Column(name = "meal_time")
-    private String mealTime;
+    private MealTime mealTime;
 
     public FoodEntry() {
     }
 
     public FoodEntry(User userId, Foods fdcId, double quantity, String servingType,
-                     Timestamp timestamp, String mealTime) {
+                     Timestamp timestamp, MealTime mealTime) {
         this.user = userId;
         this.fdcId = fdcId;
         this.amountOfServing = quantity;
@@ -85,15 +85,15 @@ public class FoodEntry implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public String getMealTime() {
+    public MealTime getMealTime() {
         return mealTime;
     }
 
-    public void setMealTime(String mealTime) {
-        if(mealTime.equals("Breakfast") ||
-                mealTime.equals("Lunch") ||
-                mealTime.equals("Dinner") ||
-                mealTime.equals("Snack"))
+    public void setMealTime(MealTime mealTime) {
+        if(mealTime.equals("BREAKFAST") ||
+                mealTime.equals("LUNCH") ||
+                mealTime.equals("DINNER") ||
+                mealTime.equals("SNACK"))
                 this.mealTime = mealTime;
         else
             System.out.println("Some exception will be send to the client.");
