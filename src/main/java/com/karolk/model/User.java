@@ -10,6 +10,11 @@ import java.util.Objects;
 @Entity
 @Table(name = "user")
 public class User {
+
+    public enum Gender {
+        MALE, FEMALE
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
