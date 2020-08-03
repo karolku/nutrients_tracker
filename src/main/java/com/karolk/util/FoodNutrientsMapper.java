@@ -10,5 +10,5 @@ public interface FoodNutrientsMapper {
 
     FoodNutrientsMapper INSTANCE = Mappers.getMapper(FoodNutrientsMapper.class);
 
-    FoodNutrientsDto foodNutrientsToDto(FoodNutrients foodNutrients);
+    FoodNutrientsDto convertFoodNutrientsToDto(FoodNutrients foodNutrients);
 }
