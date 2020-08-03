@@ -12,7 +12,7 @@ public class FoodEntry implements Serializable {
     private static final long serialVersionUID = 42L;
 
     public enum MealTime {
-        BREAKFAST, LUNCH, DINNER, SNACK
+        BREAKFAST, LUNCH, DINNER, SNACK;
     }
 
     @Id
