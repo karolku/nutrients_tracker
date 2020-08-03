@@ -11,6 +11,10 @@ public class FoodEntry implements Serializable {
 
     private static final long serialVersionUID = 42L;
 
+    public enum MealTime {
+        BREAKFAST, LUNCH, DINNER, SNACK
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "food_entry_id")
