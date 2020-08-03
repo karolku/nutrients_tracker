@@ -1,12 +1,15 @@
 package com.karolk.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "food_entry")
-public class FoodEntry {
+public class FoodEntry implements Serializable {
+
+    private static final long serialVersionUID = 42L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +42,7 @@ public class FoodEntry {
 
     public FoodEntry(User userId, Foods fdcId, double quantity, String servingType,
                      Timestamp timestamp, String mealTime) {
-        this.userId = userId;
+        this.user = userId;
         this.fdcId = fdcId;
         this.amountOfServing = quantity;
         this.servingType = servingType;
@@ -47,12 +50,12 @@ public class FoodEntry {
         this.mealTime = mealTime;
     }
 
-    public User getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Foods getFdcId() {
@@ -108,7 +111,7 @@ public class FoodEntry {
         FoodEntry foodEntry = (FoodEntry) o;
         return Double.compare(foodEntry.amountOfServing, amountOfServing) == 0 &&
                 Objects.equals(id, foodEntry.id) &&
-                Objects.equals(userId, foodEntry.userId) &&
+                Objects.equals(user, foodEntry.user) &&
                 Objects.equals(fdcId, foodEntry.fdcId) &&
                 Objects.equals(servingType, foodEntry.servingType) &&
                 Objects.equals(timestamp, foodEntry.timestamp) &&
@@ -117,13 +120,13 @@ public class FoodEntry {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, fdcId, amountOfServing, servingType, timestamp, mealTime);
+        return Objects.hash(id, user, fdcId, amountOfServing, servingType, timestamp, mealTime);
     }
 
     @Override
     public String toString() {
         return "FoodEntry{" +
-                "userId=" + userId +
+                "userId=" + user +
                 ", fdcId=" + fdcId +
                 ", quantity=" + amountOfServing +
                 ", timestamp=" + timestamp +
