@@ -6,6 +6,7 @@ import java.util.List;
 
 public class FoodsDto {
 
+    private Long id;
     private Long fdcId;
     private String description;
     private String brandOwner;
@@ -18,6 +19,14 @@ public class FoodsDto {
         this.description = description;
         this.brandOwner = brandOwner;
         this.foodNutrients = foodNutrients;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public List<FoodNutrients> getFoodNutrients() {
