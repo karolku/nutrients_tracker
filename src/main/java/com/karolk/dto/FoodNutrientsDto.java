@@ -1,6 +1,8 @@
 package com.karolk.dto;
 
 public class FoodNutrientsDto {
+
+    private Long id;
     private Long nutrientId;
     private String nutrientName;
     private String unitName;
@@ -13,6 +15,14 @@ public class FoodNutrientsDto {
         this.nutrientName = nutrientName;
         this.unitName = unitName;
         this.value = value;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getNutrientId() {
