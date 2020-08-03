@@ -17,6 +17,9 @@ public class FoodEntryDto {
     private Timestamp timestamp;
     private FoodEntry.MealTime mealTime;
 
+    public FoodEntryDto() {
+    }
+
     public FoodEntryDto(User user, Foods fdcId, double amountOfServing, String servingType, Timestamp timestamp, FoodEntry.MealTime mealTime) {
         this.user = user;
         this.fdcId = fdcId;
