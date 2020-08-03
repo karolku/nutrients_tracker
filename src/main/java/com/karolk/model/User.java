@@ -26,7 +26,7 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    private String gender;
+    private Gender gender;
 
     @Column(name = "birthday_date")
     private Date birthdayDate;
@@ -55,7 +55,7 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String gender, Date birthdayDate,
+    public User(String firstName, String lastName, Gender gender, Date birthdayDate,
                 String password, String email, Timestamp accountCreatedTime,
                 Timestamp lastUpdatedtime, double weightInKg, double heightInCm,
                 double activityLevel) {
@@ -112,11 +112,11 @@ public class User {
         this.email = email;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
