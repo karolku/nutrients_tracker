@@ -36,7 +36,7 @@ public class Foods implements Serializable {
     private List<String> ingredients;
 
     @ManyToMany
-    @JoinTable(name = "foods_nutrients")
+    @JoinTable(name = "food_nutrients")
     private List<FoodNutrients> foodNutrients;
 
     public Foods() {

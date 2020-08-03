@@ -16,7 +16,6 @@ public class FoodEntry implements Serializable {
     @Column(name = "food_entry_id")
     private Long id;
 
-    @Column(name = "user_id")
     @ManyToOne
     @JoinColumn(name = "user_id" )
     private User user;
