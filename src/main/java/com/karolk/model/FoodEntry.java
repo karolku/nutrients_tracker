@@ -90,13 +90,7 @@ public class FoodEntry implements Serializable {
     }
 
     public void setMealTime(MealTime mealTime) {
-        if(mealTime.equals("BREAKFAST") ||
-                mealTime.equals("LUNCH") ||
-                mealTime.equals("DINNER") ||
-                mealTime.equals("SNACK"))
                 this.mealTime = mealTime;
-        else
-            System.out.println("Some exception will be send to the client.");
     }
 
     public String getServingType() {
