@@ -25,10 +25,9 @@ public class UserDto {
     public UserDto() {
     }
 
-    public UserDto(Long id, String firstName, String lastName, String gender,
+    public UserDto(String firstName, String lastName, String gender,
                    Date birthdayDate, String email, String password, double weightInKg,
                    double heightInCm, double activityLevel, List<FoodEntry> foodEntries) {
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
