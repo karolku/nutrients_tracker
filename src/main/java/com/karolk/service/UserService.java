@@ -1,6 +1,7 @@
 package com.karolk.service;
 
 import com.karolk.dto.UserDto;
+import com.karolk.model.User;
 import com.karolk.repository.UserRepository;
 import com.karolk.util.UserMapper;
 import org.springframework.stereotype.Service;
@@ -22,5 +23,11 @@ public class UserService {
                 .stream()
                 .map(UserMapper.INSTANCE::convertEntityUserToUserDto)
                 .collect(Collectors.toList());
+    }
+
+    public UserDto save(UserDto userDto) {
+        User user = UserMapper.INSTANCE.convertUserDtoToEntityUser(userDto);
+        User savedUser = userRepository.save(user);
+        return UserMapper.INSTANCE.convertEntityUserToUserDto(savedUser);
     }
 }
