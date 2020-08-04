@@ -26,6 +26,7 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @Column(name = "birthday_date")
