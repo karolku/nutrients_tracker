@@ -161,7 +161,7 @@ public class User {
                 Objects.equals(gender, user.gender) &&
                 Objects.equals(birthdayDate, user.birthdayDate) &&
                 Objects.equals(password, user.password) &&
-                Objects.equals(email, user.email) &&
+                Objects.equals(email, user.email);
     }
 
     @Override

@@ -144,14 +144,13 @@ public class UserDto {
                 Objects.equals(birthdayDate, userDto.birthdayDate) &&
                 Objects.equals(email, userDto.email) &&
                 Objects.equals(password, userDto.password) &&
-                Objects.equals(lastUpdatedTime, userDto.lastUpdatedTime) &&
                 Objects.equals(foodEntries, userDto.foodEntries);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, gender, birthdayDate, email,
-                password, lastUpdatedTime, weightInKg, heightInCm, activityLevel, foodEntries);
+                password, weightInKg, heightInCm, activityLevel, foodEntries);
     }
 
     @Override
@@ -164,7 +163,6 @@ public class UserDto {
                 ", birthdayDate=" + birthdayDate +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", lastUpdatedTime=" + lastUpdatedTime +
                 ", weightInKg=" + weightInKg +
                 ", heightInCm=" + heightInCm +
                 ", activityLevel=" + activityLevel +
