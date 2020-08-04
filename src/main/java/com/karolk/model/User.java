@@ -1,5 +1,8 @@
 package com.karolk.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -35,12 +38,6 @@ public class User {
     private String password;
     private String email;
 
-    @Column(name = "account_created_time")
-    private Timestamp accountCreatedTime;
-
-    @Column(name = "last_updated_time")
-    private Timestamp lastUpdatedTime;
-
     @Column(name = "wieght_in_kg")
     private double weightInKg;
 
@@ -57,8 +54,7 @@ public class User {
     }
 
     public User(String firstName, String lastName, Gender gender, Date birthdayDate,
-                String password, String email, Timestamp accountCreatedTime,
-                Timestamp lastUpdatedtime, double weightInKg, double heightInCm,
+                String password, String email, double weightInKg, double heightInCm,
                 double activityLevel) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -66,8 +62,6 @@ public class User {
         this.birthdayDate = birthdayDate;
         this.password = password;
         this.email = email;
-        this.accountCreatedTime = accountCreatedTime;
-        this.lastUpdatedTime = lastUpdatedtime;
         this.weightInKg = weightInKg;
         this.heightInCm = heightInCm;
         this.activityLevel = activityLevel;
@@ -129,22 +123,6 @@ public class User {
         this.birthdayDate = birthdayDate;
     }
 
-    public Timestamp getAccountCreatedTime() {
-        return accountCreatedTime;
-    }
-
-    public void setAccountCreatedTime(Timestamp accountCreatedTime) {
-        this.accountCreatedTime = accountCreatedTime;
-    }
-
-    public Timestamp getLastUpdatedTime() {
-        return lastUpdatedTime;
-    }
-
-    public void setLastUpdatedTime(Timestamp lastUpdatedTime) {
-        this.lastUpdatedTime = lastUpdatedTime;
-    }
-
     public double getWeightInKg() {
         return weightInKg;
     }
@@ -184,15 +162,12 @@ public class User {
                 Objects.equals(birthdayDate, user.birthdayDate) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
-                Objects.equals(accountCreatedTime, user.accountCreatedTime) &&
-                Objects.equals(lastUpdatedTime, user.lastUpdatedTime);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, gender, birthdayDate,
-                password, email, accountCreatedTime, lastUpdatedTime, weightInKg,
-                heightInCm, activityLevel);
+                password, email, weightInKg, heightInCm, activityLevel);
     }
 
     @Override
@@ -205,8 +180,6 @@ public class User {
                 ", birthdayDate=" + birthdayDate +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", accountCreatedTime=" + accountCreatedTime +
-                ", lastUpdatedtime=" + lastUpdatedTime +
                 ", weightInKg=" + weightInKg +
                 ", heightInCm=" + heightInCm +
                 ", activityLevel=" + activityLevel +
