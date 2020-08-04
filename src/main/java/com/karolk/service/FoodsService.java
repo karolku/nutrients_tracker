@@ -19,7 +19,9 @@ public class FoodsService {
     public List<FoodsDto> findAllFoods() {
         return foodsRepository.findAll()
                 .stream()
-                .map(FoodsMapper.INSTANCE::convertFoodsToDto)
+                .map(FoodsMapper.INSTANCE::convertEntityFoodsToDto)
                 .collect(Collectors.toList());
     }
+
+
 }

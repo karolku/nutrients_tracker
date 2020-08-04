@@ -11,5 +11,6 @@ public interface FoodsMapper {
 
     FoodsMapper INSTANCE = Mappers.getMapper(FoodsMapper.class);
 
-    FoodsDto convertFoodsToDto(Foods foods);
+    FoodsDto convertEntityFoodsToDto(Foods foods);
+
 }
