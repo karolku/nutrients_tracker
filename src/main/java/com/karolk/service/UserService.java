@@ -19,7 +19,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<UserDto> findAllUser(){
+    public List<UserDto> findAllUsers(){
         return userRepository.findAll()
                 .stream()
                 .map(UserMapper.INSTANCE::convertUserToUserDto)
