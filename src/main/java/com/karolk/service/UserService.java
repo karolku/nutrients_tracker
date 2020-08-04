@@ -22,7 +22,7 @@ public class UserService {
     public List<UserDto> findAllUser(){
         return userRepository.findAll()
                 .stream()
-                .map(UserMapper.INSTANCE.convertUserToUserDto())
+                .map(UserMapper.INSTANCE::convertUserToUserDto)
                 .collect(Collectors.toList());
     }
 }
