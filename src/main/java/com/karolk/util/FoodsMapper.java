@@ -13,4 +13,5 @@ public interface FoodsMapper {
 
     FoodsDto convertEntityFoodsToDto(Foods foods);
 
+    Foods convertFoodsDtoToEntityFoods(FoodsDto foodsDto);
 }
