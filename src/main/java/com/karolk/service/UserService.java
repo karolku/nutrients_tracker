@@ -1,5 +1,6 @@
 package com.karolk.service;
 
+import com.karolk.dto.UserDto;
 import com.karolk.model.User;
 import com.karolk.repository.UserRepository;
 import com.karolk.util.UserMapper;
@@ -18,7 +19,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> findAllUser(){
+    public List<UserDto> findAllUser(){
         return userRepository.findAll()
                 .stream()
                 .map(UserMapper.INSTANCE.convertUserToUserDto())
