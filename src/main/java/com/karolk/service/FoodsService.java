@@ -1,6 +1,7 @@
 package com.karolk.service;
 
 import com.karolk.dto.FoodsDto;
+import com.karolk.model.Foods;
 import com.karolk.repository.FoodsRepository;
 import com.karolk.util.FoodsMapper;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,9 @@ public class FoodsService {
                 .collect(Collectors.toList());
     }
 
-
+    public FoodsDto save(FoodsDto foodsDto) {
+        Foods foods = FoodsMapper.INSTANCE.convertFoodsDtoToEntityFoods(foodsDto);
+        Foods savedFoods = foodsRepository.save(foods);
+        return FoodsMapper.INSTANCE.convertEntityFoodsToDto(savedFoods);
+    }
 }
