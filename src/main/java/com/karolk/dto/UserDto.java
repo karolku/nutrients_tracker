@@ -17,7 +17,6 @@ public class UserDto {
     private Date birthdayDate;
     private String email;
     private String password;
-    private Timestamp lastUpdatedTime;
     private double weightInKg;
     private double heightInCm;
     private double activityLevel;
@@ -27,8 +26,8 @@ public class UserDto {
     }
 
     public UserDto(Long id, String firstName, String lastName, String gender,
-                   Date birthdayDate, String email, String password, Timestamp lastUpdatedTime,
-                   double weightInKg, double heightInCm, double activityLevel, List<FoodEntry> foodEntries) {
+                   Date birthdayDate, String email, String password, double weightInKg,
+                   double heightInCm, double activityLevel, List<FoodEntry> foodEntries) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -36,7 +35,6 @@ public class UserDto {
         this.birthdayDate = birthdayDate;
         this.email = email;
         this.password = password;
-        this.lastUpdatedTime = lastUpdatedTime;
         this.weightInKg = weightInKg;
         this.heightInCm = heightInCm;
         this.activityLevel = activityLevel;
@@ -97,14 +95,6 @@ public class UserDto {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Timestamp getLastUpdatedTime() {
-        return lastUpdatedTime;
-    }
-
-    public void setLastUpdatedTime(Timestamp lastUpdatedTime) {
-        this.lastUpdatedTime = lastUpdatedTime;
     }
 
     public double getWeightInKg() {
