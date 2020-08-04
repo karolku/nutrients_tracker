@@ -200,8 +200,16 @@ public class User {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", gender=" + gender +
+                ", birthdayDate=" + birthdayDate +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", accountCreatedTime=" + accountCreatedTime +
+                ", lastUpdatedtime=" + lastUpdatedtime +
+                ", weightInKg=" + weightInKg +
+                ", heightInCm=" + heightInCm +
+                ", activityLevel=" + activityLevel +
+                ", foodEntries=" + foodEntries +
                 '}';
     }
 }
