@@ -39,7 +39,7 @@ public class User {
     private Timestamp accountCreatedTime;
 
     @Column(name = "last_updated_time")
-    private Timestamp lastUpdatedtime;
+    private Timestamp lastUpdatedTime;
 
     @Column(name = "wieght_in_kg")
     private double weightInKg;
@@ -67,7 +67,7 @@ public class User {
         this.password = password;
         this.email = email;
         this.accountCreatedTime = accountCreatedTime;
-        this.lastUpdatedtime = lastUpdatedtime;
+        this.lastUpdatedTime = lastUpdatedtime;
         this.weightInKg = weightInKg;
         this.heightInCm = heightInCm;
         this.activityLevel = activityLevel;
@@ -137,12 +137,12 @@ public class User {
         this.accountCreatedTime = accountCreatedTime;
     }
 
-    public Timestamp getLastUpdatedtime() {
-        return lastUpdatedtime;
+    public Timestamp getLastUpdatedTime() {
+        return lastUpdatedTime;
     }
 
-    public void setLastUpdatedtime(Timestamp lastUpdatedtime) {
-        this.lastUpdatedtime = lastUpdatedtime;
+    public void setLastUpdatedTime(Timestamp lastUpdatedTime) {
+        this.lastUpdatedTime = lastUpdatedTime;
     }
 
     public double getWeightInKg() {
@@ -185,13 +185,13 @@ public class User {
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
                 Objects.equals(accountCreatedTime, user.accountCreatedTime) &&
-                Objects.equals(lastUpdatedtime, user.lastUpdatedtime);
+                Objects.equals(lastUpdatedTime, user.lastUpdatedTime);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, gender, birthdayDate,
-                password, email, accountCreatedTime, lastUpdatedtime, weightInKg,
+                password, email, accountCreatedTime, lastUpdatedTime, weightInKg,
                 heightInCm, activityLevel);
     }
 
@@ -206,7 +206,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", accountCreatedTime=" + accountCreatedTime +
-                ", lastUpdatedtime=" + lastUpdatedtime +
+                ", lastUpdatedtime=" + lastUpdatedTime +
                 ", weightInKg=" + weightInKg +
                 ", heightInCm=" + heightInCm +
                 ", activityLevel=" + activityLevel +
