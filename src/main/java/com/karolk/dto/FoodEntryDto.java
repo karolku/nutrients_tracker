@@ -10,7 +10,7 @@ import java.util.Objects;
 public class FoodEntryDto {
 
     private Long id;
-    private User user_id;
+    private Long user_id;
     private Foods fdcId;
     private double amountOfServing;
     private String servingType;
@@ -20,7 +20,7 @@ public class FoodEntryDto {
     public FoodEntryDto() {
     }
 
-    public FoodEntryDto(User user_id, Foods fdcId, double amountOfServing, String servingType, Timestamp timestamp, FoodEntry.MealTime mealTime) {
+    public FoodEntryDto(Long user_id, Foods fdcId, double amountOfServing, String servingType, Timestamp timestamp, FoodEntry.MealTime mealTime) {
         this.user_id = user_id;
         this.fdcId = fdcId;
         this.amountOfServing = amountOfServing;
@@ -37,11 +37,11 @@ public class FoodEntryDto {
         this.id = id;
     }
 
-    public User getUser_id() {
+    public Long getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(User user_id) {
+    public void setUser_id(Long user_id) {
         this.user_id = user_id;
     }
 
