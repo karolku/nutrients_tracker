@@ -10,7 +10,7 @@ import java.util.Objects;
 public class FoodEntryDto {
 
     private Long id;
-    private User user;
+    private User user_id;
     private Foods fdcId;
     private double amountOfServing;
     private String servingType;
@@ -20,8 +20,8 @@ public class FoodEntryDto {
     public FoodEntryDto() {
     }
 
-    public FoodEntryDto(User user, Foods fdcId, double amountOfServing, String servingType, Timestamp timestamp, FoodEntry.MealTime mealTime) {
-        this.user = user;
+    public FoodEntryDto(User user_id, Foods fdcId, double amountOfServing, String servingType, Timestamp timestamp, FoodEntry.MealTime mealTime) {
+        this.user_id = user_id;
         this.fdcId = fdcId;
         this.amountOfServing = amountOfServing;
         this.servingType = servingType;
@@ -37,12 +37,12 @@ public class FoodEntryDto {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public User getUser_id() {
+        return user_id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser_id(User user_id) {
+        this.user_id = user_id;
     }
 
     public Foods getFdcId() {
@@ -92,7 +92,7 @@ public class FoodEntryDto {
         FoodEntryDto that = (FoodEntryDto) o;
         return Double.compare(that.amountOfServing, amountOfServing) == 0 &&
                 Objects.equals(id, that.id) &&
-                Objects.equals(user, that.user) &&
+                Objects.equals(user_id, that.user_id) &&
                 Objects.equals(fdcId, that.fdcId) &&
                 Objects.equals(servingType, that.servingType) &&
                 Objects.equals(timestamp, that.timestamp) &&
@@ -101,14 +101,14 @@ public class FoodEntryDto {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, fdcId, amountOfServing, servingType, timestamp, mealTime);
+        return Objects.hash(id, user_id, fdcId, amountOfServing, servingType, timestamp, mealTime);
     }
 
     @Override
     public String toString() {
         return "FoodEntryDto{" +
                 "id=" + id +
-                ", user=" + user +
+                ", user=" + user_id +
                 ", fdcId=" + fdcId +
                 ", amountOfServing=" + amountOfServing +
                 ", servingType='" + servingType + '\'' +
