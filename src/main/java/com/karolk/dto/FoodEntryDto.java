@@ -1,17 +1,14 @@
 package com.karolk.dto;
 
 import com.karolk.model.FoodEntry;
-import com.karolk.model.Foods;
-import com.karolk.model.User;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.Objects;
 
 public class FoodEntryDto {
 
     private Long id;
-    private Long user_id;
+    private Long userId;
     private Long fdcId;
     private double amountOfServing;
     private String servingType;
@@ -21,9 +18,9 @@ public class FoodEntryDto {
     public FoodEntryDto() {
     }
 
-    public FoodEntryDto(Long user_id, Long fdcId, double amountOfServing, String servingType,
+    public FoodEntryDto(Long userId, Long fdcId, double amountOfServing, String servingType,
                         Date dateOfFoodEntry, FoodEntry.MealTime mealTime) {
-        this.user_id = user_id;
+        this.userId = userId;
         this.fdcId = fdcId;
         this.amountOfServing = amountOfServing;
         this.servingType = servingType;
@@ -39,12 +36,12 @@ public class FoodEntryDto {
         this.id = id;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Long getFdcId() {
@@ -94,7 +91,7 @@ public class FoodEntryDto {
         FoodEntryDto that = (FoodEntryDto) o;
         return Double.compare(that.amountOfServing, amountOfServing) == 0 &&
                 Objects.equals(id, that.id) &&
-                Objects.equals(user_id, that.user_id) &&
+                Objects.equals(userId, that.userId) &&
                 Objects.equals(fdcId, that.fdcId) &&
                 Objects.equals(servingType, that.servingType) &&
                 Objects.equals(dateOfFoodEntry, that.dateOfFoodEntry) &&
@@ -103,14 +100,14 @@ public class FoodEntryDto {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user_id, fdcId, amountOfServing, servingType, dateOfFoodEntry, mealTime);
+        return Objects.hash(id, userId, fdcId, amountOfServing, servingType, dateOfFoodEntry, mealTime);
     }
 
     @Override
     public String toString() {
         return "FoodEntryDto{" +
                 "id=" + id +
-                ", user=" + user_id +
+                ", user=" + userId +
                 ", fdcId=" + fdcId +
                 ", amountOfServing=" + amountOfServing +
                 ", servingType='" + servingType + '\'' +

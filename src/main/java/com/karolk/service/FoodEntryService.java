@@ -1,6 +1,7 @@
 package com.karolk.service;
 
 import com.karolk.dto.FoodEntryDto;
+import com.karolk.exception.InvalidFoodEntryException;
 import com.karolk.model.FoodEntry;
 import com.karolk.model.Foods;
 import com.karolk.model.User;
@@ -10,7 +11,6 @@ import com.karolk.repository.UserRepository;
 import com.karolk.util.FoodEntryMapper;
 import org.springframework.stereotype.Service;
 
-import java.lang.annotation.IncompleteAnnotationException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -43,11 +43,13 @@ public class FoodEntryService {
     }
 
     public FoodEntryDto createFoodEntry(FoodEntryDto foodEntryDto) {
-        Optional<User> user = userRepository.findById(foodEntryDto.getUser_id());
+        Optional<User> user = userRepository.findById(foodEntryDto.getUserId());
         Optional<Foods> foods = foodsRepository.findByFdcId(foodEntryDto.getFdcId());
         FoodEntry foodEntry = new FoodEntry();
-        foodEntry.setUser(user);
-        foodEntry.setFdcId(foods);
+        foodEntry.setUserId(user.orElseThrow(() ->
+                new InvalidFoodEntryException("User with this id does not exist.")));
+        foodEntry.setFdcId(foods.orElseThrow(() ->
+                new InvalidFoodEntryException("Food with this fdcId does not exist.")));
         foodEntry.setAmountOfServing(foodEntryDto.getAmountOfServing());
         foodEntry.setMealTime(foodEntryDto.getMealTime());
         foodEntry.setServingType(foodEntryDto.getServingType());

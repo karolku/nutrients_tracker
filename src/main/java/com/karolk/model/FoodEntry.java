@@ -3,9 +3,7 @@ package com.karolk.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.Objects;
-import java.util.Optional;
 
 @Entity
 @Table(name = "food_entry")
@@ -24,7 +22,7 @@ public class FoodEntry implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "user_id" )
-    private User user;
+    private User userId;
 
     @ManyToOne
     @JoinColumn(name = "fdcId")
@@ -48,7 +46,7 @@ public class FoodEntry implements Serializable {
 
     public FoodEntry(User userId, Foods fdcId, double quantity, String servingType,
                      Date dateOfFoodEntry, MealTime mealTime) {
-        this.user = userId;
+        this.userId = userId;
         this.fdcId = fdcId;
         this.amountOfServing = quantity;
         this.servingType = servingType;
@@ -56,12 +54,12 @@ public class FoodEntry implements Serializable {
         this.mealTime = mealTime;
     }
 
-    public User getUser() {
-        return user;
+    public User getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
     public Foods getFdcId() {
@@ -111,7 +109,7 @@ public class FoodEntry implements Serializable {
         FoodEntry foodEntry = (FoodEntry) o;
         return Double.compare(foodEntry.amountOfServing, amountOfServing) == 0 &&
                 Objects.equals(id, foodEntry.id) &&
-                Objects.equals(user, foodEntry.user) &&
+                Objects.equals(userId, foodEntry.userId) &&
                 Objects.equals(fdcId, foodEntry.fdcId) &&
                 Objects.equals(servingType, foodEntry.servingType) &&
                 Objects.equals(dateOfFoodEntry, foodEntry.dateOfFoodEntry) &&
@@ -120,13 +118,13 @@ public class FoodEntry implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, fdcId, amountOfServing, servingType, dateOfFoodEntry, mealTime);
+        return Objects.hash(id, userId, fdcId, amountOfServing, servingType, dateOfFoodEntry, mealTime);
     }
 
     @Override
     public String toString() {
         return "FoodEntry{" +
-                "userId=" + user +
+                "userId=" + userId +
                 ", fdcId=" + fdcId +
                 ", quantity=" + amountOfServing +
                 ", dateOfFoodEntry=" + dateOfFoodEntry +

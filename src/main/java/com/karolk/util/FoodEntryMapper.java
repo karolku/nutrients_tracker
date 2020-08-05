@@ -4,14 +4,12 @@ import com.karolk.dto.FoodEntryDto;
 import com.karolk.model.FoodEntry;
 import com.karolk.model.Foods;
 import com.karolk.model.User;
-import org.mapstruct.Mapper;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
 public interface FoodEntryMapper {
-
     FoodEntryMapper INSTANCE = Mappers.getMapper(FoodEntryMapper.class);
-
 
     FoodEntryDto convertFoodEntryEntityToDto(FoodEntry foodEntry);
 
