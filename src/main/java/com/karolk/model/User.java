@@ -143,6 +143,14 @@ public class User {
         this.activityLevel = activityLevel;
     }
 
+    public List<FoodEntry> getFoodEntries() {
+        return foodEntries;
+    }
+
+    public void setFoodEntries(List<FoodEntry> foodEntries) {
+        this.foodEntries = foodEntries;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
