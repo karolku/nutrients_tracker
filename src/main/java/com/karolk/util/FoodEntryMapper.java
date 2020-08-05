@@ -2,6 +2,8 @@ package com.karolk.util;
 
 import com.karolk.dto.FoodEntryDto;
 import com.karolk.model.FoodEntry;
+import com.karolk.model.Foods;
+import com.karolk.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -10,7 +12,16 @@ public interface FoodEntryMapper {
 
     FoodEntryMapper INSTANCE = Mappers.getMapper(FoodEntryMapper.class);
 
+
     FoodEntryDto convertFoodEntryEntityToDto(FoodEntry foodEntry);
 
     FoodEntry convertFoodEntryDtoToEntity(FoodEntryDto foodEntryDto);
+
+    default Long toLongUser(User user) {
+        return user.getId();
+    }
+
+    default Long toLongFoods(Foods foods) {
+        return foods.getFdcId();
+    }
 }
