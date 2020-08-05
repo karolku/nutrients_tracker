@@ -23,11 +23,11 @@ public class FoodEntry implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "user_id" )
-    private User user;
+    private Optional<User> user;
 
     @ManyToOne
     @JoinColumn(name = "fdcId")
-    private Foods fdcId;
+    private Optional<Foods> fdcId;
 
     @Column(name = "amount_of_serving")
     private double amountOfServing; // all data will be provided per 100 grams. so amount of 1 = 100 grams.
@@ -47,15 +47,15 @@ public class FoodEntry implements Serializable {
 
     public FoodEntry(User userId, Foods fdcId, double quantity, String servingType,
                      Timestamp timestamp, MealTime mealTime) {
-        this.user = userId;
-        this.fdcId = fdcId;
+        this.user = Optional.ofNullable(userId);
+        this.fdcId = Optional.ofNullable(fdcId);
         this.amountOfServing = quantity;
         this.servingType = servingType;
         this.timestamp = timestamp;
         this.mealTime = mealTime;
     }
 
-    public User getUser() {
+    public Optional<User> getUser() {
         return user;
     }
 
@@ -63,7 +63,7 @@ public class FoodEntry implements Serializable {
         this.user = user;
     }
 
-    public Foods getFdcId() {
+    public Optional<Foods> getFdcId() {
         return fdcId;
     }
 
