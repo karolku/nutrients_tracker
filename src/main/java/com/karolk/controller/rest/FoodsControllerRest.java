@@ -31,7 +31,7 @@ public class FoodsControllerRest {
         if(foodsDto.getId() != null)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The object cannot have already set id.");
         FoodsDto foodsSaved = foodsService.save(foodsDto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(foodsDto.getId())
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(foodsSaved.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(foodsSaved);
     }
