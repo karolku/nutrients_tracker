@@ -13,8 +13,6 @@ public interface FoodEntryMapper {
 
     FoodEntryDto convertFoodEntryEntityToDto(FoodEntry foodEntry);
 
-    FoodEntry convertFoodEntryDtoToEntity(FoodEntryDto foodEntryDto);
-
     default Long toLongUser(User user) {
         return user.getId();
     }
