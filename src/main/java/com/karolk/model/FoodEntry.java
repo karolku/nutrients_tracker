@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
+import java.util.Optional;
 
 @Entity
 @Table(name = "food_entry")
@@ -58,7 +59,7 @@ public class FoodEntry implements Serializable {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Optional<User> user) {
         this.user = user;
     }
 
@@ -66,7 +67,7 @@ public class FoodEntry implements Serializable {
         return fdcId;
     }
 
-    public void setFdcId(Foods fdcId) {
+    public void setFdcId(Optional<Foods> fdcId) {
         this.fdcId = fdcId;
     }
 
