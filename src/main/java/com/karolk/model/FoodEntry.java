@@ -2,6 +2,7 @@ package com.karolk.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,7 +37,7 @@ public class FoodEntry implements Serializable {
     private String servingType;
 
     @Column(name = "time_stamp")
-    private Timestamp timestamp;
+    private Date dateOfFoodEntry;
 
     @Column(name = "meal_time")
     @Enumerated(EnumType.STRING)
@@ -46,12 +47,12 @@ public class FoodEntry implements Serializable {
     }
 
     public FoodEntry(User userId, Foods fdcId, double quantity, String servingType,
-                     Timestamp timestamp, MealTime mealTime) {
+                     Date dateOfFoodEntry, MealTime mealTime) {
         this.user = Optional.ofNullable(userId);
         this.fdcId = Optional.ofNullable(fdcId);
         this.amountOfServing = quantity;
         this.servingType = servingType;
-        this.timestamp = timestamp;
+        this.dateOfFoodEntry = dateOfFoodEntry;
         this.mealTime = mealTime;
     }
 
@@ -79,12 +80,12 @@ public class FoodEntry implements Serializable {
         this.amountOfServing = amountOfServing;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
+    public Date getDateOfFoodEntry() {
+        return dateOfFoodEntry;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
+    public void setDateOfFoodEntry(Date dateOfFoodEntry) {
+        this.dateOfFoodEntry = dateOfFoodEntry;
     }
 
     public MealTime getMealTime() {
@@ -113,13 +114,13 @@ public class FoodEntry implements Serializable {
                 Objects.equals(user, foodEntry.user) &&
                 Objects.equals(fdcId, foodEntry.fdcId) &&
                 Objects.equals(servingType, foodEntry.servingType) &&
-                Objects.equals(timestamp, foodEntry.timestamp) &&
+                Objects.equals(dateOfFoodEntry, foodEntry.dateOfFoodEntry) &&
                 Objects.equals(mealTime, foodEntry.mealTime);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, fdcId, amountOfServing, servingType, timestamp, mealTime);
+        return Objects.hash(id, user, fdcId, amountOfServing, servingType, dateOfFoodEntry, mealTime);
     }
 
     @Override
@@ -128,7 +129,7 @@ public class FoodEntry implements Serializable {
                 "userId=" + user +
                 ", fdcId=" + fdcId +
                 ", quantity=" + amountOfServing +
-                ", timestamp=" + timestamp +
+                ", dateOfFoodEntry=" + dateOfFoodEntry +
                 ", mealTime='" + mealTime + '\'' +
                 '}';
     }
