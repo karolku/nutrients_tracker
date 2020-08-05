@@ -38,6 +38,7 @@ public class FoodEntry implements Serializable {
     private Timestamp timestamp;
 
     @Column(name = "meal_time")
+    @Enumerated(EnumType.STRING)
     private MealTime mealTime;
 
     public FoodEntry() {
