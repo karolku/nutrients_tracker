@@ -5,10 +5,7 @@ import com.karolk.model.FoodEntry;
 import com.karolk.service.FoodEntryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -36,5 +33,13 @@ public class FoodEntryControllerRest {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedFoodEntry.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(savedFoodEntry);
+    }
+
+    @PostMapping()
+    public ResponseEntity<FoodEntryDto> saveFoodEntry(@RequestBody FoodEntryDto foodEntryDto) {
+        FoodEntryDto createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdFoodEntry.getId())
+                .toUri();
+        return ResponseEntity.created(uri).body(createdFoodEntry);
     }
 }
