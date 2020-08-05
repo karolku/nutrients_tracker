@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class FoodEntryDto {
 
-    private Long id;
+    private Long food_entry_id;
     private Long userId;
     private Long fdcId;
     private double amountOfServing;
@@ -28,12 +28,12 @@ public class FoodEntryDto {
         this.mealTime = mealTime;
     }
 
-    public Long getId() {
-        return id;
+    public Long getFood_entry_id() {
+        return food_entry_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setFood_entry_id(Long food_entry_id) {
+        this.food_entry_id = food_entry_id;
     }
 
     public Long getUserId() {
@@ -90,7 +90,7 @@ public class FoodEntryDto {
         if (o == null || getClass() != o.getClass()) return false;
         FoodEntryDto that = (FoodEntryDto) o;
         return Double.compare(that.amountOfServing, amountOfServing) == 0 &&
-                Objects.equals(id, that.id) &&
+                Objects.equals(food_entry_id, that.food_entry_id) &&
                 Objects.equals(userId, that.userId) &&
                 Objects.equals(fdcId, that.fdcId) &&
                 Objects.equals(servingType, that.servingType) &&
@@ -100,13 +100,13 @@ public class FoodEntryDto {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, fdcId, amountOfServing, servingType, dateOfFoodEntry, mealTime);
+        return Objects.hash(food_entry_id, userId, fdcId, amountOfServing, servingType, dateOfFoodEntry, mealTime);
     }
 
     @Override
     public String toString() {
         return "FoodEntryDto{" +
-                "id=" + id +
+                "id=" + food_entry_id +
                 ", user=" + userId +
                 ", fdcId=" + fdcId +
                 ", amountOfServing=" + amountOfServing +
