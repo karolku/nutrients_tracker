@@ -43,7 +43,7 @@ public class User {
     @Column(name = "activity_level")
     private double activityLevel;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "userId")
     private List<FoodEntry> foodEntries = new ArrayList<>();
 
     public User() {
