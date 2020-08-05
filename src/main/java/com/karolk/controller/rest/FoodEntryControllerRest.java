@@ -26,15 +26,6 @@ public class FoodEntryControllerRest {
         return foodEntryService.findAllFoodEntries();
     }
 
-    public ResponseEntity<FoodEntryDto> save(@RequestBody FoodEntryDto foodEntryDto) {
-        if(foodEntryDto.getId() != null)
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The object cannot have already defined id");
-        FoodEntryDto savedFoodEntry = foodEntryService.save(foodEntryDto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedFoodEntry.getId())
-                .toUri();
-        return ResponseEntity.created(uri).body(savedFoodEntry);
-    }
-
     @PostMapping()
     public ResponseEntity<FoodEntryDto> saveFoodEntry(@RequestBody FoodEntryDto foodEntryDto) {
         FoodEntryDto createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto);
