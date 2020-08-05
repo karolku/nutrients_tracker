@@ -36,12 +36,6 @@ public class FoodEntryService {
                 .collect(Collectors.toList());
     }
 
-    public FoodEntryDto save(FoodEntryDto foodEntryDto) {
-        FoodEntry foodEntry = FoodEntryMapper.INSTANCE.convertFoodEntryDtoToEntity(foodEntryDto);
-        FoodEntry savedFoodEntry = foodEntryRepository.save(foodEntry);
-        return FoodEntryMapper.INSTANCE.convertFoodEntryEntityToDto(savedFoodEntry);
-    }
-
     public FoodEntryDto createFoodEntry(FoodEntryDto foodEntryDto) {
         Optional<User> user = userRepository.findById(foodEntryDto.getUserId());
         Optional<Foods> foods = foodsRepository.findByFdcId(foodEntryDto.getFdcId());
