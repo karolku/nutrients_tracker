@@ -20,13 +20,13 @@ public class FoodEntryService {
     public List<FoodEntryDto> findAllFoodEntries() {
         return foodEntryRepository.findAll()
                 .stream()
-                .map(FoodEntryMapper.INSTANCE::convertFoodEntryToDto)
+                .map(FoodEntryMapper.INSTANCE::convertFoodEntryEntityToDto)
                 .collect(Collectors.toList());
     }
 
     public FoodEntryDto save(FoodEntryDto foodEntryDto) {
-        FoodEntry foodEntry = FoodEntryMapper.INSTANCE.convertFoodEntryDtoToFoodEntryEntity(foodEntryDto);
+        FoodEntry foodEntry = FoodEntryMapper.INSTANCE.convertFoodEntryDtoToEntity(foodEntryDto);
         FoodEntry savedFoodEntry = foodEntryRepository.save(foodEntry);
-        return FoodEntryMapper.INSTANCE.convertFoodEntryToDto(savedFoodEntry);
+        return FoodEntryMapper.INSTANCE.convertFoodEntryEntityToDto(savedFoodEntry);
     }
 }
