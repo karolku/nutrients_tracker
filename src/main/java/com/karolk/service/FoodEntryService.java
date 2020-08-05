@@ -23,4 +23,10 @@ public class FoodEntryService {
                 .map(FoodEntryMapper.INSTANCE::convertFoodEntryToDto)
                 .collect(Collectors.toList());
     }
+
+    public FoodEntryDto save(FoodEntryDto foodEntryDto) {
+        FoodEntry foodEntry = FoodEntryMapper.INSTANCE.convertFoodEntryDtoToFoodEntryEntity(foodEntryDto);
+        FoodEntry savedFoodEntry = foodEntryRepository.save(foodEntry);
+        return FoodEntryMapper.INSTANCE.convertFoodEntryToDto(savedFoodEntry);
+    }
 }
