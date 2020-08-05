@@ -11,7 +11,7 @@ public class FoodEntryDto {
 
     private Long id;
     private Long user_id;
-    private Foods fdcId;
+    private Long fdcId;
     private double amountOfServing;
     private String servingType;
     private Timestamp timestamp;
@@ -20,7 +20,7 @@ public class FoodEntryDto {
     public FoodEntryDto() {
     }
 
-    public FoodEntryDto(Long user_id, Foods fdcId, double amountOfServing, String servingType, Timestamp timestamp, FoodEntry.MealTime mealTime) {
+    public FoodEntryDto(Long user_id, Long fdcId, double amountOfServing, String servingType, Timestamp timestamp, FoodEntry.MealTime mealTime) {
         this.user_id = user_id;
         this.fdcId = fdcId;
         this.amountOfServing = amountOfServing;
@@ -45,11 +45,11 @@ public class FoodEntryDto {
         this.user_id = user_id;
     }
 
-    public Foods getFdcId() {
+    public Long getFdcId() {
         return fdcId;
     }
 
-    public void setFdcId(Foods fdcId) {
+    public void setFdcId(Long fdcId) {
         this.fdcId = fdcId;
     }
 
