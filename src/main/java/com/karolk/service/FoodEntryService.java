@@ -51,7 +51,7 @@ public class FoodEntryService {
         foodEntry.setAmountOfServing(foodEntryDto.getAmountOfServing());
         foodEntry.setMealTime(foodEntryDto.getMealTime());
         foodEntry.setServingType(foodEntryDto.getServingType());
-        foodEntry.setTimestamp(foodEntryDto.getTimestamp());
+        foodEntry.setDateOfFoodEntry(foodEntryDto.getDateOfFoodEntry());
         FoodEntry createdFoodEntry = foodEntryRepository.save(foodEntry);
         return FoodEntryMapper.INSTANCE.convertFoodEntryEntityToDto(createdFoodEntry);
     }
