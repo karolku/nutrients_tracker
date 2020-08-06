@@ -20,14 +20,13 @@ public class UserDto {
     private double weightInKg;
     private double heightInCm;
     private double activityLevel;
-    private List<FoodEntry> foodEntries = new ArrayList<>();
 
     public UserDto() {
     }
 
     public UserDto(String firstName, String lastName, String gender,
                    Date birthdayDate, String email, String password, double weightInKg,
-                   double heightInCm, double activityLevel, List<FoodEntry> foodEntries) {
+                   double heightInCm, double activityLevel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -37,7 +36,6 @@ public class UserDto {
         this.weightInKg = weightInKg;
         this.heightInCm = heightInCm;
         this.activityLevel = activityLevel;
-        this.foodEntries = foodEntries;
     }
 
     public Long getId() {
@@ -120,14 +118,6 @@ public class UserDto {
         this.activityLevel = activityLevel;
     }
 
-    public List<FoodEntry> getFoodEntries() {
-        return foodEntries;
-    }
-
-    public void setFoodEntries(List<FoodEntry> foodEntries) {
-        this.foodEntries = foodEntries;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -142,14 +132,13 @@ public class UserDto {
                 Objects.equals(gender, userDto.gender) &&
                 Objects.equals(birthdayDate, userDto.birthdayDate) &&
                 Objects.equals(email, userDto.email) &&
-                Objects.equals(password, userDto.password) &&
-                Objects.equals(foodEntries, userDto.foodEntries);
+                Objects.equals(password, userDto.password);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, gender, birthdayDate, email,
-                password, weightInKg, heightInCm, activityLevel, foodEntries);
+                password, weightInKg, heightInCm, activityLevel);
     }
 
     @Override
@@ -165,7 +154,6 @@ public class UserDto {
                 ", weightInKg=" + weightInKg +
                 ", heightInCm=" + heightInCm +
                 ", activityLevel=" + activityLevel +
-                ", foodEntries=" + foodEntries +
                 '}';
     }
 }

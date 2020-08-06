@@ -43,9 +43,6 @@ public class User {
     @Column(name = "activity_level")
     private double activityLevel;
 
-    @OneToMany(mappedBy = "userId")
-    private List<FoodEntry> foodEntries = new ArrayList<>();
-
     public User() {
     }
 
@@ -143,14 +140,6 @@ public class User {
         this.activityLevel = activityLevel;
     }
 
-    public List<FoodEntry> getFoodEntries() {
-        return foodEntries;
-    }
-
-    public void setFoodEntries(List<FoodEntry> foodEntries) {
-        this.foodEntries = foodEntries;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -187,7 +176,6 @@ public class User {
                 ", weightInKg=" + weightInKg +
                 ", heightInCm=" + heightInCm +
                 ", activityLevel=" + activityLevel +
-                ", foodEntries=" + foodEntries +
                 '}';
     }
 }
