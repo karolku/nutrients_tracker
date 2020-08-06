@@ -24,7 +24,7 @@ public class FoodEntry implements Serializable {
     private User userId;
 
     @ManyToOne
-    @JoinColumn(name = "fdcId")
+    @JoinColumn(name = "food_id")
     private Foods fdcId;
 
     @Column(name = "amount_of_serving")
