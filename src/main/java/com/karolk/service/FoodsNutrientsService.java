@@ -36,6 +36,13 @@ public class FoodsNutrientsService {
                 .collect(Collectors.toList());
     }
 
+    /*
+     There will be rest template getting a particular food item from api
+     1. This method will consume will have two parameters, foods and nutrients from the rest template
+     2. Foods and nutrients will be save to their respective tables
+     3. foodsNutrient will take foods and nutrients objects and then will be saved with foodsnutrientRepository.
+     4. return and convert foodsNutrients to Dto.
+     */
     public FoodsNutrientsDto createFoodNutrient(FoodsNutrientsDto foodsNutrientsDto) {
         Optional<Foods> foods = foodsRepository.findById(foodsNutrientsDto.getFoodId());
         Optional<Nutrients> nutrients = nutrientsRepository.findById(foodsNutrientsDto.getNutrientId());
