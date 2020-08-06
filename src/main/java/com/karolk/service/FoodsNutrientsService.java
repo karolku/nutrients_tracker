@@ -1,9 +1,12 @@
 package com.karolk.service;
 
+import com.karolk.dto.FoodsNutrientsDto;
 import com.karolk.repository.FoodsNutrientsRepository;
 import com.karolk.repository.FoodsRepository;
 import com.karolk.repository.NutrientsRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class FoodsNutrientsService {
