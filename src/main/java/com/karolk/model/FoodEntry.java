@@ -17,6 +17,7 @@ public class FoodEntry implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "food_entry_id")
     private Long id;
 
     @ManyToOne
