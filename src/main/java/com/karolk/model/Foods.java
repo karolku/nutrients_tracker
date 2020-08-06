@@ -35,16 +35,11 @@ public class Foods implements Serializable {
     @ElementCollection(targetClass = String.class)
     private List<String> ingredients;
 
-    @ManyToMany
-    @JoinTable(name = "food_nutrients")
-    private List<FoodNutrients> foodNutrients;
-
     public Foods() {
     }
 
     public Foods(Long fdcId, String description, String dataType, String gtinUpc,
-                 String publishedDate, String brandOwner, List<String> ingredients,
-                 List<FoodNutrients> foodNutrients) {
+                 String publishedDate, String brandOwner, List<String> ingredients) {
         this.fdcId = fdcId;
         this.description = description;
         this.dataType = dataType;
@@ -52,7 +47,6 @@ public class Foods implements Serializable {
         this.publishedDate = publishedDate;
         this.brandOwner = brandOwner;
         this.ingredients = ingredients;
-        this.foodNutrients = foodNutrients;
     }
 
     public Long getFdcId() {
@@ -111,14 +105,6 @@ public class Foods implements Serializable {
         this.ingredients = ingredients;
     }
 
-    public List<FoodNutrients> getFoodNutrients() {
-        return foodNutrients;
-    }
-
-    public void setFoodNutrients(List<FoodNutrients> foodNutrients) {
-        this.foodNutrients = foodNutrients;
-    }
-
     public Long getId() {
         return id;
     }
@@ -139,14 +125,13 @@ public class Foods implements Serializable {
                 Objects.equals(gtinUpc, foods.gtinUpc) &&
                 Objects.equals(publishedDate, foods.publishedDate) &&
                 Objects.equals(brandOwner, foods.brandOwner) &&
-                Objects.equals(ingredients, foods.ingredients) &&
-                Objects.equals(foodNutrients, foods.foodNutrients);
+                Objects.equals(ingredients, foods.ingredients);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, fdcId, description, dataType, gtinUpc,
-                publishedDate, brandOwner, ingredients, foodNutrients);
+                publishedDate, brandOwner, ingredients);
     }
 
     @Override
@@ -159,7 +144,6 @@ public class Foods implements Serializable {
                 ", publishedDate='" + publishedDate + '\'' +
                 ", brandOwner='" + brandOwner + '\'' +
                 ", ingridients=" + ingredients +
-                ", foodNutrients=" + foodNutrients +
                 '}';
     }
 }

@@ -10,15 +10,13 @@ public class FoodsDto {
     private Long fdcId;
     private String description;
     private String brandOwner;
-    private List<FoodNutrients> foodNutrients;
 
     public FoodsDto(){}
 
-    public FoodsDto(Long fdcId, String description, String brandOwner, List<FoodNutrients> foodNutrients) {
+    public FoodsDto(Long fdcId, String description, String brandOwner) {
         this.fdcId = fdcId;
         this.description = description;
         this.brandOwner = brandOwner;
-        this.foodNutrients = foodNutrients;
     }
 
     public Long getId() {
@@ -27,14 +25,6 @@ public class FoodsDto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<FoodNutrients> getFoodNutrients() {
-        return foodNutrients;
-    }
-
-    public void setFoodNutrients(List<FoodNutrients> foodNutrients) {
-        this.foodNutrients = foodNutrients;
     }
 
     public Long getFdcId() {
@@ -67,7 +57,6 @@ public class FoodsDto {
                 "fdcId=" + fdcId +
                 ", description='" + description + '\'' +
                 ", brandOwner='" + brandOwner + '\'' +
-                ", foodNutrients=" + foodNutrients +
                 '}';
     }
 }
