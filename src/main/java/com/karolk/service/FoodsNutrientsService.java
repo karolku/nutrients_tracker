@@ -1,6 +1,7 @@
 package com.karolk.service;
 
 import com.karolk.dto.FoodsNutrientsDto;
+import com.karolk.exception.InvalidFoodsNutrientsException;
 import com.karolk.model.Foods;
 import com.karolk.model.FoodsNutrients;
 import com.karolk.model.Nutrients;
@@ -33,5 +34,17 @@ public class FoodsNutrientsService {
                 .stream()
                 .map(FoodsNutrientsMapper.INSTANCE::convertEntityToDto)
                 .collect(Collectors.toList());
+    }
+
+    public FoodsNutrientsDto createFoodNutrient(FoodsNutrientsDto foodsNutrientsDto) {
+        Optional<Foods> foods = foodsRepository.findById(foodsNutrientsDto.getFoodId());
+        Optional<Nutrients> nutrients = nutrientsRepository.findById(foodsNutrientsDto.getNutrientId());
+        FoodsNutrients foodsNutrients = new FoodsNutrients();
+        foodsNutrients.setFoods(foods.orElseThrow(()->
+        new InvalidFoodsNutrientsException("Food with this id does not exist.")));
+        foodsNutrients.setNutrients(nutrients.orElseThrow(() ->
+                new InvalidFoodsNutrientsException("Nutrient with this id does not exist.")));
+        FoodsNutrients createdFoodNutrients = foodsNutrientsRepository.save(foodsNutrients);
+        return FoodsNutrientsMapper.INSTANCE.convertEntityToDto(createdFoodNutrients);
     }
 }
