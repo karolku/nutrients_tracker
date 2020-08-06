@@ -17,7 +17,7 @@ public class FoodEntry implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long food_entry_id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "user_id" )
@@ -53,12 +53,12 @@ public class FoodEntry implements Serializable {
         this.mealTime = mealTime;
     }
 
-    public Long getFood_entry_id() {
-        return food_entry_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setFood_entry_id(Long food_entry_id) {
-        this.food_entry_id = food_entry_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public User getUserId() {
@@ -115,7 +115,7 @@ public class FoodEntry implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         FoodEntry foodEntry = (FoodEntry) o;
         return Double.compare(foodEntry.amountOfServing, amountOfServing) == 0 &&
-                Objects.equals(food_entry_id, foodEntry.food_entry_id) &&
+                Objects.equals(id, foodEntry.id) &&
                 Objects.equals(userId, foodEntry.userId) &&
                 Objects.equals(foodId, foodEntry.foodId) &&
                 Objects.equals(servingType, foodEntry.servingType) &&
@@ -125,7 +125,7 @@ public class FoodEntry implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(food_entry_id, userId, foodId, amountOfServing, servingType, dateOfFoodEntry, mealTime);
+        return Objects.hash(id, userId, foodId, amountOfServing, servingType, dateOfFoodEntry, mealTime);
     }
 
     @Override

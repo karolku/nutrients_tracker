@@ -26,7 +26,7 @@ public class FoodEntryControllerRest {
     @PostMapping()
     public ResponseEntity<FoodEntryDto> saveFoodEntry(@RequestBody FoodEntryDto foodEntryDto) {
         FoodEntryDto createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdFoodEntry.getFood_entry_id())
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdFoodEntry.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(createdFoodEntry);
     }
