@@ -1,9 +1,5 @@
 package com.karolk.dto;
 
-import com.karolk.model.FoodNutrients;
-
-import java.util.List;
-
 public class FoodsDto {
 
     private Long id;

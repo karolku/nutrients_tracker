@@ -2,12 +2,11 @@ package com.karolk.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "nutrients")
-public class FoodNutrients implements Serializable {
+public class Nutrients implements Serializable {
 
     private static final long serialVersionUID = 42L;
 
@@ -37,12 +36,12 @@ public class FoodNutrients implements Serializable {
     @Column(name = "value")
     private double value;
 
-    public FoodNutrients() {
+    public Nutrients() {
     }
 
-    public FoodNutrients(long nutrientId, String nutrientName, String nutrientNumber,
-                         String unitName, String derivationCode, String derivationDescription,
-                         double value) {
+    public Nutrients(long nutrientId, String nutrientName, String nutrientNumber,
+                     String unitName, String derivationCode, String derivationDescription,
+                     double value) {
         this.nutrientId = nutrientId;
         this.nutrientName = nutrientName;
         this.nutrientNumber = nutrientNumber;
@@ -120,7 +119,7 @@ public class FoodNutrients implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FoodNutrients that = (FoodNutrients) o;
+        Nutrients that = (Nutrients) o;
         return nutrientId == that.nutrientId &&
                 Double.compare(that.value, value) == 0 &&
                 Objects.equals(id, that.id) &&

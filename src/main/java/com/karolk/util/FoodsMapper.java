@@ -5,7 +5,7 @@ import com.karolk.model.Foods;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses=FoodNutrientsMapper.class,
+@Mapper(uses= NutrientsMapper.class,
         componentModel="spring")
 public interface FoodsMapper {
 

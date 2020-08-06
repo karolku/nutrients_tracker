@@ -1,6 +1,6 @@
 package com.karolk.dto;
 
-public class FoodNutrientsDto {
+public class NutrientsDto {
 
     private Long id;
     private Long nutrientId;
@@ -8,9 +8,9 @@ public class FoodNutrientsDto {
     private String unitName;
     private double value;
 
-    public FoodNutrientsDto() {}
+    public NutrientsDto() {}
 
-    public FoodNutrientsDto(Long nutrientId, String nutrientName, String unitName, double value) {
+    public NutrientsDto(Long nutrientId, String nutrientName, String unitName, double value) {
         this.nutrientId = nutrientId;
         this.nutrientName = nutrientName;
         this.unitName = unitName;
