@@ -38,11 +38,11 @@ public class FoodEntryService {
 
     public FoodEntryDto createFoodEntry(FoodEntryDto foodEntryDto) {
         Optional<User> user = userRepository.findById(foodEntryDto.getUserId());
-        Optional<Foods> foods = foodsRepository.findByFdcId(foodEntryDto.getFdcId());
+        Optional<Foods> foods = foodsRepository.findByFdcId(foodEntryDto.getFoodId());
         FoodEntry foodEntry = new FoodEntry();
         foodEntry.setUserId(user.orElseThrow(() ->
                 new InvalidFoodEntryException("User with this id does not exist.")));
-        foodEntry.setFdcId(foods.orElseThrow(() ->
+        foodEntry.setFoodId(foods.orElseThrow(() ->
                 new InvalidFoodEntryException("Food with this fdcId does not exist.")));
         foodEntry.setAmountOfServing(foodEntryDto.getAmountOfServing());
         foodEntry.setMealTime(foodEntryDto.getMealTime());

@@ -9,7 +9,7 @@ public class FoodEntryDto {
 
     private Long food_entry_id;
     private Long userId;
-    private Long fdcId;
+    private Long foodId;
     private double amountOfServing;
     private String servingType;
     private Date dateOfFoodEntry;
@@ -18,10 +18,10 @@ public class FoodEntryDto {
     public FoodEntryDto() {
     }
 
-    public FoodEntryDto(Long userId, Long fdcId, double amountOfServing, String servingType,
+    public FoodEntryDto(Long userId, Long foodId, double amountOfServing, String servingType,
                         Date dateOfFoodEntry, FoodEntry.MealTime mealTime) {
         this.userId = userId;
-        this.fdcId = fdcId;
+        this.foodId = foodId;
         this.amountOfServing = amountOfServing;
         this.servingType = servingType;
         this.dateOfFoodEntry = dateOfFoodEntry;
@@ -44,12 +44,12 @@ public class FoodEntryDto {
         this.userId = userId;
     }
 
-    public Long getFdcId() {
-        return fdcId;
+    public Long getFoodId() {
+        return foodId;
     }
 
-    public void setFdcId(Long fdcId) {
-        this.fdcId = fdcId;
+    public void setFoodId(Long foodId) {
+        this.foodId = foodId;
     }
 
     public double getAmountOfServing() {
@@ -92,7 +92,7 @@ public class FoodEntryDto {
         return Double.compare(that.amountOfServing, amountOfServing) == 0 &&
                 Objects.equals(food_entry_id, that.food_entry_id) &&
                 Objects.equals(userId, that.userId) &&
-                Objects.equals(fdcId, that.fdcId) &&
+                Objects.equals(foodId, that.foodId) &&
                 Objects.equals(servingType, that.servingType) &&
                 Objects.equals(dateOfFoodEntry, that.dateOfFoodEntry) &&
                 mealTime == that.mealTime;
@@ -100,7 +100,7 @@ public class FoodEntryDto {
 
     @Override
     public int hashCode() {
-        return Objects.hash(food_entry_id, userId, fdcId, amountOfServing, servingType, dateOfFoodEntry, mealTime);
+        return Objects.hash(food_entry_id, userId, foodId, amountOfServing, servingType, dateOfFoodEntry, mealTime);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class FoodEntryDto {
         return "FoodEntryDto{" +
                 "id=" + food_entry_id +
                 ", user=" + userId +
-                ", fdcId=" + fdcId +
+                ", fdcId=" + foodId +
                 ", amountOfServing=" + amountOfServing +
                 ", servingType='" + servingType + '\'' +
                 ", timestamp=" + dateOfFoodEntry +
