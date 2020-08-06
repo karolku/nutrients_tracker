@@ -37,7 +37,10 @@ public class FoodEntryService {
     }
 
     public List<FoodEntryDto> findFoodEntriesByUserId(Long userId) {
-        return foodEntryRepository.findFoodEntriesByUserId(userId)
+        Optional<User> user = userRepository.findById(userId);
+
+        return foodEntryRepository.findFoodEntriesByUserId(user.orElseThrow(() ->
+                new InvalidFoodEntryException("Food entry with this user does not exist.")))
                 .stream()
                 .map(FoodEntryMapper.INSTANCE::convertFoodEntryEntityToDto)
                 .collect(Collectors.toList());
