@@ -4,9 +4,11 @@ import com.karolk.dto.FoodsNutrientsDto;
 import com.karolk.repository.FoodsNutrientsRepository;
 import com.karolk.repository.FoodsRepository;
 import com.karolk.repository.NutrientsRepository;
+import com.karolk.util.FoodsNutrientsMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FoodsNutrientsService {
@@ -20,5 +22,12 @@ public class FoodsNutrientsService {
         this.foodsRepository = foodsRepository;
         this.nutrientsRepository = nutrientsRepository;
         this.foodsNutrientsRepository = foodsNutrientsRepository;
+    }
+
+    public List<FoodsNutrientsDto> findAllFoodsNutrients() {
+        return foodsNutrientsRepository.findAll()
+                .stream()
+                .map(FoodsNutrientsMapper.INSTANCE::convertEntityToDto)
+                .collect(Collectors.toList());
     }
 }
