@@ -36,6 +36,13 @@ public class FoodEntryService {
                 .collect(Collectors.toList());
     }
 
+    public List<FoodEntryDto> findFoodEntriesByUserId(Long userId) {
+        return foodEntryRepository.findFoodEntriesByUserId(userId)
+                .stream()
+                .map(FoodEntryMapper.INSTANCE::convertFoodEntryEntityToDto)
+                .collect(Collectors.toList());
+    }
+
     public FoodEntryDto createFoodEntry(FoodEntryDto foodEntryDto) {
         Optional<User> user = userRepository.findById(foodEntryDto.getUserId());
         Optional<Foods> foods = foodsRepository.findByFdcId(foodEntryDto.getFoodId());
