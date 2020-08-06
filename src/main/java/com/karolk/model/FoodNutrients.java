@@ -13,10 +13,10 @@ public class FoodNutrients implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "food_nutrient_id")
+    @Column(name = "nutrient_id")
     private Long id;
 
-    @Column(name = "nutrient_id")
+    @Column(name = "nutrient_id_from_usda")
     private long nutrientId;
 
     @Column(name = "nutrient_name")
