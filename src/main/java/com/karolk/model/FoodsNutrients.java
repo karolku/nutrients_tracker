@@ -16,11 +16,11 @@ public class FoodsNutrients implements Serializable {
     private Long id;
 
     @ManyToOne
-    @Column(name = "food_id")
+    @JoinColumn(name = "food_id")
     private Foods foods;
 
     @ManyToOne
-    @Column(name = "nutrient_id")
+    @JoinColumn(name = "nutrient_id")
     private Nutrients nutrients;
 
     public FoodsNutrients() {
