@@ -1,43 +1,26 @@
 package com.karolk.api.model;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
-@Entity
-@Table(name = "food_items")
-public class Foods implements Serializable {
+public class FoodsApi {
 
-    //from the oracle documentation about the serialization.
-    private static final long serialVersionUID = 42L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "food_id")
     private Long id;
     private Long fdcId;
     private String description;
-
-    @Column(name = "data_type")
     private String dataType;
-
-    @Column(name= "gtin_upc")
     private String gtinUpc;
-
-    @Column(name = "published_date")
     private String publishedDate;
-
-    @Column(name = "brand_owner")
     private String brandOwner;
-
-    @Column(name = "ingredients")
     private String ingredients;
+    private List<Nutrients> foodNutrients;
 
-    public Foods() {
+    public FoodsApi() {
     }
 
-    public Foods(Long fdcId, String description, String dataType, String gtinUpc,
-                 String publishedDate, String brandOwner, String ingredients) {
+    public FoodsApi(Long fdcId, String description, String dataType,
+                    String gtinUpc, String publishedDate, String brandOwner,
+                    String ingredients, List<Nutrients> nutrients) {
         this.fdcId = fdcId;
         this.description = description;
         this.dataType = dataType;
@@ -45,6 +28,7 @@ public class Foods implements Serializable {
         this.publishedDate = publishedDate;
         this.brandOwner = brandOwner;
         this.ingredients = ingredients;
+        this.foodNutrients = nutrients;
     }
 
     public Long getFdcId() {
@@ -111,37 +95,47 @@ public class Foods implements Serializable {
         this.id = id;
     }
 
+    public List<Nutrients> getFoodNutrients() {
+        return foodNutrients;
+    }
+
+    public void setFoodNutrients(List<Nutrients> foodNutrients) {
+        this.foodNutrients = foodNutrients;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Foods foods = (Foods) o;
-        return Objects.equals(id, foods.id) &&
-                Objects.equals(fdcId, foods.fdcId) &&
-                Objects.equals(description, foods.description) &&
-                Objects.equals(dataType, foods.dataType) &&
-                Objects.equals(gtinUpc, foods.gtinUpc) &&
-                Objects.equals(publishedDate, foods.publishedDate) &&
-                Objects.equals(brandOwner, foods.brandOwner) &&
-                Objects.equals(ingredients, foods.ingredients);
+        FoodsApi foodsApi = (FoodsApi) o;
+        return Objects.equals(id, foodsApi.id) &&
+                Objects.equals(fdcId, foodsApi.fdcId) &&
+                Objects.equals(description, foodsApi.description) &&
+                Objects.equals(dataType, foodsApi.dataType) &&
+                Objects.equals(gtinUpc, foodsApi.gtinUpc) &&
+                Objects.equals(publishedDate, foodsApi.publishedDate) &&
+                Objects.equals(brandOwner, foodsApi.brandOwner) &&
+                Objects.equals(ingredients, foodsApi.ingredients) &&
+                Objects.equals(foodNutrients, foodsApi.foodNutrients);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fdcId, description, dataType, gtinUpc,
-                publishedDate, brandOwner, ingredients);
+        return Objects.hash(id, fdcId, description, dataType, gtinUpc, publishedDate, brandOwner, ingredients, foodNutrients);
     }
 
     @Override
     public String toString() {
         return "Foods{" +
-                "fdcId=" + fdcId +
+                "id=" + id +
+                ", fdcId=" + fdcId +
                 ", description='" + description + '\'' +
                 ", dataType='" + dataType + '\'' +
                 ", gtinUpc='" + gtinUpc + '\'' +
                 ", publishedDate='" + publishedDate + '\'' +
                 ", brandOwner='" + brandOwner + '\'' +
-                ", ingridients=" + ingredients +
+                ", ingredients='" + ingredients + '\'' +
+                ", nutrients=" + foodNutrients +
                 '}';
     }
 }

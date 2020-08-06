@@ -1,6 +1,6 @@
 package com.karolk.controller.rest;
 
-import com.karolk.model.Foods;
+import com.karolk.api.model.FoodsApi;
 import com.karolk.service.GetFoodProductModelService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,8 +19,8 @@ public class FoodProductControllerRest {
     }
 
     @GetMapping(path = "/foods/{fdcId}")
-    public List<Foods> getFoodsInfoFromApi(@PathVariable("fdcId") Long fdcId){
-        List<Foods> foodsList = getFoodProductModelService.getFoodsInfoFromApi(fdcId);
+    public List<FoodsApi> getFoodsInfoFromApi(@PathVariable("fdcId") Long fdcId){
+        List<FoodsApi> foodsList = getFoodProductModelService.getFoodsInfoFromApi(fdcId);
         return foodsList;
     }
 }

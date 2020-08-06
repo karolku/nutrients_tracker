@@ -4,36 +4,15 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "nutrients")
-public class Nutrients implements Serializable {
+public class Nutrients {
 
-    private static final long serialVersionUID = 42L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "nutrient_id")
     private Long id;
-
-    @Column(name = "nutrient_id_from_usda")
     private long nutrientId;
-
-    @Column(name = "nutrient_name")
     private String nutrientName;
-
-    @Column(name = "nutrient_number")
     private String nutrientNumber;
-
-    @Column(name = "unit_name")
     private String unitName;
-
-    @Column(name = "derivation_code")
     private String derivationCode;
-
-    @Column(name = "derivation_description")
     private String derivationDescription;
-
-    @Column(name = "value")
     private double value;
 
     public Nutrients() {

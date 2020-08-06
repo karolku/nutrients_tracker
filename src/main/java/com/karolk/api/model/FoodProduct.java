@@ -10,13 +10,13 @@ public class FoodProduct {
     private int totalHits;
     private int currentPage;
     private int totalPages;
-    private List<Foods> foods;
+    private List<FoodsApi> foods;
 
     public FoodProduct() {
     }
 
     public FoodProduct(FoodSearchCriteria foodSearchCriteria, int totalHits,
-                       int currentPage, int totalPages, List<Foods> foods) {
+                       int currentPage, int totalPages, List<FoodsApi> foods) {
         this.foodSearchCriteria = foodSearchCriteria;
         this.totalHits = totalHits;
         this.currentPage = currentPage;
@@ -56,11 +56,11 @@ public class FoodProduct {
         this.totalPages = totalPages;
     }
 
-    public List<Foods> getFoods() {
+    public List<FoodsApi> getFoods() {
         return foods;
     }
 
-    public void setFoods(List<Foods> foods) {
+    public void setFoods(List<FoodsApi> foods) {
         this.foods = foods;
     }
 
