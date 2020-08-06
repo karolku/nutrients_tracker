@@ -23,6 +23,11 @@ public class FoodEntryControllerRest {
         return foodEntryService.findAllFoodEntries();
     }
 
+    @GetMapping(path = "user/{userId}")
+    public List<FoodEntryDto> findFoodEntriesByUserId(@PathVariable Long userId) {
+        return foodEntryService.findFoodEntriesByUserId(userId);
+    }
+
     @PostMapping()
     public ResponseEntity<FoodEntryDto> saveFoodEntry(@RequestBody FoodEntryDto foodEntryDto) {
         FoodEntryDto createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto);
