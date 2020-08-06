@@ -34,7 +34,7 @@ public class FoodEntry implements Serializable {
     @Column(name = "serving_type")
     private String servingType;
 
-    @Column(name = "time_stamp")
+    @Column(name = "date_of_food_entry")
     private Date dateOfFoodEntry;
 
     @Column(name = "meal_time")
