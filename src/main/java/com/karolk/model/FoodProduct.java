@@ -8,18 +8,18 @@ public class FoodProduct {
     private int totalHits;
     private int currentPage;
     private int totalPages;
-    private List<Foods> foodsList;
+    private List<Foods> foods;
 
     public FoodProduct() {
     }
 
     public FoodProduct(FoodSearchCriteria foodSearchCriteria, int totalHits,
-                       int currentPage, int totalPages, List<Foods> foodsList) {
+                       int currentPage, int totalPages, List<Foods> foods) {
         this.foodSearchCriteria = foodSearchCriteria;
         this.totalHits = totalHits;
         this.currentPage = currentPage;
         this.totalPages = totalPages;
-        this.foodsList = foodsList;
+        this.foods = foods;
     }
 
     public FoodSearchCriteria getFoodSearchCriteria() {
@@ -54,12 +54,12 @@ public class FoodProduct {
         this.totalPages = totalPages;
     }
 
-    public List<Foods> getFoodsList() {
-        return foodsList;
+    public List<Foods> getFoods() {
+        return foods;
     }
 
-    public void setFoodsList(List<Foods> foodsList) {
-        this.foodsList = foodsList;
+    public void setFoods(List<Foods> foods) {
+        this.foods = foods;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class FoodProduct {
                 ", totalHits=" + totalHits +
                 ", currentPage=" + currentPage +
                 ", totalPages=" + totalPages +
-                ", foodsList=" + foodsList +
+                ", foodsList=" + foods +
                 '}';
     }
 }

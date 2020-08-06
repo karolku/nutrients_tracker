@@ -2,7 +2,6 @@ package com.karolk.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -32,14 +31,13 @@ public class Foods implements Serializable {
     private String brandOwner;
 
     @Column(name = "ingredients")
-    @ElementCollection(targetClass = String.class)
-    private List<String> ingredients;
+    private String ingredients;
 
     public Foods() {
     }
 
     public Foods(Long fdcId, String description, String dataType, String gtinUpc,
-                 String publishedDate, String brandOwner, List<String> ingredients) {
+                 String publishedDate, String brandOwner, String ingredients) {
         this.fdcId = fdcId;
         this.description = description;
         this.dataType = dataType;
@@ -97,11 +95,11 @@ public class Foods implements Serializable {
         this.brandOwner = brandOwner;
     }
 
-    public List<String> getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
 
