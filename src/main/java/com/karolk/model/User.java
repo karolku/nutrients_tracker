@@ -34,7 +34,7 @@ public class User {
     private String password;
     private String email;
 
-    @Column(name = "wieght_in_kg")
+    @Column(name = "weight_in_kg")
     private double weightInKg;
 
     @Column(name = "height_in_cm")
