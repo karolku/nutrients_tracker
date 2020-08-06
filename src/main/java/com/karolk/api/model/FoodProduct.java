@@ -1,7 +1,5 @@
 package com.karolk.api.model;
 
-import com.karolk.model.FoodSearchCriteria;
-
 import java.util.List;
 
 public class FoodProduct {
