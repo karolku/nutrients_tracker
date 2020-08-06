@@ -5,11 +5,13 @@ import com.karolk.model.Foods;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+@Service
 public class GetFoodProductModelService {
 
     @Value("${api.key}")
