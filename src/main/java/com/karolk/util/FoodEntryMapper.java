@@ -18,6 +18,6 @@ public interface FoodEntryMapper {
     }
 
     default Long toLongFoods(Foods foods) {
-        return foods.getFdcId();
+        return foods.getId();
     }
 }
