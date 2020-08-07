@@ -46,14 +46,12 @@ public class FoodEntryService {
                 .collect(Collectors.toList());
     }
 
-    public FoodEntryDto createFoodEntry(FoodEntryDto foodEntryDto) {
+    public FoodEntryDto createFoodEntry(FoodEntryDto foodEntryDto, Foods foods) {
         Optional<User> user = userRepository.findById(foodEntryDto.getUserId());
-        Optional<Foods> foods = foodsRepository.findById(foodEntryDto.getFoodId());
         FoodEntry foodEntry = new FoodEntry();
         foodEntry.setUserId(user.orElseThrow(() ->
                 new InvalidFoodEntryException("User with this id does not exist.")));
-        foodEntry.setFoodId(foods.orElseThrow(() ->
-                new InvalidFoodEntryException("Food with this fdcId does not exist.")));
+        foodEntry.setFoodId(foods);
         foodEntry.setAmountOfServing(foodEntryDto.getAmountOfServing());
         foodEntry.setMealTime(foodEntryDto.getMealTime());
         foodEntry.setServingType(foodEntryDto.getServingType());

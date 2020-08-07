@@ -56,12 +56,7 @@ public class FoodEntryControllerRest {
         Foods foodsEntity = FoodsMapper.INSTANCE.convertFoodsApiToEntity(foodsApi);
         Foods savedFood = foodsService.save(foodsEntity);
         List<FoodsNutrientsDto> foodsNutrientsDto = foodsNutrientsService.saveFoodNutrients(nutrientsApiList, foodsApi);
-        // Get Nutrients as key pair values
-        // convert foodApiList to Foods entity
-        // save FoodsEntity in db
-        //Save nutrients in the FoodNutrients Entity having the Foods entity and its id
-        // Save foodEntryDto into db
-        FoodEntryDto createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto);
+        FoodEntryDto createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto, savedFood);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                 buildAndExpand(createdFoodEntry.getId())
                 .toUri();
