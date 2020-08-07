@@ -1,5 +1,6 @@
 package com.karolk.util;
 
+import com.karolk.api.model.FoodsApi;
 import com.karolk.dto.FoodsDto;
 import com.karolk.model.Foods;
 import org.mapstruct.Mapper;
@@ -14,4 +15,6 @@ public interface FoodsMapper {
     FoodsDto convertEntityFoodsToDto(Foods foods);
 
     Foods convertFoodsDtoToEntityFoods(FoodsDto foodsDto);
+
+    Foods convertFoodsApiToEntity(FoodsApi foodsApi);
 }
