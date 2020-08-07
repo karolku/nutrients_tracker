@@ -31,6 +31,14 @@ public class FoodsService {
     }
 
     public Foods save(Foods foods) {
-        return foodsRepository.save(foods);
+        Foods savedFood = null;
+        if(isFoodInDb(foods.getId()))
+        savedFood = foodsRepository.save(foods);
+        return savedFood;
+    }
+
+    private boolean isFoodInDb(Long id) {
+        return foodsRepository.findByFdcId(id).isEmpty();
+
     }
 }

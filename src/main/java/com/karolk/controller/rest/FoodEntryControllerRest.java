@@ -3,6 +3,7 @@ package com.karolk.controller.rest;
 import com.karolk.api.model.FoodsApi;
 import com.karolk.dto.FoodEntryDto;
 import com.karolk.model.Foods;
+import com.karolk.model.FoodsNutrients;
 import com.karolk.service.FoodEntryService;
 import com.karolk.service.FoodProductApiService;
 import com.karolk.service.FoodsNutrientsService;
@@ -47,18 +48,11 @@ public class FoodEntryControllerRest {
 
     @PostMapping()
     public ResponseEntity<FoodEntryDto> saveFoodEntry(@RequestBody FoodEntryDto foodEntryDto) {
-        //move this logic to the service of FoodProductApiService
-        List<FoodsApi> foodsApiList = foodProductApi.getFoodsInfoFromApi(foodEntryDto.getFoodId()); // FoodId is the fdcId taken from FoodsDto received by the client.
-        FoodsApi foodsApi = null;
-        if(foodsApiList.size() == 1)
-            foodsApi = foodsApiList.get(0);
-        else
-            System.out.println("Throw exception");
-
-        HashMap<Long, Double> nutrientsValues = (HashMap<Long, Double>) foodsNutrientsService.getNutrientsFromFoodsApi(foodsApiList.get(0));
+        FoodsApi foodsApi = foodProductApi.getOneFoodInfoFromApi(foodEntryDto.getFoodId()); // FoodId is the fdcId taken from FoodsDto received by the client.
+        HashMap<Long, Double> nutrientsValues = (HashMap<Long, Double>) foodsNutrientsService.getNutrientsFromFoodsApi(foodsApi);
         Foods foodsEntity = FoodsMapper.INSTANCE.convertFoodsApiToEntity(foodsApi);
         Foods savedFood = foodsService.save(foodsEntity);
-
+        //FoodsNutrients foodsNutrients = foodsNutrientsService
         // Get Nutrients as key pair values
         // convert foodApiList to Foods entity
         // save FoodsEntity in db
