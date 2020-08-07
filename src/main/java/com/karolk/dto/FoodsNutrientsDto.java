@@ -6,14 +6,16 @@ public class FoodsNutrientsDto {
     private Long id;
     private Long foodId;
     private Long nutrientId;
+    private double value;
 
     public FoodsNutrientsDto() {
     }
 
-    public FoodsNutrientsDto(Long id, Long foodId, Long nutrientId) {
+    public FoodsNutrientsDto(Long id, Long foodId, Long nutrientId, double value) {
         this.id = id;
         this.foodId = foodId;
         this.nutrientId = nutrientId;
+        this.value = value;
     }
 
     public Long getId() {
@@ -40,19 +42,28 @@ public class FoodsNutrientsDto {
         this.nutrientId = nutrientId;
     }
 
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FoodsNutrientsDto that = (FoodsNutrientsDto) o;
-        return Objects.equals(id, that.id) &&
+        return Double.compare(that.value, value) == 0 &&
+                Objects.equals(id, that.id) &&
                 Objects.equals(foodId, that.foodId) &&
                 Objects.equals(nutrientId, that.nutrientId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, foodId, nutrientId);
+        return Objects.hash(id, foodId, nutrientId, value);
     }
 
     @Override
@@ -61,6 +72,7 @@ public class FoodsNutrientsDto {
                 "id=" + id +
                 ", foodId=" + foodId +
                 ", nutrientId=" + nutrientId +
+                ", value=" + value +
                 '}';
     }
 }

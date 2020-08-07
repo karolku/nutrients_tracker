@@ -23,12 +23,15 @@ public class FoodsNutrients implements Serializable {
     @JoinColumn(name = "nutrient_id")
     private Nutrients nutrients;
 
+    private Double value;
+
     public FoodsNutrients() {
     }
 
-    public FoodsNutrients(Foods foods, Nutrients nutrients) {
+    public FoodsNutrients(Foods foods, Nutrients nutrients, double value) {
         this.foods = foods;
         this.nutrients = nutrients;
+        this.value = value;
     }
 
     public Long getId() {
@@ -55,6 +58,14 @@ public class FoodsNutrients implements Serializable {
         this.nutrients = nutrients;
     }
 
+    public Double getValue() {
+        return value;
+    }
+
+    public void setValue(Double value) {
+        this.value = value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,12 +73,13 @@ public class FoodsNutrients implements Serializable {
         FoodsNutrients that = (FoodsNutrients) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(foods, that.foods) &&
-                Objects.equals(nutrients, that.nutrients);
+                Objects.equals(nutrients, that.nutrients) &&
+                Objects.equals(value, that.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, foods, nutrients);
+        return Objects.hash(id, foods, nutrients, value);
     }
 
     @Override
@@ -76,6 +88,7 @@ public class FoodsNutrients implements Serializable {
                 "id=" + id +
                 ", foods=" + foods +
                 ", nutrients=" + nutrients +
+                ", value=" + value +
                 '}';
     }
 }
