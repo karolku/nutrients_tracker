@@ -10,9 +10,12 @@ import com.karolk.model.Nutrients;
 import com.karolk.repository.FoodsNutrientsRepository;
 import com.karolk.repository.FoodsRepository;
 import com.karolk.repository.NutrientsRepository;
+import com.karolk.util.FoodsMapper;
 import com.karolk.util.FoodsNutrientsMapper;
+import com.karolk.util.NutrientsMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -46,16 +49,19 @@ public class FoodsNutrientsService {
      3. foodsNutrient will take foods and nutrients objects and then will be saved with foodsnutrientRepository.
      4. Dont have to and convert foodsNutrients to Dto since then user will not have objects of FoodId and Nutrients.
      */
-    public FoodsNutrientsDto createFoodNutrient(FoodsNutrientsDto foodsNutrientsDto) {
-        Optional<Foods> foods = foodsRepository.findById(foodsNutrientsDto.getFoods());
-        Optional<Nutrients> nutrients = nutrientsRepository.findById(foodsNutrientsDto.getNutrients());
+    public List<FoodsNutrientsDto> saveFoodNutrients(List<NutrientsApi> nutrientsList, FoodsApi foodsApi) {
+        List<FoodsNutrientsDto> savedFoodNutrientsList = new ArrayList<>();
         FoodsNutrients foodsNutrients = new FoodsNutrients();
-        foodsNutrients.setFoods(foods.orElseThrow(()->
-        new InvalidFoodsNutrientsException("Food with this id does not exist.")));
-        foodsNutrients.setNutrients(nutrients.orElseThrow(() ->
-                new InvalidFoodsNutrientsException("Nutrient with this id does not exist.")));
-        FoodsNutrients createdFoodNutrients = foodsNutrientsRepository.save(foodsNutrients);
-        return FoodsNutrientsMapper.INSTANCE.convertEntityToDto(createdFoodNutrients);
+        Foods foods = FoodsMapper.INSTANCE.convertFoodsApiToEntity(foodsApi);
+        FoodsNutrients createdFoodNutrients = null;
+        for(NutrientsApi nutrient : nutrientsList) {
+            Nutrients nutrientEntity = NutrientsMapper.INSTANCE.convertNutrientsApiToEntity(nutrient);
+            foodsNutrients.setFoods(foods);
+            foodsNutrients.setNutrients(nutrientEntity);
+            createdFoodNutrients = foodsNutrientsRepository.save(foodsNutrients);
+            savedFoodNutrientsList.add(FoodsNutrientsMapper.INSTANCE.convertEntityToDto(createdFoodNutrients));
+        }
+        return savedFoodNutrientsList;
     }
 
     public Map<Long, Double> getNutrientsFromFoodsApi(FoodsApi foodsApi) {
