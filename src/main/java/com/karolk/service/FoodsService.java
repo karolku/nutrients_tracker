@@ -44,8 +44,4 @@ public class FoodsService {
         }
         return foodSaved;
     }
-
-    private boolean isThisFoodNotInDb(Long id) {
-        return foodsRepository.findByFdcId(id).isEmpty();
-    }
 }
