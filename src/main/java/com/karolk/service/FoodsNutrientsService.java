@@ -57,6 +57,7 @@ public class FoodsNutrientsService {
             Nutrients nutrientEntity = NutrientsMapper.INSTANCE.convertNutrientsApiToEntity(nutrient);
             foodsNutrients.setFoods(foods);
             foodsNutrients.setNutrients(nutrientEntity);
+            foodsNutrients.setValue(nutrientEntity.getValue());
             createdFoodNutrients = foodsNutrientsRepository.save(foodsNutrients);
             savedFoodNutrientsList.add(FoodsNutrientsMapper.INSTANCE.convertEntityToDto(createdFoodNutrients));
         }
