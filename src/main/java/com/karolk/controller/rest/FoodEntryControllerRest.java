@@ -6,10 +6,7 @@ import com.karolk.dto.FoodEntryDto;
 import com.karolk.dto.FoodsNutrientsDto;
 import com.karolk.model.Foods;
 import com.karolk.model.Nutrients;
-import com.karolk.service.FoodEntryService;
-import com.karolk.service.FoodProductApiService;
-import com.karolk.service.FoodsNutrientsService;
-import com.karolk.service.FoodsService;
+import com.karolk.service.*;
 import com.karolk.util.FoodsMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,15 +22,16 @@ public class FoodEntryControllerRest {
     private FoodProductApiService foodProductApi;
     private FoodsNutrientsService foodsNutrientsService;
     private FoodsService foodsService;
+    private NutrientsService nutrientsService;
 
-    public FoodEntryControllerRest(FoodEntryService foodEntryService,
-                                   FoodProductApiService foodProductApi,
-                                   FoodsNutrientsService foodsNutrientsService,
-                                   FoodsService foodsService) {
+    public FoodEntryControllerRest(FoodEntryService foodEntryService, FoodProductApiService foodProductApi,
+                                   FoodsNutrientsService foodsNutrientsService, FoodsService foodsService,
+                                   NutrientsService nutrientsService) {
         this.foodEntryService = foodEntryService;
         this.foodProductApi = foodProductApi;
         this.foodsNutrientsService = foodsNutrientsService;
         this.foodsService = foodsService;
+        this.nutrientsService = nutrientsService;
     }
 
     @GetMapping()
@@ -50,7 +48,8 @@ public class FoodEntryControllerRest {
     public ResponseEntity<FoodEntryDto> saveFoodEntry(@RequestBody FoodEntryDto foodEntryDto) {
         FoodsApi foodsApi = foodProductApi.getOneFoodInfoFromApi(foodEntryDto.getFoodId()); // FoodId is the fdcId taken from FoodsDto received by the client.
         List<NutrientsApi> nutrientsApiList = foodsApi.getFoodNutrients();
-//        List<Nutrients> nutrientsList = nutrientsService.save(nutrientsApiList); to be implemented
+        List<Nutrients> nutrientsList = nutrientsService.saveNutrients(nutrientsApiList);
+
         Foods foodsEntity = FoodsMapper.INSTANCE.convertFoodsApiToEntity(foodsApi);
         Foods savedFood = foodsService.save(foodsEntity);
         List<FoodsNutrientsDto> foodsNutrientsDto = foodsNutrientsService.saveFoodNutrients(nutrientsApiList, savedFood);
