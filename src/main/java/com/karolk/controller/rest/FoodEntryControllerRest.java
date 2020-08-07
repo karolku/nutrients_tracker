@@ -5,7 +5,6 @@ import com.karolk.api.model.NutrientsApi;
 import com.karolk.dto.FoodEntryDto;
 import com.karolk.dto.FoodsNutrientsDto;
 import com.karolk.model.Foods;
-import com.karolk.model.FoodsNutrients;
 import com.karolk.service.FoodEntryService;
 import com.karolk.service.FoodProductApiService;
 import com.karolk.service.FoodsNutrientsService;
@@ -16,9 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/foodEntry")
