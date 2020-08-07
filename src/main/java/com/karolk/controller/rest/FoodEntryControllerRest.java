@@ -2,6 +2,7 @@ package com.karolk.controller.rest;
 
 import com.karolk.dto.FoodEntryDto;
 import com.karolk.service.FoodEntryService;
+import com.karolk.service.GetFoodProductModelService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -13,8 +14,9 @@ import java.util.List;
 @RequestMapping("/api/foodEntry")
 public class FoodEntryControllerRest {
     private FoodEntryService foodEntryService;
+    private GetFoodProductModelService foodProductApi;
 
-    public FoodEntryControllerRest(FoodEntryService foodEntryService) {
+    public FoodEntryControllerRest(FoodEntryService foodEntryService, GetFoodProductModelService foodProductApi) {
         this.foodEntryService = foodEntryService;
     }
 
@@ -30,6 +32,7 @@ public class FoodEntryControllerRest {
 
     @PostMapping()
     public ResponseEntity<FoodEntryDto> saveFoodEntry(@RequestBody FoodEntryDto foodEntryDto) {
+
         FoodEntryDto createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdFoodEntry.getId())
                 .toUri();
