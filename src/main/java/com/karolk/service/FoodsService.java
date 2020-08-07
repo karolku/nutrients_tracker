@@ -33,8 +33,8 @@ public class FoodsService {
     }
 
     public Foods save(Foods foods) {
-        Foods foodSaved = null;
-        Optional<Foods> foodsFromDb = null;
+        Foods foodSaved;
+        Optional<Foods> foodsFromDb;
         if(foodsRepository.findByFdcId(foods.getFdcId()).isEmpty())
             foodSaved = foodsRepository.save(foods);
         else {
