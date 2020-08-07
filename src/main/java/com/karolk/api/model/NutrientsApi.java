@@ -1,10 +1,8 @@
 package com.karolk.api.model;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
-public class Nutrients {
+public class NutrientsApi {
 
     private Long id;
     private long nutrientId;
@@ -15,12 +13,12 @@ public class Nutrients {
     private String derivationDescription;
     private double value;
 
-    public Nutrients() {
+    public NutrientsApi() {
     }
 
-    public Nutrients(long nutrientId, String nutrientName, String nutrientNumber,
-                     String unitName, String derivationCode, String derivationDescription,
-                     double value) {
+    public NutrientsApi(long nutrientId, String nutrientName, String nutrientNumber,
+                        String unitName, String derivationCode, String derivationDescription,
+                        double value) {
         this.nutrientId = nutrientId;
         this.nutrientName = nutrientName;
         this.nutrientNumber = nutrientNumber;
@@ -98,7 +96,7 @@ public class Nutrients {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Nutrients that = (Nutrients) o;
+        NutrientsApi that = (NutrientsApi) o;
         return nutrientId == that.nutrientId &&
                 Double.compare(that.value, value) == 0 &&
                 Objects.equals(id, that.id) &&

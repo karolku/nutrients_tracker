@@ -1,5 +1,7 @@
 package com.karolk.service;
 
+import com.karolk.api.model.FoodsApi;
+import com.karolk.api.model.NutrientsApi;
 import com.karolk.dto.FoodsNutrientsDto;
 import com.karolk.exception.InvalidFoodsNutrientsException;
 import com.karolk.model.Foods;
@@ -11,7 +13,9 @@ import com.karolk.repository.NutrientsRepository;
 import com.karolk.util.FoodsNutrientsMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -53,5 +57,11 @@ public class FoodsNutrientsService {
                 new InvalidFoodsNutrientsException("Nutrient with this id does not exist.")));
         FoodsNutrients createdFoodNutrients = foodsNutrientsRepository.save(foodsNutrients);
         return FoodsNutrientsMapper.INSTANCE.convertEntityToDto(createdFoodNutrients);
+    }
+
+    public Map<Long, Double> getNutrientsFromFoodsApi(FoodsApi foodsApi) {
+        return foodsApi.getFoodNutrients().stream()
+                .collect(Collectors.toMap(NutrientsApi::getNutrientId,
+                        NutrientsApi::getValue));
     }
 }

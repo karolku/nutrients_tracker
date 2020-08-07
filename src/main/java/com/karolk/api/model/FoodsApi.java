@@ -13,14 +13,14 @@ public class FoodsApi {
     private String publishedDate;
     private String brandOwner;
     private String ingredients;
-    private List<Nutrients> foodNutrients;
+    private List<NutrientsApi> foodNutrients;
 
     public FoodsApi() {
     }
 
     public FoodsApi(Long fdcId, String description, String dataType,
                     String gtinUpc, String publishedDate, String brandOwner,
-                    String ingredients, List<Nutrients> nutrients) {
+                    String ingredients, List<NutrientsApi> nutrients) {
         this.fdcId = fdcId;
         this.description = description;
         this.dataType = dataType;
@@ -95,11 +95,11 @@ public class FoodsApi {
         this.id = id;
     }
 
-    public List<Nutrients> getFoodNutrients() {
+    public List<NutrientsApi> getFoodNutrients() {
         return foodNutrients;
     }
 
-    public void setFoodNutrients(List<Nutrients> foodNutrients) {
+    public void setFoodNutrients(List<NutrientsApi> foodNutrients) {
         this.foodNutrients = foodNutrients;
     }
 
