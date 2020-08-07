@@ -1,7 +1,7 @@
 package com.karolk.controller.rest;
 
 import com.karolk.api.model.FoodsApi;
-import com.karolk.service.GetFoodProductModelService;
+import com.karolk.service.FoodProductApiService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,9 +9,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/usda")
 public class FoodProductControllerRest {
-    private GetFoodProductModelService getFoodProductModelService;
+    private FoodProductApiService getFoodProductModelService;
 
-    public FoodProductControllerRest(GetFoodProductModelService getFoodService){
+    public FoodProductControllerRest(FoodProductApiService getFoodService){
         this.getFoodProductModelService = getFoodService;
     }
 

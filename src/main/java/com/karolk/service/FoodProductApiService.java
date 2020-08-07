@@ -11,13 +11,13 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Service
-public class GetFoodProductModelService {
+public class FoodProductApiService {
 
     private String apiKey = "CzUj0Hv2GnZ0RIyoL8iKGHuix4QLpR4Te4w3hpMv";
     private RestTemplate restTemplate;
 
     @Autowired
-    public GetFoodProductModelService(RestTemplateBuilder restTemplateBuilder){
+    public FoodProductApiService(RestTemplateBuilder restTemplateBuilder){
         this.restTemplate = restTemplateBuilder.build();
     }
 

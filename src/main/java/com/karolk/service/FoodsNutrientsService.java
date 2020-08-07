@@ -41,7 +41,7 @@ public class FoodsNutrientsService {
      1. This method will consume will have two parameters, foods and nutrients from the rest template
      2. Foods and nutrients will be save to their respective tables
      3. foodsNutrient will take foods and nutrients objects and then will be saved with foodsnutrientRepository.
-     4. return and convert foodsNutrients to Dto.
+     4. Dont have to and convert foodsNutrients to Dto since then user will not have objects of FoodId and Nutrients.
      */
     public FoodsNutrientsDto createFoodNutrient(FoodsNutrientsDto foodsNutrientsDto) {
         Optional<Foods> foods = foodsRepository.findById(foodsNutrientsDto.getFoodId());
