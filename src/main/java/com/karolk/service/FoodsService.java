@@ -8,6 +8,7 @@ import com.karolk.util.FoodsMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,12 +33,16 @@ public class FoodsService {
     }
 
     public Foods save(Foods foods) {
-        Foods savedFood = null;
-        if(isThisFoodNotInDb(foods.getId()))
-            savedFood = foodsRepository.save(foods);
-        else
-            throw new InvalidFoodsException("This food is already in the db");
-        return savedFood;
+        Foods foodSaved = null;
+        Optional<Foods> foodsFromDb = null;
+        if(foodsRepository.findById(foods.getId()).isEmpty())
+            foodSaved = foodsRepository.save(foods);
+        else {
+            foodsFromDb = foodsRepository.findById(foods.getId());
+            foodSaved = foodsFromDb.orElseThrow(() -> {
+                throw new InvalidFoodsException("Food with this id does not exist in the db.");});
+        }
+        return foodSaved;
     }
 
     private boolean isThisFoodNotInDb(Long id) {
