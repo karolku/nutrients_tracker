@@ -5,6 +5,7 @@ import com.karolk.api.model.NutrientsApi;
 import com.karolk.dto.FoodEntryDto;
 import com.karolk.dto.FoodsNutrientsDto;
 import com.karolk.model.Foods;
+import com.karolk.model.Nutrients;
 import com.karolk.service.FoodEntryService;
 import com.karolk.service.FoodProductApiService;
 import com.karolk.service.FoodsNutrientsService;
@@ -49,9 +50,11 @@ public class FoodEntryControllerRest {
     public ResponseEntity<FoodEntryDto> saveFoodEntry(@RequestBody FoodEntryDto foodEntryDto) {
         FoodsApi foodsApi = foodProductApi.getOneFoodInfoFromApi(foodEntryDto.getFoodId()); // FoodId is the fdcId taken from FoodsDto received by the client.
         List<NutrientsApi> nutrientsApiList = foodsApi.getFoodNutrients();
+//        List<Nutrients> nutrientsList = nutrientsService.save(nutrientsApiList); to be implemented
         Foods foodsEntity = FoodsMapper.INSTANCE.convertFoodsApiToEntity(foodsApi);
         Foods savedFood = foodsService.save(foodsEntity);
         List<FoodsNutrientsDto> foodsNutrientsDto = foodsNutrientsService.saveFoodNutrients(nutrientsApiList, savedFood);
+
         FoodEntryDto createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto, savedFood);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                 buildAndExpand(createdFoodEntry.getId())
