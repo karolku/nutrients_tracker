@@ -29,4 +29,8 @@ public class FoodsService {
         Foods savedFoods = foodsRepository.save(foods);
         return FoodsMapper.INSTANCE.convertEntityFoodsToDto(savedFoods);
     }
+
+    public Foods save(Foods foods) {
+        return foodsRepository.save(foods);
+    }
 }

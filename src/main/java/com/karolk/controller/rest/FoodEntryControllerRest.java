@@ -2,13 +2,18 @@ package com.karolk.controller.rest;
 
 import com.karolk.api.model.FoodsApi;
 import com.karolk.dto.FoodEntryDto;
+import com.karolk.model.Foods;
 import com.karolk.service.FoodEntryService;
 import com.karolk.service.FoodProductApiService;
+import com.karolk.service.FoodsNutrientsService;
+import com.karolk.service.FoodsService;
+import com.karolk.util.FoodsMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,11 +22,17 @@ import java.util.Map;
 public class FoodEntryControllerRest {
     private FoodEntryService foodEntryService;
     private FoodProductApiService foodProductApi;
+    private FoodsNutrientsService foodsNutrientsService;
+    private FoodsService foodsService;
 
     public FoodEntryControllerRest(FoodEntryService foodEntryService,
-                                   FoodProductApiService foodProductApi) {
+                                   FoodProductApiService foodProductApi,
+                                   FoodsNutrientsService foodsNutrientsService,
+                                   FoodsService foodsService) {
         this.foodEntryService = foodEntryService;
         this.foodProductApi = foodProductApi;
+        this.foodsNutrientsService = foodsNutrientsService;
+        this.foodsService = foodsService;
     }
 
     @GetMapping()
@@ -36,7 +47,18 @@ public class FoodEntryControllerRest {
 
     @PostMapping()
     public ResponseEntity<FoodEntryDto> saveFoodEntry(@RequestBody FoodEntryDto foodEntryDto) {
+        //move this logic to the service of FoodProductApiService
         List<FoodsApi> foodsApiList = foodProductApi.getFoodsInfoFromApi(foodEntryDto.getFoodId()); // FoodId is the fdcId taken from FoodsDto received by the client.
+        FoodsApi foodsApi = null;
+        if(foodsApiList.size() == 1)
+            foodsApi = foodsApiList.get(0);
+        else
+            System.out.println("Throw exception");
+
+        HashMap<Long, Double> nutrientsValues = (HashMap<Long, Double>) foodsNutrientsService.getNutrientsFromFoodsApi(foodsApiList.get(0));
+        Foods foodsEntity = FoodsMapper.INSTANCE.convertFoodsApiToEntity(foodsApi);
+        Foods savedFood = foodsService.save(foodsEntity);
+
         // Get Nutrients as key pair values
         // convert foodApiList to Foods entity
         // save FoodsEntity in db
