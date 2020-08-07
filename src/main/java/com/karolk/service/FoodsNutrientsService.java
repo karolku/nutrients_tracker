@@ -63,10 +63,4 @@ public class FoodsNutrientsService {
         }
         return savedFoodNutrientsList;
     }
-
-    public Map<Long, Double> getNutrientsFromFoodsApi(FoodsApi foodsApi) {
-        return foodsApi.getFoodNutrients().stream()
-                .collect(Collectors.toMap(NutrientsApi::getNutrientId,
-                        NutrientsApi::getValue));
-    }
 }
