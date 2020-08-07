@@ -31,7 +31,7 @@ public class FoodProductApiService {
         return foodsApiList;
     }
 
-    public FoodsApi getFoodsInfoFromApi(Long fdcId){
+    public FoodsApi getOneFoodInfoFromApi(Long fdcId){
         FoodProduct foodProduct = restTemplate.
                 getForObject("https://api.nal.usda.gov/fdc/v1/foods/search?query=" +
                                 fdcId + "&dataType=Branded&pageSize=25&pageNumber=1&api_key=" + apiKey,
