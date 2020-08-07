@@ -13,7 +13,6 @@ import com.karolk.repository.NutrientsRepository;
 import com.karolk.util.FoodsNutrientsMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -48,8 +47,8 @@ public class FoodsNutrientsService {
      4. Dont have to and convert foodsNutrients to Dto since then user will not have objects of FoodId and Nutrients.
      */
     public FoodsNutrientsDto createFoodNutrient(FoodsNutrientsDto foodsNutrientsDto) {
-        Optional<Foods> foods = foodsRepository.findById(foodsNutrientsDto.getFoodId());
-        Optional<Nutrients> nutrients = nutrientsRepository.findById(foodsNutrientsDto.getNutrientId());
+        Optional<Foods> foods = foodsRepository.findById(foodsNutrientsDto.getFoods());
+        Optional<Nutrients> nutrients = nutrientsRepository.findById(foodsNutrientsDto.getNutrients());
         FoodsNutrients foodsNutrients = new FoodsNutrients();
         foodsNutrients.setFoods(foods.orElseThrow(()->
         new InvalidFoodsNutrientsException("Food with this id does not exist.")));

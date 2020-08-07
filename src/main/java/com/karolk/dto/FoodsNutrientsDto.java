@@ -1,20 +1,23 @@
 package com.karolk.dto;
 
+import com.karolk.model.Foods;
+import com.karolk.model.Nutrients;
+
 import java.util.Objects;
 
 public class FoodsNutrientsDto {
     private Long id;
-    private Long foodId;
-    private Long nutrientId;
+    private Foods foods;
+    private Nutrients nutrients;
     private double value;
 
     public FoodsNutrientsDto() {
     }
 
-    public FoodsNutrientsDto(Long id, Long foodId, Long nutrientId, double value) {
+    public FoodsNutrientsDto(Long id, Foods foodId, Nutrients nutrientId, double value) {
         this.id = id;
-        this.foodId = foodId;
-        this.nutrientId = nutrientId;
+        this.foods = foodId;
+        this.nutrients = nutrientId;
         this.value = value;
     }
 
@@ -26,20 +29,20 @@ public class FoodsNutrientsDto {
         this.id = id;
     }
 
-    public Long getFoodId() {
-        return foodId;
+    public Foods getFoods() {
+        return foods;
     }
 
-    public void setFoodId(Long foodId) {
-        this.foodId = foodId;
+    public void setFoods(Foods foods) {
+        this.foods = foods;
     }
 
-    public Long getNutrientId() {
-        return nutrientId;
+    public Nutrients getNutrients() {
+        return nutrients;
     }
 
-    public void setNutrientId(Long nutrientId) {
-        this.nutrientId = nutrientId;
+    public void setNutrients(Nutrients nutrients) {
+        this.nutrients = nutrients;
     }
 
     public double getValue() {
@@ -57,21 +60,21 @@ public class FoodsNutrientsDto {
         FoodsNutrientsDto that = (FoodsNutrientsDto) o;
         return Double.compare(that.value, value) == 0 &&
                 Objects.equals(id, that.id) &&
-                Objects.equals(foodId, that.foodId) &&
-                Objects.equals(nutrientId, that.nutrientId);
+                Objects.equals(foods, that.foods) &&
+                Objects.equals(nutrients, that.nutrients);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, foodId, nutrientId, value);
+        return Objects.hash(id, foods, nutrients, value);
     }
 
     @Override
     public String toString() {
         return "FoodsNutrientsDto{" +
                 "id=" + id +
-                ", foodId=" + foodId +
-                ", nutrientId=" + nutrientId +
+                ", foodId=" + foods +
+                ", nutrientId=" + nutrients +
                 ", value=" + value +
                 '}';
     }
