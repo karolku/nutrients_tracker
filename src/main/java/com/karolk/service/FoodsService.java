@@ -1,6 +1,7 @@
 package com.karolk.service;
 
 import com.karolk.dto.FoodsDto;
+import com.karolk.exception.InvalidFoodsException;
 import com.karolk.model.Foods;
 import com.karolk.repository.FoodsRepository;
 import com.karolk.util.FoodsMapper;
@@ -32,13 +33,14 @@ public class FoodsService {
 
     public Foods save(Foods foods) {
         Foods savedFood = null;
-        if(isFoodInDb(foods.getId()))
-        savedFood = foodsRepository.save(foods);
+        if(isThisFoodNotInDb(foods.getId()))
+            savedFood = foodsRepository.save(foods);
+        else
+            throw new InvalidFoodsException("This food is already in the db");
         return savedFood;
     }
 
-    private boolean isFoodInDb(Long id) {
+    private boolean isThisFoodNotInDb(Long id) {
         return foodsRepository.findByFdcId(id).isEmpty();
-
     }
 }
