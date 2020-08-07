@@ -49,12 +49,11 @@ public class FoodsNutrientsService {
      3. foodsNutrient will take foods and nutrients objects and then will be saved with foodsnutrientRepository.
      4. Dont have to and convert foodsNutrients to Dto since then user will not have objects of FoodId and Nutrients.
      */
-    public List<FoodsNutrientsDto> saveFoodNutrients(List<NutrientsApi> nutrientsList, FoodsApi foodsApi) {
+    public List<FoodsNutrientsDto> saveFoodNutrients(List<NutrientsApi> nutrientsApiList, Foods foods) {
         List<FoodsNutrientsDto> savedFoodNutrientsList = new ArrayList<>();
         FoodsNutrients foodsNutrients = new FoodsNutrients();
-        Foods foods = FoodsMapper.INSTANCE.convertFoodsApiToEntity(foodsApi);
         FoodsNutrients createdFoodNutrients = null;
-        for(NutrientsApi nutrient : nutrientsList) {
+        for(NutrientsApi nutrient : nutrientsApiList) {
             Nutrients nutrientEntity = NutrientsMapper.INSTANCE.convertNutrientsApiToEntity(nutrient);
             foodsNutrients.setFoods(foods);
             foodsNutrients.setNutrients(nutrientEntity);

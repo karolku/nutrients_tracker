@@ -51,7 +51,7 @@ public class FoodEntryControllerRest {
         List<NutrientsApi> nutrientsApiList = foodsApi.getFoodNutrients();
         Foods foodsEntity = FoodsMapper.INSTANCE.convertFoodsApiToEntity(foodsApi);
         Foods savedFood = foodsService.save(foodsEntity);
-        List<FoodsNutrientsDto> foodsNutrientsDto = foodsNutrientsService.saveFoodNutrients(nutrientsApiList, foodsApi);
+        List<FoodsNutrientsDto> foodsNutrientsDto = foodsNutrientsService.saveFoodNutrients(nutrientsApiList, savedFood);
         FoodEntryDto createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto, savedFood);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                 buildAndExpand(createdFoodEntry.getId())
