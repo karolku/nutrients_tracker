@@ -15,11 +15,11 @@ public class FoodsNutrients implements Serializable {
     @Column(name = "foods_nutrients_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "food_id")
     private Foods foods;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "nutrient_id")
     private Nutrients nutrients;
 

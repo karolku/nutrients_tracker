@@ -38,7 +38,7 @@ public class FoodsService {
         if(foodsRepository.findByFdcId(foods.getFdcId()).isEmpty())
             foodSaved = foodsRepository.save(foods);
         else {
-            foodsFromDb = foodsRepository.findById(foods.getId());
+            foodsFromDb = foodsRepository.findByFdcId(foods.getFdcId());
             foodSaved = foodsFromDb.orElseThrow(() -> {
                 throw new InvalidFoodsException("Food with this id does not exist in the db.");});
         }
