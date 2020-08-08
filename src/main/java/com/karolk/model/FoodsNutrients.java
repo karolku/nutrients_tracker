@@ -23,6 +23,10 @@ public class FoodsNutrients implements Serializable {
     @JoinColumn(name = "nutrient_id")
     private Nutrients nutrients;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "food_entry_id")
+    private FoodEntry foodEntry;
+
     private Double value;
 
     public FoodsNutrients() {
