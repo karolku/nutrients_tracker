@@ -33,7 +33,7 @@ public class Nutrients implements Serializable {
     @Column(name = "derivation_description")
     private String derivationDescription;
 
-    @Column(name = "value")
+    @Transient
     private double value;
 
     public Nutrients() {
