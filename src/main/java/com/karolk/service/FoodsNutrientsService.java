@@ -53,10 +53,11 @@ public class FoodsNutrientsService {
     public List<FoodsNutrientsDto> saveFoodNutrients(List<NutrientsApi> nutrientsApiList, Foods foods) {
         List<FoodsNutrientsDto> savedFoodNutrientsList = new ArrayList<>();
         Optional<Foods> foodsEntity = foodsRepository.findByFdcId(foods.getFdcId());
-        FoodsNutrients foodsNutrients = new FoodsNutrients();
+        FoodsNutrients foodsNutrients = null;
         FoodsNutrients createdFoodNutrients = null;
         for(NutrientsApi nutrient : nutrientsApiList) {
             Nutrients nutrientEntity = NutrientsMapper.INSTANCE.convertNutrientsApiToEntity(nutrient);
+            foodsNutrients = new FoodsNutrients();
             foodsNutrients.setFoods(foodsEntity.orElseThrow(() ->
                 { throw new InvalidFoodsException("Food with FdcId: " + foods.getId() + " does not exist in the databse.");}));
             foodsNutrients.setNutrients(nutrientEntity);
