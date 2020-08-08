@@ -46,8 +46,8 @@ public class FoodEntryService {
                 .collect(Collectors.toList());
     }
 
-    public FoodEntryDto createFoodEntry(FoodEntryDto foodEntryDto, Foods foods) {
-        Optional<User> user = userRepository.findById(foodEntryDto.getUserId());
+    public FoodEntry createFoodEntry(FoodEntryDto foodEntryDto, Foods foods) {
+        Optional<User> user = userRepository.findById(foodEntryDto.getUserId().getId());
         FoodEntry foodEntry = new FoodEntry();
         foodEntry.setUserId(user.orElseThrow(() ->
                 new InvalidFoodEntryException("User with this id does not exist.")));
@@ -57,6 +57,6 @@ public class FoodEntryService {
         foodEntry.setServingType(foodEntryDto.getServingType());
         foodEntry.setDateOfFoodEntry(foodEntryDto.getDateOfFoodEntry());
         FoodEntry createdFoodEntry = foodEntryRepository.save(foodEntry);
-        return FoodEntryMapper.INSTANCE.convertFoodEntryEntityToDto(createdFoodEntry);
+        return createdFoodEntry;
     }
 }

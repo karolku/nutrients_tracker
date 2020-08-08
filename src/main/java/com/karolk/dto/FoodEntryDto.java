@@ -1,6 +1,8 @@
 package com.karolk.dto;
 
 import com.karolk.model.FoodEntry;
+import com.karolk.model.Foods;
+import com.karolk.model.User;
 
 import java.sql.Date;
 import java.util.Objects;
@@ -8,8 +10,8 @@ import java.util.Objects;
 public class FoodEntryDto {
 
     private Long id;
-    private Long userId;
-    private Long foodId;
+    private User userId;
+    private Foods foodId;
     private double amountOfServing;
     private String servingType;
     private Date dateOfFoodEntry;
@@ -18,7 +20,7 @@ public class FoodEntryDto {
     public FoodEntryDto() {
     }
 
-    public FoodEntryDto(Long userId, Long foodId, double amountOfServing, String servingType,
+    public FoodEntryDto(User userId, Foods foodId, double amountOfServing, String servingType,
                         Date dateOfFoodEntry, FoodEntry.MealTime mealTime) {
         this.userId = userId;
         this.foodId = foodId;
@@ -36,19 +38,19 @@ public class FoodEntryDto {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 
-    public Long getFoodId() {
+    public Foods getFoodId() {
         return foodId;
     }
 
-    public void setFoodId(Long foodId) {
+    public void setFoodId(Foods foodId) {
         this.foodId = foodId;
     }
 

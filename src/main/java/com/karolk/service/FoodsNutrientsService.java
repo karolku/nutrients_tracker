@@ -2,9 +2,11 @@ package com.karolk.service;
 
 import com.karolk.api.model.FoodsApi;
 import com.karolk.api.model.NutrientsApi;
+import com.karolk.dto.FoodEntryDto;
 import com.karolk.dto.FoodsNutrientsDto;
 import com.karolk.exception.InvalidFoodsException;
 import com.karolk.exception.InvalidFoodsNutrientsException;
+import com.karolk.model.FoodEntry;
 import com.karolk.model.Foods;
 import com.karolk.model.FoodsNutrients;
 import com.karolk.model.Nutrients;
@@ -50,7 +52,7 @@ public class FoodsNutrientsService {
      3. foodsNutrient will take foods and nutrients objects and then will be saved with foodsnutrientRepository.
      4. Dont have to and convert foodsNutrients to Dto since then user will not have objects of FoodId and Nutrients.
      */
-    public List<FoodsNutrientsDto> saveFoodNutrients(List<NutrientsApi> nutrientsApiList, Foods foods) {
+    public List<FoodsNutrientsDto> saveFoodNutrients(List<NutrientsApi> nutrientsApiList, Foods foods, FoodEntry foodEntry) {
         List<FoodsNutrientsDto> savedFoodNutrientsList = new ArrayList<>();
         Optional<Foods> foodsEntity = foodsRepository.findByFdcId(foods.getFdcId());
         FoodsNutrients foodsNutrients = null;
@@ -62,6 +64,7 @@ public class FoodsNutrientsService {
                 { throw new InvalidFoodsException("Food with FdcId: " + foods.getId() + " does not exist in the databse.");}));
             foodsNutrients.setNutrients(nutrientEntity);
             foodsNutrients.setValue(nutrientEntity.getValue());
+            foodsNutrients.setFoodEntry(foodEntry);
             createdFoodNutrients = foodsNutrientsRepository.save(foodsNutrients);
             savedFoodNutrientsList.add(FoodsNutrientsMapper.INSTANCE.convertEntityToDto(createdFoodNutrients));
         }

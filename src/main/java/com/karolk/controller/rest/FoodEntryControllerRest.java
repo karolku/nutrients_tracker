@@ -4,9 +4,11 @@ import com.karolk.api.model.FoodsApi;
 import com.karolk.api.model.NutrientsApi;
 import com.karolk.dto.FoodEntryDto;
 import com.karolk.dto.FoodsNutrientsDto;
+import com.karolk.model.FoodEntry;
 import com.karolk.model.Foods;
 import com.karolk.model.Nutrients;
 import com.karolk.service.*;
+import com.karolk.util.FoodEntryMapper;
 import com.karolk.util.FoodsMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,18 +48,18 @@ public class FoodEntryControllerRest {
 
     @PostMapping()
     public ResponseEntity<FoodEntryDto> saveFoodEntry(@RequestBody FoodEntryDto foodEntryDto) {
-        FoodsApi foodsApi = foodProductApi.getOneFoodInfoFromApi(foodEntryDto.getFoodId()); // FoodId is the fdcId taken from FoodsDto received by the client.
+        FoodsApi foodsApi = foodProductApi.getOneFoodInfoFromApi(foodEntryDto.getFoodId().getFdcId()); // FoodId is the fdcId taken from FoodsDto received by the client.
         List<NutrientsApi> nutrientsApiList = foodsApi.getFoodNutrients();
 
         List<Nutrients> nutrientsList = nutrientsService.saveNutrients(nutrientsApiList);
         Foods foodsEntity = FoodsMapper.INSTANCE.convertFoodsApiToEntity(foodsApi);
         Foods savedFood = foodsService.save(foodsEntity);
-        FoodEntryDto createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto, savedFood);
-        List<FoodsNutrientsDto> foodsNutrientsDto = foodsNutrientsService.saveFoodNutrients(nutrientsApiList, savedFood);
+        FoodEntry createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto, savedFood);
+        List<FoodsNutrientsDto> foodsNutrientsDto = foodsNutrientsService.saveFoodNutrients(nutrientsApiList, savedFood, createdFoodEntry);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                 buildAndExpand(createdFoodEntry.getId())
                 .toUri();
-        return ResponseEntity.created(uri).body(createdFoodEntry);
+        return ResponseEntity.created(uri).body(FoodEntryMapper.INSTANCE.convertFoodEntryEntityToDto(createdFoodEntry));
     }
 }

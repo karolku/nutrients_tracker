@@ -32,10 +32,12 @@ public class FoodsNutrients implements Serializable {
     public FoodsNutrients() {
     }
 
-    public FoodsNutrients(Foods foods, Nutrients nutrients, double value) {
+    public FoodsNutrients(Foods foods, Nutrients nutrients,
+                          double value, FoodEntry foodEntry) {
         this.foods = foods;
         this.nutrients = nutrients;
         this.value = value;
+        this.foodEntry = foodEntry;
     }
 
     public Long getId() {
@@ -70,6 +72,14 @@ public class FoodsNutrients implements Serializable {
         this.value = value;
     }
 
+    public FoodEntry getFoodEntry() {
+        return foodEntry;
+    }
+
+    public void setFoodEntry(FoodEntry foodEntry) {
+        this.foodEntry = foodEntry;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,12 +88,13 @@ public class FoodsNutrients implements Serializable {
         return Objects.equals(id, that.id) &&
                 Objects.equals(foods, that.foods) &&
                 Objects.equals(nutrients, that.nutrients) &&
-                Objects.equals(value, that.value);
+                Objects.equals(value, that.value) &&
+                Objects.equals(foodEntry, that.foodEntry);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, foods, nutrients, value);
+        return Objects.hash(id, foods, nutrients, value, foodEntry);
     }
 
     @Override
@@ -93,6 +104,7 @@ public class FoodsNutrients implements Serializable {
                 ", foods=" + foods +
                 ", nutrients=" + nutrients +
                 ", value=" + value +
+                ", foodEntry=" + foodEntry +
                 '}';
     }
 }
