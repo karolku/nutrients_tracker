@@ -16,7 +16,7 @@ public class Nutrients implements Serializable {
     private Long id;
 
     @Column(name = "nutrient_id_from_usda")
-    private long nutrientId;
+    private Long nutrientId;
 
     @Column(name = "nutrient_name")
     private String nutrientName;
