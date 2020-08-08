@@ -27,7 +27,7 @@ public class NutrientsService {
                 .map(NutrientsMapper.INSTANCE::convertNutrientsApiToEntity)
                 .collect(Collectors.toList());
         for(Nutrients nutrient : nutrientsEntityList){
-            if(nutrientsRepository.findByNutrientId(nutrient.getNutrientId()).isEmpty())
+            if(!(nutrientsRepository.existsByNutrientId(nutrient.getNutrientId())))
                 nutrientsSaved.add(nutrientsRepository.save(nutrient));
             else {
                 nutrientFromDb = nutrientsRepository.findByNutrientId(nutrient.getNutrientId());
