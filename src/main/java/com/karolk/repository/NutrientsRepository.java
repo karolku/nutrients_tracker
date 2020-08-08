@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface NutrientsRepository extends JpaRepository<Nutrients, Long> {
     Optional<Nutrients> findByNutrientId(Long nutrientId);
+    boolean existsByNutrientId(Long nutrientId);
 }
