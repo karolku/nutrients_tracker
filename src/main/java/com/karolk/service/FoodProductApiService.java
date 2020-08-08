@@ -3,8 +3,7 @@ package com.karolk.service;
 import com.karolk.api.model.FoodsApi;
 import com.karolk.api.model.FoodProduct;
 import com.karolk.exception.InvalidFoodProductException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;†
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
