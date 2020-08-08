@@ -35,7 +35,7 @@ public class FoodsService {
     public Foods save(Foods foods) {
         Foods foodSaved;
         Optional<Foods> foodsFromDb;
-        if(foodsRepository.findByFdcId(foods.getFdcId()).isEmpty())
+        if(!(foodsRepository.existsByFdcId(foods.getFdcId())))
             foodSaved = foodsRepository.save(foods);
         else {
             foodsFromDb = foodsRepository.findByFdcId(foods.getFdcId());
