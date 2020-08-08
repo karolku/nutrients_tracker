@@ -48,13 +48,13 @@ public class FoodEntryControllerRest {
     public ResponseEntity<FoodEntryDto> saveFoodEntry(@RequestBody FoodEntryDto foodEntryDto) {
         FoodsApi foodsApi = foodProductApi.getOneFoodInfoFromApi(foodEntryDto.getFoodId()); // FoodId is the fdcId taken from FoodsDto received by the client.
         List<NutrientsApi> nutrientsApiList = foodsApi.getFoodNutrients();
-        List<Nutrients> nutrientsList = nutrientsService.saveNutrients(nutrientsApiList);
 
+        List<Nutrients> nutrientsList = nutrientsService.saveNutrients(nutrientsApiList);
         Foods foodsEntity = FoodsMapper.INSTANCE.convertFoodsApiToEntity(foodsApi);
         Foods savedFood = foodsService.save(foodsEntity);
+        FoodEntryDto createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto, savedFood);
         List<FoodsNutrientsDto> foodsNutrientsDto = foodsNutrientsService.saveFoodNutrients(nutrientsApiList, savedFood);
 
-        FoodEntryDto createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto, savedFood);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                 buildAndExpand(createdFoodEntry.getId())
                 .toUri();
