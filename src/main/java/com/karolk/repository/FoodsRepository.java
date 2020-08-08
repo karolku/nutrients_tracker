@@ -7,5 +7,6 @@ import java.util.Optional;
 
 public interface FoodsRepository extends JpaRepository<Foods, Long> {
     Optional<Foods> findByFdcId(Long fdcId);
+    boolean existsByFdcId(Long fdcId);
 }
 
