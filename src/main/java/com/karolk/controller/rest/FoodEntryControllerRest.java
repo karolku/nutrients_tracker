@@ -51,7 +51,6 @@ public class FoodEntryControllerRest {
         FoodsApi foodsApi = foodProductApi.getOneFoodInfoFromApi(foodEntryDto.getFoodId()); // FoodId is the fdcId taken from FoodsDto received by the client.
         List<NutrientsApi> nutrientsApiList = foodsApi.getFoodNutrients();
 
-        List<Nutrients> nutrientsList = nutrientsService.saveNutrients(nutrientsApiList);
         Foods foodsEntity = FoodsMapper.INSTANCE.convertFoodsApiToEntity(foodsApi);
         Foods savedFood = foodsService.save(foodsEntity);
         FoodEntry createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto, savedFood);

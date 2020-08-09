@@ -59,9 +59,9 @@ public class FoodsNutrientsService {
         FoodsNutrients foodsNutrients = null;
         FoodsNutrients createdFoodNutrients = null;
         for(NutrientsApi nutrient : nutrientsApiList) {
+            foodsNutrients = new FoodsNutrients();
             Nutrients nutrientEntity = NutrientsMapper.INSTANCE.convertNutrientsApiToEntity(nutrient);
             Optional<Nutrients> nutrientFromDb = nutrientsRepository.findByNutrientId(nutrientEntity.getNutrientId());
-            foodsNutrients = new FoodsNutrients();
             foodsNutrients.setFoods(foodsEntity.orElseThrow(() ->
                 { throw new InvalidFoodsException("Food with FdcId: " + foods.getId() + " does not exist in the databse.");}));
             foodsNutrients.setNutrients(nutrientFromDb.orElseThrow(() ->
