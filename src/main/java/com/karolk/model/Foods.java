@@ -21,7 +21,7 @@ public class Foods implements Serializable {
     @Column(name = "data_type")
     private String dataType;
 
-    @Column(name= "gtin_upc")
+    @Column(name= "bar_code")
     private String gtinUpc;
 
     @Column(name = "published_date")
