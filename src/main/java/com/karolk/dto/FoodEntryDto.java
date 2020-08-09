@@ -10,8 +10,8 @@ import java.util.Objects;
 public class FoodEntryDto {
 
     private Long id;
-    private User userId;
-    private Foods foodId;
+    private Long userId;
+    private Long foodId;
     private double amountOfServing;
     private String servingType;
     private Date dateOfFoodEntry;
@@ -20,7 +20,7 @@ public class FoodEntryDto {
     public FoodEntryDto() {
     }
 
-    public FoodEntryDto(User userId, Foods foodId, double amountOfServing, String servingType,
+    public FoodEntryDto(Long userId, Long foodId, double amountOfServing, String servingType,
                         Date dateOfFoodEntry, FoodEntry.MealTime mealTime) {
         this.userId = userId;
         this.foodId = foodId;
@@ -38,19 +38,19 @@ public class FoodEntryDto {
         this.id = id;
     }
 
-    public User getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public Foods getFoodId() {
+    public Long getFoodId() {
         return foodId;
     }
 
-    public void setFoodId(Foods foodId) {
+    public void setFoodId(Long foodId) {
         this.foodId = foodId;
     }
 

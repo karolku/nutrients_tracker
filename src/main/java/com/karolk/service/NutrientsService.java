@@ -29,11 +29,11 @@ public class NutrientsService {
         for(Nutrients nutrient : nutrientsEntityList){
             if(!(nutrientsRepository.existsByNutrientId(nutrient.getNutrientId())))
                 nutrientsSaved.add(nutrientsRepository.save(nutrient));
-            else {
-                nutrientFromDb = nutrientsRepository.findByNutrientId(nutrient.getNutrientId());
-                nutrientsSaved.add(nutrientFromDb.orElseThrow(() ->
-                {throw new InvalidNutrientsException("There is not nutrient with this id.");}));
-            }
+//            else {
+//                nutrientFromDb = nutrientsRepository.findByNutrientId(nutrient.getNutrientId());
+//                nutrientsSaved.add(nutrientFromDb.orElseThrow(() ->
+//                {throw new InvalidNutrientsException("There is not nutrient with this id.");}));
+//            }
         }
         return nutrientsSaved;
     }

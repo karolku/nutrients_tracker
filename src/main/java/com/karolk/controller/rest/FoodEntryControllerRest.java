@@ -48,7 +48,7 @@ public class FoodEntryControllerRest {
 
     @PostMapping()
     public ResponseEntity<FoodEntryDto> saveFoodEntry(@RequestBody FoodEntryDto foodEntryDto) {
-        FoodsApi foodsApi = foodProductApi.getOneFoodInfoFromApi(foodEntryDto.getFoodId().getFdcId()); // FoodId is the fdcId taken from FoodsDto received by the client.
+        FoodsApi foodsApi = foodProductApi.getOneFoodInfoFromApi(foodEntryDto.getFoodId()); // FoodId is the fdcId taken from FoodsDto received by the client.
         List<NutrientsApi> nutrientsApiList = foodsApi.getFoodNutrients();
 
         List<Nutrients> nutrientsList = nutrientsService.saveNutrients(nutrientsApiList);
