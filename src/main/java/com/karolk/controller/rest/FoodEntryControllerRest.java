@@ -4,14 +4,17 @@ import com.karolk.api.model.FoodsApi;
 import com.karolk.api.model.NutrientsApi;
 import com.karolk.dto.FoodEntryDto;
 import com.karolk.dto.FoodsNutrientsDto;
+import com.karolk.exception.InvalidFoodsException;
 import com.karolk.model.FoodEntry;
 import com.karolk.model.Foods;
 import com.karolk.model.Nutrients;
 import com.karolk.service.*;
 import com.karolk.util.FoodEntryMapper;
 import com.karolk.util.FoodsMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -52,7 +55,13 @@ public class FoodEntryControllerRest {
         List<NutrientsApi> nutrientsApiList = foodsApi.getFoodNutrients();
 
         Foods foodsEntity = FoodsMapper.INSTANCE.convertFoodsApiToEntity(foodsApi);
-        Foods savedFood = foodsService.save(foodsEntity);
+        Foods savedFood = null;
+        try {
+            savedFood = foodsService.save(foodsEntity);
+        } catch (InvalidFoodsException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+
         FoodEntry createdFoodEntry = foodEntryService.createFoodEntry(foodEntryDto, savedFood);
         List<FoodsNutrientsDto> foodsNutrientsDto = foodsNutrientsService.saveFoodNutrients(nutrientsApiList, savedFood, createdFoodEntry);
 
