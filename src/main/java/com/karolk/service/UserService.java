@@ -7,6 +7,7 @@ import com.karolk.util.UserMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,6 +24,10 @@ public class UserService {
                 .stream()
                 .map(UserMapper.INSTANCE::convertEntityUserToUserDto)
                 .collect(Collectors.toList());
+    }
+
+    public Optional<UserDto> findById(Long userId) {
+        return userRepository.findById(userId).map(UserMapper.INSTANCE::convertEntityUserToUserDto);
     }
 
     public UserDto save(UserDto userDto) {
