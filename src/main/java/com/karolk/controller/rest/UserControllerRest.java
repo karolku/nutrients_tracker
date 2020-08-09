@@ -40,4 +40,12 @@ public class UserControllerRest {
                 .toUri();
         return ResponseEntity.created(uri).body(userSaved);
     }
+
+    @PutMapping("/{userId}")
+    public ResponseEntity<UserDto> update(@PathVariable Long userId, @RequestBody UserDto userDto) {
+        if(!(userId.equals(userDto.getId())))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The provided id needs to be the same as the provided user id");
+        UserDto updatedUser = userService.update(userDto);
+        return ResponseEntity.ok(updatedUser);
+    }
 }
