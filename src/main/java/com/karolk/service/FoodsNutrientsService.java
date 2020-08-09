@@ -6,6 +6,7 @@ import com.karolk.dto.FoodEntryDto;
 import com.karolk.dto.FoodsNutrientsDto;
 import com.karolk.exception.InvalidFoodsException;
 import com.karolk.exception.InvalidFoodsNutrientsException;
+import com.karolk.exception.InvalidNutrientsException;
 import com.karolk.model.FoodEntry;
 import com.karolk.model.Foods;
 import com.karolk.model.FoodsNutrients;
@@ -59,10 +60,12 @@ public class FoodsNutrientsService {
         FoodsNutrients createdFoodNutrients = null;
         for(NutrientsApi nutrient : nutrientsApiList) {
             Nutrients nutrientEntity = NutrientsMapper.INSTANCE.convertNutrientsApiToEntity(nutrient);
+            Optional<Nutrients> nutrientFromDb = nutrientsRepository.findByNutrientId(nutrientEntity.getNutrientId());
             foodsNutrients = new FoodsNutrients();
             foodsNutrients.setFoods(foodsEntity.orElseThrow(() ->
                 { throw new InvalidFoodsException("Food with FdcId: " + foods.getId() + " does not exist in the databse.");}));
-            foodsNutrients.setNutrients(nutrientEntity);
+            foodsNutrients.setNutrients(nutrientFromDb.orElseThrow(() ->
+                {throw new InvalidNutrientsException("Nutrient with usda id: " + nutrientEntity.getNutrientId() + " does not exist." );}));
             foodsNutrients.setValue(nutrientEntity.getValue());
             foodsNutrients.setFoodEntry(foodEntry);
             createdFoodNutrients = foodsNutrientsRepository.save(foodsNutrients);
