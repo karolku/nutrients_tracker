@@ -70,4 +70,12 @@ public class FoodEntryControllerRest {
                 .toUri();
         return ResponseEntity.created(uri).body(FoodEntryMapper.INSTANCE.convertFoodEntryEntityToDto(createdFoodEntry));
     }
+
+    @PutMapping("/{foodEntryId}")
+    public ResponseEntity<FoodEntryDto> update(@PathVariable Long foodEntryId, @RequestBody FoodEntryDto foodEntryDto) {
+        if(!(foodEntryId.equals(foodEntryDto.getId())))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The provided id needs to be the same as the provided user id");
+        FoodEntryDto updatedFoodEntry = foodEntryService.update(foodEntryDto);
+        return ResponseEntity.ok(updatedFoodEntry);
+    }
 }
