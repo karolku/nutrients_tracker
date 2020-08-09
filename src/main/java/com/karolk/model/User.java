@@ -56,14 +56,14 @@ public class User {
     private double heightInCm;
 
     @Column(name = "activity_level")
-    private double activityLevel;
+    private ActivityLevel activityLevel;
 
     public User() {
     }
 
     public User(String firstName, String lastName, Gender gender, Date birthdayDate,
                 String password, String email, double weightInKg, double heightInCm,
-                double activityLevel) {
+                ActivityLevel activityLevel) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -147,11 +147,11 @@ public class User {
         this.heightInCm = heightInCm;
     }
 
-    public double getActivityLevel() {
+    public ActivityLevel getActivityLevel() {
         return activityLevel;
     }
 
-    public void setActivityLevel(double activityLevel) {
+    public void setActivityLevel(ActivityLevel activityLevel) {
         this.activityLevel = activityLevel;
     }
 
