@@ -25,6 +25,12 @@ public class UserControllerRest {
         return userService.findAllUsers();
     }
 
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserDto> findById(@PathVariable Long userId) {
+        return userService.findById(userId).map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping()
     public ResponseEntity<UserDto> save(@RequestBody UserDto userDto) {
         if(userDto.getId() != null)
