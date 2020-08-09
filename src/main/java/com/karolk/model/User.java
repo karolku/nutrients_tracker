@@ -162,7 +162,7 @@ public class User {
         User user = (User) o;
         return Double.compare(user.weightInKg, weightInKg) == 0 &&
                 Double.compare(user.heightInCm, heightInCm) == 0 &&
-                Double.compare(user.activityLevel, activityLevel) == 0 &&
+                Objects.equals(activityLevel, user.activityLevel) &&
                 Objects.equals(id, user.id) &&
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName) &&
