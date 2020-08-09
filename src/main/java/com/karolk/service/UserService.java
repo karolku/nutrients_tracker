@@ -1,6 +1,7 @@
 package com.karolk.service;
 
 import com.karolk.dto.UserDto;
+import com.karolk.exception.InvalidUserException;
 import com.karolk.model.User;
 import com.karolk.repository.UserRepository;
 import com.karolk.util.UserMapper;
@@ -28,6 +29,17 @@ public class UserService {
 
     public Optional<UserDto> findById(Long userId) {
         return userRepository.findById(userId).map(UserMapper.INSTANCE::convertEntityUserToUserDto);
+    }
+
+    public UserDto update(UserDto userDto) {
+        Optional<User> userEntity = userRepository.findById(userDto.getId());
+        userEntity.ifPresent((user -> {
+            if(!(user.getId().equals(userDto.getId())))
+                throw new InvalidUserException("User with this id");
+        }));
+        User userToBeSaved = UserMapper.INSTANCE.convertUserDtoToEntityUser(userDto);
+        User savedUser = userRepository.save(userToBeSaved);
+        return UserMapper.INSTANCE.convertEntityUserToUserDto(savedUser);
     }
 
     public UserDto save(UserDto userDto) {
