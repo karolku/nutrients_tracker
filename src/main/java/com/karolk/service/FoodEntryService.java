@@ -2,6 +2,7 @@ package com.karolk.service;
 
 import com.karolk.dto.FoodEntryDto;
 import com.karolk.exception.InvalidFoodEntryException;
+import com.karolk.exception.InvalidUserException;
 import com.karolk.model.FoodEntry;
 import com.karolk.model.Foods;
 import com.karolk.model.User;
@@ -50,7 +51,7 @@ public class FoodEntryService {
         Optional<User> user = userRepository.findById(foodEntryDto.getUserId());
         FoodEntry foodEntry = new FoodEntry();
         foodEntry.setUserId(user.orElseThrow(() ->
-                new InvalidFoodEntryException("User with this id does not exist.")));
+                new InvalidUserException("User with this id does not exist.")));
         foodEntry.setFoodId(foods);
         foodEntry.setAmountOfServing(foodEntryDto.getAmountOfServing());
         foodEntry.setMealTime(foodEntryDto.getMealTime());
