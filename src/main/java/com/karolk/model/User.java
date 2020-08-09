@@ -14,6 +14,21 @@ public class User {
         MALE, FEMALE
     }
 
+    public enum ActivityLevel {
+
+        SEDENTARY(1.2), LOW_ACTIVITY(1.375), MODERATE_ACTIVITY(1.55), HIGH_ACTIVITY(1.725), VERY_HIGH_ACTIVITY(1.9);
+
+        private double activity;
+
+        ActivityLevel(double activity) {
+            this.activity = activity;
+        }
+
+        public double getActivity(){
+            return this.activity;
+        }
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
