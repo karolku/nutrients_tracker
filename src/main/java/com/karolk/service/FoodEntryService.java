@@ -2,6 +2,7 @@ package com.karolk.service;
 
 import com.karolk.dto.FoodEntryDto;
 import com.karolk.exception.InvalidFoodEntryException;
+import com.karolk.exception.InvalidFoodsException;
 import com.karolk.exception.InvalidUserException;
 import com.karolk.model.FoodEntry;
 import com.karolk.model.Foods;
@@ -59,5 +60,18 @@ public class FoodEntryService {
         foodEntry.setDateOfFoodEntry(foodEntryDto.getDateOfFoodEntry());
         FoodEntry createdFoodEntry = foodEntryRepository.save(foodEntry);
         return createdFoodEntry;
+    }
+
+    public FoodEntryDto update(FoodEntryDto foodEntryDto) {
+        Optional<FoodEntry> foodEntryEntity = foodEntryRepository.findById(foodEntryDto.getId());
+        foodEntryEntity.ifPresent((foodEntry -> {
+            if(!(foodEntry.getId().equals(foodEntryDto.getId())))
+                throw new InvalidFoodEntryException("FoodEntry with the given id does not exist.");
+        }));
+        Optional<Foods> foods = foodsRepository.findById(foodEntryDto.getFoodId());
+        Foods foodsEntity = foods.orElseThrow(() ->
+            { throw new InvalidFoodsException("Food with the id does not exist.");});
+        FoodEntry foodEntryUpdated = createFoodEntry(foodEntryDto, foodsEntity);
+        return FoodEntryMapper.INSTANCE.convertFoodEntryEntityToDto(foodEntryUpdated);
     }
 }
