@@ -51,6 +51,8 @@ public class FoodEntryService {
     public FoodEntry createFoodEntry(FoodEntryDto foodEntryDto, Foods foods) {
         Optional<User> user = userRepository.findById(foodEntryDto.getUserId());
         FoodEntry foodEntry = new FoodEntry();
+        if(foodEntryDto.getId() != null) // does not equal to null when food entry will be updated.
+            foodEntry.setId(foodEntryDto.getId());
         foodEntry.setUserId(user.orElseThrow(() ->
                 new InvalidUserException("User with this id does not exist.")));
         foodEntry.setFoodId(foods);
