@@ -44,6 +44,7 @@ public class UserService {
 
     public UserDto save(UserDto userDto) {
         User user = UserMapper.INSTANCE.convertUserDtoToEntityUser(userDto);
+        user.calculateCalories();
         User savedUser = userRepository.save(user);
         return UserMapper.INSTANCE.convertEntityUserToUserDto(savedUser);
     }
