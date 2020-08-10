@@ -79,7 +79,7 @@ public class User {
     private ActivityLevel activityLevel;
 
     @Column(name = "calories_demand")
-    private double caloriesDemand;
+    private Double caloriesDemand;
 
     public User() {
     }
@@ -190,8 +190,8 @@ public class User {
 
     //Based on the BMR formula
     @Transient
-    public double calculateCalories() {
-        double calories = (BMR_CONSTANT_1 * weightInKg) + (BMR_CONSTANT_2 * heightInCm) - (BMR_CONSTANT_3 * this.calculateAge());
+    public Double calculateCalories() {
+        Double calories = (BMR_CONSTANT_1 * weightInKg) + (BMR_CONSTANT_2 * heightInCm) - (BMR_CONSTANT_3 * this.calculateAge());
         if(gender.equals(Gender.MALE))
             calories += BMR_CONSTANT_3;
         else

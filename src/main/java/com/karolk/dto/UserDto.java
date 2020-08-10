@@ -1,5 +1,6 @@
 package com.karolk.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -9,7 +10,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String gender;
-    private Date birthdayDate;
+    private String birthdayDate;
     private String email;
     private String password;
     private double weightInKg;
@@ -21,7 +22,7 @@ public class UserDto {
     }
 
     public UserDto(String firstName, String lastName, String gender,
-                   Date birthdayDate, String email, String password, double weightInKg,
+                   String birthdayDate, String email, String password, double weightInKg,
                    double heightInCm, double activityLevel, double caloriesDemand) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -67,11 +68,11 @@ public class UserDto {
         this.gender = gender;
     }
 
-    public Date getBirthdayDate() {
+    public String getBirthdayDate() {
         return birthdayDate;
     }
 
-    public void setBirthdayDate(Date birthdayDate) {
+    public void setBirthdayDate(String birthdayDate) {
         this.birthdayDate = birthdayDate;
     }
 
