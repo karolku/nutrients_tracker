@@ -37,9 +37,8 @@ public class UserService {
             if(!(user.getId().equals(userDto.getId())))
                 throw new InvalidUserException("User with this id");
         }));
-        User userToBeUpdated = UserMapper.INSTANCE.convertUserDtoToEntityUser(userDto);
-        User updatedUser = userRepository.save(userToBeUpdated);
-        return UserMapper.INSTANCE.convertEntityUserToUserDto(updatedUser);
+        UserDto updatedUser = this.save(userDto);
+        return updatedUser;
     }
 
     public UserDto save(UserDto userDto) {
