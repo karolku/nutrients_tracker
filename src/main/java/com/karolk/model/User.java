@@ -1,9 +1,12 @@
 package com.karolk.model;
 
+import org.apache.tomcat.jni.Local;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 @Entity
@@ -136,12 +139,13 @@ public class User {
         this.gender = gender;
     }
 
-    public Date getBirthdayDate() {
+    public LocalDate getBirthdayDate() {
         return birthdayDate;
     }
 
-    public void setBirthdayDate(Date birthdayDate) {
-        this.birthdayDate = birthdayDate;
+    public void setBirthdayDate(String birthdayDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.birthdayDate = LocalDate.parse(birthdayDate, formatter);
     }
 
     public double getWeightInKg() {
