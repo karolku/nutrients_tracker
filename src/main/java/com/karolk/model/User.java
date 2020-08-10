@@ -173,8 +173,8 @@ public class User {
         return caloriesDemand;
     }
 
-    public void setCaloriesDemand(double caloriesDemand) {
-        this.caloriesDemand = caloriesDemand;
+    public void setCaloriesDemand() {
+        this.caloriesDemand = this.calculateCalories();
     }
 
     //Based on the BMR formula
