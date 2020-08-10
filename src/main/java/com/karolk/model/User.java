@@ -3,6 +3,7 @@ package com.karolk.model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 
 @Entity
@@ -184,6 +185,10 @@ public class User {
         else
             calories -= BMR_CONSTANT_4;
         return calories * activityLevel.getActivity();
+    }
+
+    public int calculateAge() {
+        return Period.between(birthdayDate, LocalDate.now()).getYears();
     }
 
     @Override
