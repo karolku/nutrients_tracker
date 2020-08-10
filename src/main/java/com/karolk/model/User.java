@@ -2,6 +2,7 @@ package com.karolk.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -9,6 +10,15 @@ import java.util.Objects;
 @Entity
 @Table(name = "user")
 public class User {
+
+    @Transient
+    private final double BMR_CONSTANT_1 = 10.0;
+    @Transient
+    private final double BMR_CONSTANT_2 = 6.25;
+    @Transient
+    private final double BMR_CONSTANT_3 = 5.0;
+    @Transient
+    private final double BMR_CONSTANT_4 = 161;
 
     public enum Gender {
         MALE, FEMALE
@@ -165,6 +175,17 @@ public class User {
 
     public void setCaloriesDemand(double caloriesDemand) {
         this.caloriesDemand = caloriesDemand;
+    }
+
+    //Based on the BMR formula
+    @Transient
+    public double calculateCalories() {
+        double calories = (BMR_CONSTANT_1 * weightInKg) + (BMR_CONSTANT_2 * heightInCm) - (BMR_CONSTANT_3 * age);
+        if(gender.equals(Gender.MALE))
+            calories += BMR_CONSTANT_3;
+        else
+            calories -= BMR_CONSTANT_4;
+        return calories * activityLevel.getActivity();
     }
 
     @Override
