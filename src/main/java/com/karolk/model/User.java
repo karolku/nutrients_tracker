@@ -36,6 +36,17 @@ public class User {
             this.activity = activity;
         }
 
+        private static ActivityLevel convertValueToActivity(double activityValue){
+            ActivityLevel convertedActivity = null;
+            for(ActivityLevel activityLevel : ActivityLevel.values()){
+                if(activityLevel.getActivity() == activityValue)
+                    convertedActivity = activityLevel;
+            }
+            if(convertedActivity == null)
+                throw new IllegalArgumentException("Incorrect value of activity level. Please check again the value of activity");
+            return convertedActivity;
+        }
+
         public double getActivity(){
             return this.activity;
         }
@@ -76,7 +87,7 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, Gender gender, Date birthdayDate,
+    public User(String firstName, String lastName, Gender gender, LocalDate birthdayDate,
                 String password, String email, double weightInKg, double heightInCm,
                 ActivityLevel activityLevel, double caloriesDemand) {
         this.firstName = firstName;
