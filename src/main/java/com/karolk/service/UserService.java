@@ -35,7 +35,7 @@ public class UserService {
         Optional<User> userEntity = userRepository.findById(userDto.getId());
         userEntity.ifPresent((user -> {
             if(!(user.getId().equals(userDto.getId())))
-                throw new InvalidUserException("User with this id");
+                throw new InvalidUserException("The user's id to be updated does not match any user in the databse.");
         }));
         UserDto updatedUser = this.save(userDto);
         return updatedUser;
