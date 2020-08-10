@@ -20,13 +20,14 @@ public class UserDto {
     private double weightInKg;
     private double heightInCm;
     private double activityLevel;
+    private double caloriesDemand;
 
     public UserDto() {
     }
 
     public UserDto(String firstName, String lastName, String gender,
                    Date birthdayDate, String email, String password, double weightInKg,
-                   double heightInCm, double activityLevel) {
+                   double heightInCm, double activityLevel, double caloriesDemand) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -36,6 +37,7 @@ public class UserDto {
         this.weightInKg = weightInKg;
         this.heightInCm = heightInCm;
         this.activityLevel = activityLevel;
+        this.caloriesDemand = caloriesDemand;
     }
 
     public Long getId() {
@@ -118,6 +120,14 @@ public class UserDto {
         this.activityLevel = activityLevel;
     }
 
+    public double getCaloriesDemand() {
+        return caloriesDemand;
+    }
+
+    public void setCaloriesDemand(double caloriesDemand) {
+        this.caloriesDemand = caloriesDemand;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -126,6 +136,7 @@ public class UserDto {
         return Double.compare(userDto.weightInKg, weightInKg) == 0 &&
                 Double.compare(userDto.heightInCm, heightInCm) == 0 &&
                 Double.compare(userDto.activityLevel, activityLevel) == 0 &&
+                Double.compare(userDto.caloriesDemand, caloriesDemand) == 0 &&
                 Objects.equals(id, userDto.id) &&
                 Objects.equals(firstName, userDto.firstName) &&
                 Objects.equals(lastName, userDto.lastName) &&
@@ -137,8 +148,8 @@ public class UserDto {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, gender, birthdayDate, email,
-                password, weightInKg, heightInCm, activityLevel);
+        return Objects.hash(id, firstName, lastName, gender, birthdayDate, email, password,
+                weightInKg, heightInCm, activityLevel, caloriesDemand);
     }
 
     @Override
@@ -154,6 +165,7 @@ public class UserDto {
                 ", weightInKg=" + weightInKg +
                 ", heightInCm=" + heightInCm +
                 ", activityLevel=" + activityLevel +
+                ", caloriesDemand=" + caloriesDemand +
                 '}';
     }
 }
