@@ -79,14 +79,14 @@ public class User {
     private ActivityLevel activityLevel;
 
     @Column(name = "calories_demand")
-    private Double caloriesDemand;
+    private int caloriesDemand;
 
     public User() {
     }
 
     public User(String firstName, String lastName, Gender gender, LocalDate birthdayDate,
                 String password, String email, double weightInKg, double heightInCm,
-                ActivityLevel activityLevel, double caloriesDemand) {
+                ActivityLevel activityLevel, int caloriesDemand) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -180,7 +180,7 @@ public class User {
         this.activityLevel = ActivityLevel.convertValueToActivity(activityLevel);
     }
 
-    public double getCaloriesDemand() {
+    public int getCaloriesDemand() {
         return caloriesDemand;
     }
 
