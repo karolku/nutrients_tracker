@@ -1,5 +1,7 @@
 package com.karolk.model;
 
+import com.karolk.exception.InvalidUserException;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
@@ -36,7 +38,7 @@ public class User {
         private static ActivityLevel convertValueToActivity(double activityValue){
             ActivityLevel convertedActivity = null;
             for(ActivityLevel activityLevel : ActivityLevel.values()){
-                if(activityLevel.getActivity() == activityValue)
+                if(activityLevel.getActivityValue() == activityValue)
                     convertedActivity = activityLevel;
             }
             if(convertedActivity == null)
@@ -44,7 +46,14 @@ public class User {
             return convertedActivity;
         }
 
-        public double getActivity(){
+        private static boolean isActivityLevel(double activityValue) {
+            for(ActivityLevel activityLevel : ActivityLevel.values())
+                if(activityLevel.getActivityValue() == activityValue)
+                    return true;
+                return false;
+        }
+
+        public double getActivityValue(){
             return this.activity;
         }
     }
@@ -76,17 +85,17 @@ public class User {
     private double heightInCm;
 
     @Column(name = "activity_level")
-    private ActivityLevel activityLevel;
+    private double activityLevel;
 
     @Column(name = "calories_demand")
-    private int caloriesDemand;
+    private Integer caloriesDemand;
 
     public User() {
     }
 
     public User(String firstName, String lastName, Gender gender, LocalDate birthdayDate,
                 String password, String email, double weightInKg, double heightInCm,
-                ActivityLevel activityLevel, int caloriesDemand) {
+                double activityLevel, int caloriesDemand) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -173,11 +182,13 @@ public class User {
     }
 
     public ActivityLevel getActivityLevel() {
-        return activityLevel;
+        return ActivityLevel.convertValueToActivity(activityLevel);
     }
 
     public void setActivityLevel(double activityLevel) {
-        this.activityLevel = ActivityLevel.convertValueToActivity(activityLevel);
+        if(!(ActivityLevel.isActivityLevel(activityLevel)))
+            throw new InvalidUserException("Invalid activity level provided with value: " + activityLevel);
+        this.activityLevel = activityLevel;
     }
 
     public int getCaloriesDemand() {
@@ -196,7 +207,7 @@ public class User {
             calories += BMR_CONSTANT_3;
         else
             calories -= BMR_CONSTANT_4;
-        return (int) Math.round(calories * activityLevel.getActivity());
+        return (int) Math.round(calories * activityLevel);
     }
 
     @Transient

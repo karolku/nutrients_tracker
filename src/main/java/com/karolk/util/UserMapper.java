@@ -17,7 +17,6 @@ public interface UserMapper {
     User convertUserDtoToEntityUser(UserDto userDto);
 
     default double toDouble(User.ActivityLevel activityLevel) {
-        return activityLevel.getActivity();
+        return activityLevel.getActivityValue();
     }
-
 }

@@ -16,14 +16,14 @@ public class UserDto {
     private double weightInKg;
     private double heightInCm;
     private double activityLevel;
-    private double caloriesDemand;
+    private int caloriesDemand;
 
     public UserDto() {
     }
 
     public UserDto(String firstName, String lastName, String gender,
                    String birthdayDate, String email, String password, double weightInKg,
-                   double heightInCm, double activityLevel, double caloriesDemand) {
+                   double heightInCm, double activityLevel, int caloriesDemand) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -116,11 +116,11 @@ public class UserDto {
         this.activityLevel = activityLevel;
     }
 
-    public double getCaloriesDemand() {
+    public int getCaloriesDemand() {
         return caloriesDemand;
     }
 
-    public void setCaloriesDemand(double caloriesDemand) {
+    public void setCaloriesDemand(int caloriesDemand) {
         this.caloriesDemand = caloriesDemand;
     }
 
