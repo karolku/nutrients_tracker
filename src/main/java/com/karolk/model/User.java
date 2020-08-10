@@ -179,7 +179,7 @@ public class User {
     //Based on the BMR formula
     @Transient
     public double calculateCalories() {
-        double calories = (BMR_CONSTANT_1 * weightInKg) + (BMR_CONSTANT_2 * heightInCm) - (BMR_CONSTANT_3 * age);
+        double calories = (BMR_CONSTANT_1 * weightInKg) + (BMR_CONSTANT_2 * heightInCm) - (BMR_CONSTANT_3 * this.calculateAge());
         if(gender.equals(Gender.MALE))
             calories += BMR_CONSTANT_3;
         else
