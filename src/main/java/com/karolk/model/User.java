@@ -41,8 +41,8 @@ public class User {
                 if(activityLevel.getActivityValue() == activityValue)
                     convertedActivity = activityLevel;
             }
-            if(convertedActivity == null)
-                throw new IllegalArgumentException("Incorrect value of activity level. Please check again the value of activity");
+//            if(convertedActivity == null)
+//                throw new IllegalArgumentException("Incorrect value of activity level. Please check again the value of activity");
             return convertedActivity;
         }
 
@@ -181,8 +181,8 @@ public class User {
         this.heightInCm = heightInCm;
     }
 
-    public ActivityLevel getActivityLevel() {
-        return ActivityLevel.convertValueToActivity(activityLevel);
+    public double getActivityLevel() {
+        return activityLevel;
     }
 
     public void setActivityLevel(double activityLevel) {
