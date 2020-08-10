@@ -66,7 +66,7 @@ public class FoodsNutrientsService {
                 { throw new InvalidFoodsException("Food with FdcId: " + foods.getId() + " does not exist in the databse.");}));
             foodsNutrients.setNutrients(nutrientFromDb.orElseThrow(() ->
                 {throw new InvalidNutrientsException("Nutrient with usda id: " + nutrientEntity.getNutrientId() + " does not exist." );}));
-            foodsNutrients.setValue(nutrientEntity.getValue());
+            foodsNutrients.setValue(nutrientEntity.getValue() * foodEntry.getAmountOfServing());
             foodsNutrients.setFoodEntry(foodEntry);
             createdFoodNutrients = foodsNutrientsRepository.save(foodsNutrients);
             savedFoodNutrientsList.add(FoodsNutrientsMapper.INSTANCE.convertEntityToDto(createdFoodNutrients));
