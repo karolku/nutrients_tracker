@@ -2,9 +2,7 @@ package com.karolk.model;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.time.Period;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -54,7 +52,7 @@ public class User {
     private Gender gender;
 
     @Column(name = "birthday_date")
-    private Date birthdayDate;
+    private LocalDate birthdayDate;
 
     private String password;
     private String email;
