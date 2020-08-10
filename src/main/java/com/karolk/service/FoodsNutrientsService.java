@@ -17,6 +17,7 @@ import com.karolk.repository.NutrientsRepository;
 import com.karolk.util.FoodsMapper;
 import com.karolk.util.FoodsNutrientsMapper;
 import com.karolk.util.NutrientsMapper;
+import com.karolk.util.Round;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class FoodsNutrientsService {
                 { throw new InvalidFoodsException("Food with FdcId: " + foods.getId() + " does not exist in the databse.");}));
             foodsNutrients.setNutrients(nutrientFromDb.orElseThrow(() ->
                 {throw new InvalidNutrientsException("Nutrient with usda id: " + nutrientEntity.getNutrientId() + " does not exist." );}));
-            foodsNutrients.setValue(nutrientEntity.getValue() * foodEntry.getAmountOfServing());
+            foodsNutrients.setValue(Round.roundToTwoDecimal(nutrientEntity.getValue() * foodEntry.getAmountOfServing()));
             foodsNutrients.setFoodEntry(foodEntry);
             createdFoodNutrients = foodsNutrientsRepository.save(foodsNutrients);
             savedFoodNutrientsList.add(FoodsNutrientsMapper.INSTANCE.convertEntityToDto(createdFoodNutrients));
