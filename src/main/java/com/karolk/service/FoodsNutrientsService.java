@@ -1,11 +1,8 @@
 package com.karolk.service;
 
-import com.karolk.api.model.FoodsApi;
 import com.karolk.api.model.NutrientsApi;
-import com.karolk.dto.FoodEntryDto;
 import com.karolk.dto.FoodsNutrientsDto;
 import com.karolk.exception.InvalidFoodsException;
-import com.karolk.exception.InvalidFoodsNutrientsException;
 import com.karolk.exception.InvalidNutrientsException;
 import com.karolk.model.FoodEntry;
 import com.karolk.model.Foods;
@@ -14,7 +11,6 @@ import com.karolk.model.Nutrients;
 import com.karolk.repository.FoodsNutrientsRepository;
 import com.karolk.repository.FoodsRepository;
 import com.karolk.repository.NutrientsRepository;
-import com.karolk.util.FoodsMapper;
 import com.karolk.util.FoodsNutrientsMapper;
 import com.karolk.util.NutrientsMapper;
 import com.karolk.util.Round;
@@ -22,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -47,13 +42,6 @@ public class FoodsNutrientsService {
                 .collect(Collectors.toList());
     }
 
-    /*
-     There will be rest template getting a particular food item from api
-     1. This method will consume will have two parameters, foods and nutrients from the rest template
-     2. Foods and nutrients will be save to their respective tables
-     3. foodsNutrient will take foods and nutrients objects and then will be saved with foodsnutrientRepository.
-     4. Dont have to and convert foodsNutrients to Dto since then user will not have objects of FoodId and Nutrients.
-     */
     public List<FoodsNutrientsDto> saveFoodNutrients(List<NutrientsApi> nutrientsApiList, Foods foods, FoodEntry foodEntry) {
         List<FoodsNutrientsDto> savedFoodNutrientsList = new ArrayList<>();
         Optional<Foods> foodsEntity = foodsRepository.findByFdcId(foods.getFdcId());
