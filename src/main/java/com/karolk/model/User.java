@@ -179,8 +179,8 @@ public class User {
         return activityLevel;
     }
 
-    public void setActivityLevel(ActivityLevel activityLevel) {
-        this.activityLevel = activityLevel;
+    public void setActivityLevel(double activityLevel) {
+        this.activityLevel = ActivityLevel.convertValueToActivity(activityLevel);
     }
 
     public double getCaloriesDemand() {
