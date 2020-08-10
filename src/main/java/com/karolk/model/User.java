@@ -199,6 +199,7 @@ public class User {
         return (int) Math.round(calories * activityLevel.getActivity());
     }
 
+    @Transient
     public int calculateAge() {
         return Period.between(birthdayDate, LocalDate.now()).getYears();
     }
