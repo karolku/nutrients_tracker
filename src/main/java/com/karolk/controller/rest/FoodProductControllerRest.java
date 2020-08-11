@@ -20,4 +20,10 @@ public class FoodProductControllerRest {
         FoodsApi foodsList = getFoodProductModelService.getOneFoodInfoFromApi(fdcId);
         return foodsList;
     }
+
+    @GetMapping(path = "/foods/{productName}")
+    public List<FoodsApi> getFoodsInfoFromApi(@PathVariable("productName") String productName){
+        List<FoodsApi> foodsApiList = getFoodProductModelService.getFoodsInfoFromApi(productName);
+        return foodsApiList;
+    }
 }
