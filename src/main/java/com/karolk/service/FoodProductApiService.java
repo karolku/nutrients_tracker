@@ -45,6 +45,6 @@ public class FoodProductApiService {
     }
 
     private boolean isOnlyOneFoodItem(FoodProduct foodProduct){
-        return foodProduct.getFoods().size() == 1 ? true : false;
+        return foodProduct.getFoods().size() == 1;
     }
 }
