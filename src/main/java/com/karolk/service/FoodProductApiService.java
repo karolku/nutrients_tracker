@@ -22,7 +22,7 @@ public class FoodProductApiService {
     }
 
     public List<FoodsApi> getFoodsInfoFromApi(String productName){
-        String inputNoSpaces = productName.replaceAll("", "%20");
+        String inputNoSpaces = productName.replaceAll(" ", "%20");
         FoodProduct foodProduct = restTemplate.
                 getForObject("https://api.nal.usda.gov/fdc/v1/foods/search?query=" +
                         inputNoSpaces + "&dataType=Branded&pageSize=25&pageNumber=1&api_key=" + apiKey,
