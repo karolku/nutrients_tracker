@@ -21,7 +21,7 @@ public class FoodProductControllerRest {
         return foodsList;
     }
 
-    @GetMapping(path = "/foods/{productName}")
+    @GetMapping(path = "/foods/search/{productName}")
     public List<FoodsApi> getFoodsInfoFromApi(@PathVariable("productName") String productName){
         List<FoodsApi> foodsApiList = getFoodProductModelService.getFoodsInfoFromApi(productName);
         return foodsApiList;
