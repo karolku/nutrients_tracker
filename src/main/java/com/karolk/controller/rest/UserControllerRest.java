@@ -48,4 +48,10 @@ public class UserControllerRest {
         UserDto updatedUser = userService.update(userDto);
         return ResponseEntity.ok(updatedUser);
     }
+
+    @DeleteMapping(path = "/{userId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long userId) {
+        userService.deleteById(userId);
+    }
 }
