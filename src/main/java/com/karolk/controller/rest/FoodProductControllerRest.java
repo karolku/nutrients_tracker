@@ -16,7 +16,7 @@ public class FoodProductControllerRest {
     }
 
     @GetMapping(path = "/foods/{fdcId}")
-    public FoodsApi getFoodsInfoFromApi(@PathVariable("fdcId") Long fdcId){
+    public FoodsApi getOneFoodInfoFromApi(@PathVariable("fdcId") Long fdcId){
         FoodsApi foodsList = getFoodProductModelService.getOneFoodInfoFromApi(fdcId);
         return foodsList;
     }
