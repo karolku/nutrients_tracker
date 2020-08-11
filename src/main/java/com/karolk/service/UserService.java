@@ -47,4 +47,8 @@ public class UserService {
         User savedUser = userRepository.save(user);
         return UserMapper.INSTANCE.convertEntityUserToUserDto(savedUser);
     }
+
+    public void deleteById(Long userId) {
+        userRepository.deleteById(userId);
+    }
 }
