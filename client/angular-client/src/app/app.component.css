@@ -1,0 +1,12 @@
+/* ---- Mobile First ---- */
+/* General grid container css and the children layout. */
+.container {
+    display: grid;
+    grid-template-rows: 60px 1fr 60px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+     "header"
+     "main"
+     "footer";
+    height: fit-content;
+}
