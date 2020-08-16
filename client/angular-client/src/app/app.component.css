@@ -21,3 +21,22 @@ app-sidenav {
     grid-area: sidenav;
     background-color: #00468B;
 }
+
+/* For non-mobile devices, show the sidebar */
+@media only screen and (min-width: 46.875em) {
+    .container {
+        display: grid;
+        grid-template-rows: 75px 1fr 80px;
+        grid-template-columns: 225px 1fr;
+        grid-template-areas:
+         "sidenav header"
+         "sidenav main"
+         "sidenav footer";
+        height: fit-content;
+    }
+
+    .sidenav {
+        display: flex;
+        flex-direction: column;
+    }
+}
