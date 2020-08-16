@@ -10,3 +10,14 @@
      "footer";
     height: fit-content;
 }
+
+app-header {
+    grid-area: header;
+}
+
+app-sidenav {
+    display: none;  /*no side bar for mobile*/
+    flex-direction: column;
+    grid-area: sidenav;
+    background-color: #00468B;
+}
