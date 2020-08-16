@@ -28,7 +28,7 @@ app-sidenav {
     .container {
         display: grid;
         grid-template-rows: 60px 1fr 80px;
-        grid-template-columns: 225px 1fr;
+        grid-template-columns: 190px 1fr;
         grid-template-areas:
          "sidenav header"
          "sidenav main"
