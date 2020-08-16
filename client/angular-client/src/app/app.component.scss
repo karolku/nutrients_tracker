@@ -1,0 +1,63 @@
+/* ---- Mobile First ---- */
+/* General grid container css and the children layout. */
+.container {
+    display: grid;
+    grid-template-rows: 60px 1fr 60px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+     "header"
+     "main"
+     "footer";
+    height: 100vh;
+}
+
+app-header {
+    grid-area: header;
+    background-color: rgba(0, 0, 0, 0.267);
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.20);
+    z-index: 1;
+}
+
+app-sidenav {
+    display: none;  /*no side bar for mobile*/
+    flex-direction: column;
+    grid-area: sidenav;
+    background-color: #eeeeeed7;
+}
+
+/* ----- Non-Mobile Devices ------- */
+/* For non-mobile devices, show the sidenav */
+@media only screen and (min-width: 46.875em) {
+    .container {
+        display: grid;
+        grid-template-rows: 60px 1fr 80px;
+        grid-template-columns: 190px 1fr;
+        grid-template-areas:
+         "sidenav header"
+         "sidenav main"
+         "sidenav footer";
+        height: 100vh;
+    }
+
+    app-sidenav {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.main {
+    grid-area: main;
+    background-color: white;
+}
+
+app-footer {
+    grid-area: footer;
+    background-color: lightgrey;
+}
+
+app-header, app-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
