@@ -4,7 +4,9 @@
     justify-content: center;
     padding: 21px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.705);
+    background-color: rgba(0, 0, 0, 0.801);
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.20);
+    z-index: 1;
 }
 
 .sidenav-list {
