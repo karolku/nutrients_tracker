@@ -33,7 +33,7 @@ app-sidenav {
          "sidenav header"
          "sidenav main"
          "sidenav footer";
-        height: fit-content;
+        height: 100vh;
     }
 
     app-sidenav {
