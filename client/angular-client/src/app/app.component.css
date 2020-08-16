@@ -46,3 +46,8 @@ app-main {
     grid-area: main;
     background-color: white;
 }
+
+app-footer {
+    grid-area: footer;
+    background-color: lightgrey;
+}
