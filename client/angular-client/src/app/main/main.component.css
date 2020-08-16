@@ -7,3 +7,19 @@
     background-color: #f1f3f7;
     color: slategray;
 }
+
+.main-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+    grid-auto-rows: 110px;
+    grid-gap: 15px;
+    margin: 15px;
+}
+
+.overviewbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: lightseagreen;
+}
