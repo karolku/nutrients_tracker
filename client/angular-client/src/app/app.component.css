@@ -22,7 +22,8 @@ app-sidenav {
     background-color: #00468B;
 }
 
-/* For non-mobile devices, show the sidebar */
+/* ----- Non-Mobile Devices ------- */
+/* For non-mobile devices, show the sidenav */
 @media only screen and (min-width: 46.875em) {
     .container {
         display: grid;
