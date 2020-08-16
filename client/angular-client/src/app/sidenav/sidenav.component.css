@@ -12,3 +12,11 @@
 .sidenav-list-item:hover {
     cursor: pointer;
 }
+
+a:link {
+    text-decoration: none;
+}
+
+a, a:visited {
+    color: inherit;
+}
