@@ -36,8 +36,13 @@ app-sidenav {
         height: fit-content;
     }
 
-    .sidenav {
+    app-sidenav {
         display: flex;
         flex-direction: column;
     }
+}
+
+app-main {
+    grid-area: main;
+    background-color: white;
 }
