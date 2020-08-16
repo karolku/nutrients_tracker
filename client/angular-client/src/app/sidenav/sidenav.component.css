@@ -33,5 +33,6 @@ a, a:visited {
 }
 
 .sidenav-text {
-    margin-left: 15px;
+    padding: 10px;
+    align-items: center;
 }

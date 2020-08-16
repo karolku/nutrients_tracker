@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faHome, faCogs, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faCogs, faUser, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,6 +10,7 @@ export class SidenavComponent implements OnInit {
   HomeIcon = faHome;
   UserIcon = faUser;
   SettingsIcon = faCogs;
+  ChartIcon = faChartLine;
 
   constructor() { }
 
