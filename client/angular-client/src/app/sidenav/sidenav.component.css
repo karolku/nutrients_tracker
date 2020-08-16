@@ -1,0 +1,14 @@
+.sidenav-list {
+    padding: 0px;
+    margin-top: 85px;
+    list-style-type: none;
+}
+
+.sidenav-list-item {
+    padding: 12px 12px 12px 35px;
+    color: rgb(240, 232, 232);
+}
+
+.sidenav-list-item:hover {
+    cursor: pointer;
+}
