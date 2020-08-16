@@ -11,8 +11,11 @@
     height: 100vh;
 }
 
-.main {
+app-header {
     grid-area: header;
+    background-color: rgba(0, 0, 0, 0.411);
+    box-shadow: 0 5px 25px 0 rgba(0, 0, 0, 0.20);
+    z-index: 1;
 }
 
 app-sidenav {
@@ -57,5 +60,4 @@ app-header, app-footer {
     align-items: center;
     justify-content: space-between;
     padding: 0 15px;
-    background-color: rgba(0, 0, 0, 0.411);
 }
