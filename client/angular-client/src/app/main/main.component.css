@@ -1,0 +1,9 @@
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+    padding: 20px;
+    height: 100px;
+    background-color: #f1f3f7;
+    color: slategray;
+}
