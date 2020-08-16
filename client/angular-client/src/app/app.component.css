@@ -11,7 +11,7 @@
     height: 100vh;
 }
 
-app-header {
+.main {
     grid-area: header;
 }
 
@@ -42,7 +42,7 @@ app-sidenav {
     }
 }
 
-app-main {
+.main {
     grid-area: main;
     background-color: white;
 }
