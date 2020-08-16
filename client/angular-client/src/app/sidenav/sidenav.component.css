@@ -31,3 +31,7 @@ a:link {
 a, a:visited {
     color: inherit;
 }
+
+.sidenav-home-text {
+    margin-left: 10px;
+}
