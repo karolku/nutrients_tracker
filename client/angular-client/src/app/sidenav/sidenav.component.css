@@ -11,12 +11,12 @@
 
 .sidenav-list {
     padding: 0px;
-    margin-top: 85px;
+    margin-top: 45px;
     list-style-type: none;
 }
 
 .sidenav-list-item {
-    padding: 12px 12px 12px 35px;
+    padding: 12px 12px 12px 45px;
     color: #333;
 }
 
@@ -32,6 +32,6 @@ a, a:visited {
     color: inherit;
 }
 
-.sidenav-home-text {
-    margin-left: 10px;
+.sidenav-text {
+    margin-left: 15px;
 }
