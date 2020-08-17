@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpClientModule } from '@angular/common/http';
+import { FoodProductComponent } from './food-product/food-product.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     DashboardComponent,
     NavbarComponent,
-    HttpClientModule
+    HttpClientModule,
+    FoodProductComponent
   ],
   imports: [
     BrowserModule,
