@@ -25,14 +25,14 @@ import { FoodProductComponent } from './food-product/food-product.component';
     HomeComponent,
     DashboardComponent,
     NavbarComponent,
-    HttpClientModule,
     FoodProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
