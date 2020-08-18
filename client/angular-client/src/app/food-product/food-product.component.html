@@ -1,1 +1,19 @@
-<p>food-product works!</p>
+<p>food-producd Works well</p>
+<div class="search-input">
+    <div class="md-form">
+        <label for="form1" class="">Product name...</label>  
+        <input 
+            (keyup.enter) = "createFoodProduct(foodProduct)" #foodProduct
+            mdbInput type="text" id="form1" class="form-control">
+      </div>
+      <button mdbBtn type="button" color="primary" mdbWavesEffect>Search</button>
+</div>
+<ul class="list-group">
+    <li *ngFor="let post of posts"
+    class="list-group-item">
+    <button
+        (click)="updatePost(post)"
+        class="btn btn-default btn-sm">Update</button>
+    {{ post.title }}
+    </li>
+</ul>

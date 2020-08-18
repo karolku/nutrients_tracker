@@ -1,3 +1,4 @@
+import { FoodProductService } from './services/food-product.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -32,9 +33,12 @@ import { FoodProductComponent } from './food-product/food-product.component';
     AppRoutingModule,
     FontAwesomeModule,
     MDBBootstrapModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+
   ],
-  providers: [],
+  providers: [
+    FoodProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
