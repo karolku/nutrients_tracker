@@ -1,5 +1,7 @@
 package com.karolk.controller.rest;
 
+import com.karolk.dto.UserDto;
+import com.karolk.service.AuthenticationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,8 +20,8 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity signUp(@RequestBody RegisterRequest registerRequest) {
-        authenticationService.signUp(registerRequest);
+    public ResponseEntity signUp(@RequestBody UserDto userDto) {
+        authenticationService.signup(userDto);
         return new ResponseEntity(HttpStatus.OK);
     }
 }
