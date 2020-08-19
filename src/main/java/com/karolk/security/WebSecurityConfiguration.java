@@ -20,6 +20,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors(withDefaults());
+        http.csrf().disable()
+                .authorizeRequests().antMatchers("/api/authentication/**").permitAll()
+                .anyRequest().authenticated();
     }
 
     // It allows client connection
