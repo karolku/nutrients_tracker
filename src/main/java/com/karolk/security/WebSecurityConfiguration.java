@@ -20,6 +20,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors(withDefaults());
     }
 
+    // It allows client connection
     // https://docs.spring.io/spring-security/site/docs/current/reference/html5/#cors
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
