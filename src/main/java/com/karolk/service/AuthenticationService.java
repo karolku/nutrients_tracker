@@ -30,6 +30,7 @@ public class AuthenticationService {
         user.setWeightInKg(userDto.getWeightInKg());
         user.setHeightInCm(userDto.getHeightInCm());
         user.setActivityLevel(userDto.getActivityLevel());
+        user.setCaloriesDemand();
 
         userRepository.save(user);
     }
