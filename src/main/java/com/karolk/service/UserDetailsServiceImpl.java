@@ -1,6 +1,7 @@
-package com.karolk.model;
+package com.karolk.service;
 
 import com.karolk.exception.InvalidUserException;
+import com.karolk.model.User;
 import com.karolk.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
