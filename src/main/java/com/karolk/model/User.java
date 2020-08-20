@@ -242,7 +242,7 @@ public class User {
                 Objects.equals(birthdayDate, user.birthdayDate) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
-                Objects.equals(caloriesDemand, this.caloriesDemand),
+                Objects.equals(caloriesDemand, this.caloriesDemand) &&
                 Objects.equals(isActive, this.isActive);
     }
 
