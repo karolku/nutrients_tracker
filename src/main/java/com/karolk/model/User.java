@@ -90,12 +90,15 @@ public class User {
     @Column(name = "calories_demand")
     private Integer caloriesDemand;
 
+    @Column(name = "is_active")
+    private boolean isActive;
+
     public User() {
     }
 
     public User(String firstName, String lastName, Gender gender, LocalDate birthdayDate,
                 String password, String email, double weightInKg, double heightInCm,
-                double activityLevel, int caloriesDemand) {
+                double activityLevel, int caloriesDemand, boolean isActive) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -106,6 +109,7 @@ public class User {
         this.heightInCm = heightInCm;
         this.activityLevel = activityLevel;
         this.caloriesDemand = caloriesDemand;
+        this.isActive = isActive;
     }
 
     public Long getId() {
@@ -199,6 +203,14 @@ public class User {
         this.caloriesDemand = this.calculateCalories();
     }
 
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
     //Based on the BMR formula
     @Transient
     public int calculateCalories() {
@@ -230,13 +242,14 @@ public class User {
                 Objects.equals(birthdayDate, user.birthdayDate) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(email, user.email) &&
-                Objects.equals(caloriesDemand, this.caloriesDemand);
+                Objects.equals(caloriesDemand, this.caloriesDemand),
+                Objects.equals(isActive, this.isActive);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, gender, birthdayDate,
-                password, email, weightInKg, heightInCm, activityLevel, caloriesDemand);
+                password, email, weightInKg, heightInCm, activityLevel, caloriesDemand, isActive);
     }
 
     @Override
@@ -253,6 +266,7 @@ public class User {
                 ", heightInCm=" + heightInCm +
                 ", activityLevel=" + activityLevel +
                 ", caloriesDemand=" + caloriesDemand +
+                ", isActive=" + isActive +
                 '}';
     }
 }
