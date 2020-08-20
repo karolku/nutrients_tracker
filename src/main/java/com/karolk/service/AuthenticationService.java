@@ -1,8 +1,12 @@
 package com.karolk.service;
 
+import com.karolk.dto.LoginAuthenticationRequest;
+import com.karolk.dto.LoginAuthenticationResponse;
 import com.karolk.dto.UserDto;
 import com.karolk.model.User;
 import com.karolk.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +15,13 @@ public class AuthenticationService {
 
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
+    private AuthenticationManager authenticationManager;
 
-    public AuthenticationService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public AuthenticationService(UserRepository userRepository, PasswordEncoder passwordEncoder,
+                                AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.authenticationManager = authenticationManager;
     }
 
     public void signup(UserDto userDto) {
@@ -33,5 +40,9 @@ public class AuthenticationService {
         user.setCaloriesDemand();
 
         userRepository.save(user);
+    }
+
+    public LoginAuthenticationResponse authenticateLogin(LoginAuthenticationRequest loginAuthenticationRequest) {
+
     }
 }
