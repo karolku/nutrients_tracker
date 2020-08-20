@@ -50,17 +50,14 @@ public class AuthenticationService {
         user.setHeightInCm(userDto.getHeightInCm());
         user.setActivityLevel(userDto.getActivityLevel());
         user.setCaloriesDemand();
+        user.setActive(true);
 
         userRepository.save(user);
     }
 
-    public LoginAuthenticationResponse authenticateLogin(LoginAuthenticationRequest loginAuthenticationRequest) throws Exception {
-        try{
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+    public LoginAuthenticationResponse authenticateLogin(LoginAuthenticationRequest loginAuthenticationRequest) {
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginAuthenticationRequest.getEmail(), loginAuthenticationRequest.getPassword()));
-        } catch (BadCredentialsException e) {
-            throw new Exception("Incorrect password or login.", e);
-        }
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginAuthenticationRequest.getEmail());
         String jwt = jwtProvider.generateToken(userDetails);
         Optional<User> user = userRepository.findUserByEmail(loginAuthenticationRequest.getEmail());
