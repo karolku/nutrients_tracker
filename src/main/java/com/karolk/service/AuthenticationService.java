@@ -3,12 +3,19 @@ package com.karolk.service;
 import com.karolk.dto.LoginAuthenticationRequest;
 import com.karolk.dto.LoginAuthenticationResponse;
 import com.karolk.dto.UserDto;
+import com.karolk.exception.InvalidUserException;
 import com.karolk.model.User;
 import com.karolk.repository.UserRepository;
+import com.karolk.util.JwtProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AuthenticationService {
@@ -16,12 +23,17 @@ public class AuthenticationService {
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
     private AuthenticationManager authenticationManager;
+    private UserDetailsServiceImpl userDetailsService;
+    private JwtProvider jwtProvider;
 
     public AuthenticationService(UserRepository userRepository, PasswordEncoder passwordEncoder,
-                                AuthenticationManager authenticationManager) {
+                                AuthenticationManager authenticationManager, UserDetailsServiceImpl userDetailsService,
+                                 JwtProvider jwtProvider) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
+        this.userDetailsService = userDetailsService;
+        this.jwtProvider = jwtProvider;
     }
 
     public void signup(UserDto userDto) {
@@ -42,7 +54,18 @@ public class AuthenticationService {
         userRepository.save(user);
     }
 
-    public LoginAuthenticationResponse authenticateLogin(LoginAuthenticationRequest loginAuthenticationRequest) {
+    public LoginAuthenticationResponse authenticateLogin(LoginAuthenticationRequest loginAuthenticationRequest) throws Exception {
+        try{
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
+                loginAuthenticationRequest.getEmail(), loginAuthenticationRequest.getPassword()));
+        } catch (BadCredentialsException e) {
+            throw new Exception("Incorrect password or login.", e);
+        }
+        UserDetails userDetails = userDetailsService.loadUserByUsername(loginAuthenticationRequest.getEmail());
+        String jwt = jwtProvider.generateToken(userDetails);
+        Optional<User> user = userRepository.findUserByEmail(loginAuthenticationRequest.getEmail());
+        user.orElseThrow(() -> new InvalidUserException("There is no user with provided email: " + loginAuthenticationRequest.getEmail()));
 
+        return new LoginAuthenticationResponse(jwt, user.get().getFirstName());
     }
 }
