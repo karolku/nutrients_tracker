@@ -1,5 +1,6 @@
 package com.karolk.model;
 
+import com.karolk.exception.InvalidUserException;
 import com.karolk.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,6 +19,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<User> user = userRepository.findByEmail(email);
+        Optional<User> user = userRepository.findUserByEmail(email);
+        user.orElseThrow(() -> new InvalidUserException("Provided user has not been found: " + email));
     }
 }
