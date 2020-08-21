@@ -13,7 +13,7 @@ export class AuthenticationService {
     let contentTypeHeaders = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post("http://localhost:8080/api/authentication",
+    return this.http.post("http://localhost:8080/api/authentication/login",
         JSON.stringify(credentials), {headers: contentTypeHeaders})
         .pipe(map((response : any) => {
             console.log(response);
