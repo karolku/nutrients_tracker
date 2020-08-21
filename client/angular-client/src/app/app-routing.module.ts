@@ -1,3 +1,4 @@
+import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +13,7 @@ const routes: Routes = [];
   imports: [RouterModule.forRoot([
     {path: '', component: HomeComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'signup', component: SignupComponent},
     {path: 'settings', component: SettingsComponent},
     {path: 'dashboard', component: DashboardComponent}
   ])],
