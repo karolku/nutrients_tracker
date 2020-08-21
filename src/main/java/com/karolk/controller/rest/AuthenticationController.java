@@ -31,7 +31,7 @@ public class AuthenticationController {
         try {
             loginAuthenticationResponse = authenticationService.authenticateLogin(loginAuthenticationRequest);
         } catch (BadCredentialsException e) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).
                     body("Invalid email or password for user: " + loginAuthenticationRequest.getEmail());
         }
         return ResponseEntity.ok(loginAuthenticationResponse);
