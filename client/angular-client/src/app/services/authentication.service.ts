@@ -16,7 +16,11 @@ export class AuthenticationService {
     return this.http.post("http://localhost:8080/api/authentication/login",
         JSON.stringify(credentials), {headers: contentTypeHeaders})
         .pipe(map((response : any) => {
-            console.log(response);
+            if(response && response.jwt) {
+              localStorage.setItem('jwt', response.jwt)
+              return true;
+            }
+            return false;
         }));
   }
 
