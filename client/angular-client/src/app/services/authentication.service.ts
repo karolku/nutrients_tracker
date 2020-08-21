@@ -25,6 +25,7 @@ export class AuthenticationService {
   }
 
   logout() {
+    localStorage.removeItem('jwt');
   }
 
   isLoggedIn() {
