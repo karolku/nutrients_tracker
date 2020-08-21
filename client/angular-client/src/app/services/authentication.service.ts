@@ -12,4 +12,11 @@ export class AuthenticationService {
     return this.http.post("http://localhost:8080/api/authentication",
         JSON.stringify(credentials));
   }
+
+  logout() {
+  }
+
+  isLoggedIn() {
+    return false;
+  }
 }
