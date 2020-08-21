@@ -15,6 +15,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpClientModule } from '@angular/common/http';
 import { FoodProductComponent } from './food-product/food-product.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FoodProductComponent } from './food-product/food-product.component';
     HomeComponent,
     DashboardComponent,
     NavbarComponent,
-    FoodProductComponent
+    FoodProductComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
