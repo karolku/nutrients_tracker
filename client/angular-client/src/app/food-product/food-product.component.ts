@@ -16,7 +16,7 @@ export class FoodProductComponent implements OnInit {
   }
 
   searchForProduct(input: HTMLInputElement) {
-    this.service.getFoodProduct()
+    this.service.searchFoodByName(input)
     .subscribe((response: any[]) => {
         this.posts = response;
         console.log(response);
