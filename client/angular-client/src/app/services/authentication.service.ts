@@ -7,6 +7,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class AuthenticationService {
+  public userName: string;
 
   constructor(private http: HttpClient) {}
 
@@ -18,6 +19,7 @@ export class AuthenticationService {
         JSON.stringify(credentials), {headers: contentTypeHeaders})
         .pipe(map((response : any) => {
             if(response && response.jwt) {
+              this.userName = response.username;
               localStorage.setItem('jwt', response.jwt)
               return true;
             }
