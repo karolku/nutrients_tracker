@@ -7,7 +7,7 @@ import { Component, OnInit, DefaultIterableDiffer } from '@angular/core';
   styleUrls: ['./food-product.component.scss']
 })
 export class FoodProductComponent implements OnInit {
-  posts: any[];
+  foods: any[];
   
   constructor(private service: FoodProductService) { 
   }
@@ -18,7 +18,7 @@ export class FoodProductComponent implements OnInit {
   searchForProduct(input: HTMLInputElement) {
     this.service.searchFoodByName(input.value)
     .subscribe((response: any[]) => {
-        this.posts = response;
+        this.foods = response;
         console.log(response);
         // this.posts = Array.of(this.posts);
     });
@@ -30,7 +30,7 @@ export class FoodProductComponent implements OnInit {
     this.service.createFoodProduct(post)
         .subscribe((response: any) => {
           post['id'] = response.id;
-          this.posts.splice(0,0, post);
+          this.foods.splice(0,0, post);
           console.log(response);
         });
   }
