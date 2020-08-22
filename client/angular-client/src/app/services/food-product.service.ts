@@ -5,12 +5,12 @@ import { HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class FoodProductService {
-  private url = 'https://jsonplaceholder.typicode.com/posts';
+  private url = 'http://localhost:8080/api/usda/foods';
   
   constructor(private httpClient: HttpClient) { }
 
-  getFoodProduct(){
-    return this.httpClient.get(this.url);
+  searchFoodByName(foodName){
+    return this.httpClient.get(this.url + '/search' + foodName);
   }
 
   createFoodProduct(post){
