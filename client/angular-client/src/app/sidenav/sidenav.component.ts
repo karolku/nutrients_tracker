@@ -1,4 +1,3 @@
-import { AuthenticationService } from './../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { faHome, faCogs, faUser, faChartLine } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,7 +12,7 @@ export class SidenavComponent implements OnInit {
   SettingsIcon = faCogs;
   ChartIcon = faChartLine;
 
-  constructor(private auth: AuthenticationService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
