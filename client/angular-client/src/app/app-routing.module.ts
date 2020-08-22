@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard.service';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -14,8 +15,8 @@ const routes: Routes = [];
     {path: '', component: HomeComponent},
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
-    {path: 'settings', component: SettingsComponent},
-    {path: 'dashboard', component: DashboardComponent}
+    {path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService]},
+    {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService]}
   ])],
   exports: [RouterModule]
 })
