@@ -13,12 +13,16 @@ export class FoodProductComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.service.getFoodProduct()
-          .subscribe((response: any[]) => {
-              this.posts = response;
-              // this.posts = Array.of(this.posts);
-          });
   }
+
+  searchForProduct(input: HTMLInputElement) {
+    this.service.getFoodProduct()
+    .subscribe((response: any[]) => {
+        this.posts = response;
+        console.log(response);
+        // this.posts = Array.of(this.posts);
+    });
+  }  
 
   createFoodProduct(input: HTMLInputElement){
     let post = {title: input.value};
