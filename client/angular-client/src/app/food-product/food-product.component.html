@@ -6,7 +6,9 @@
             (keyup.enter) = "createFoodProduct(foodProduct)" #foodProduct
             mdbInput type="text" id="form1" class="form-control">
       </div>
-      <button mdbBtn type="button" color="primary" mdbWavesEffect>Search</button>
+      <button 
+        (click)="searchForProduct(foodProduct)"
+        mdbBtn type="button" color="primary" mdbWavesEffect>Search</button>
 </div>
 <ul class="list-group">
     <li *ngFor="let post of posts"
