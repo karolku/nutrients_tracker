@@ -30,10 +30,11 @@ export class AuthenticationService {
   }
 
   isLoggedIn() {
-    let isLoggedIn = new JwtHelperService();
+    let jwtHelper = new JwtHelperService();
     let token = localStorage.getItem('jwt');
     if(!token)
       return false;
-    return isLoggedIn.isTokenExpired(token);
+    let isExpired = jwtHelper.isTokenExpired(token);
+    return !isExpired;
   }
 }
