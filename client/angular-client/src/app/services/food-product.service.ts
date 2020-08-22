@@ -6,17 +6,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class FoodProductService {
   private url = 'http://localhost:8080/api/usda/foods';
-  private token = localStorage.getItem('jwt');
-
-  private authHeaders = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authentication': 'Bearer ' + this.token
-  });
+  
 
   constructor(private httpClient: HttpClient,) { }
 
   searchFoodByName(foodName){
-    return this.httpClient.get(this.url + '/search' + foodName, { headers: this.authHeaders });
+    let token = localStorage.getItem('jwt');
+
+    let authHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + token
+  });
+    console.log(authHeaders);
+    console.log(this.httpClient.get(this.url + '/search/' + foodName, {headers: authHeaders}));
+    return this.httpClient.get(this.url + '/search/' + foodName, {headers: authHeaders});
   }
 
   createFoodProduct(post){
