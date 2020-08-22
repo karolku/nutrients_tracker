@@ -9,10 +9,16 @@
         </div>
 
         <!-- Email -->
-        <input type="email" id="defaultLoginFormEmail"  class="form-control mb-4" name="email" ngModel class="form-control" placeholder="E-mail" required autofocus>
+        <div *ngIf="email.touched && !email.valid" class="alert alert-danger">
+            Email is required!
+        </div>
+        <div *ngIf="password.touched && !password.valid" class="alert alert-danger">
+            Password is required!
+        </div>
+        <input type="email" id="defaultLoginFormEmail"  class="form-control mb-4" name="email" ngModel class="form-control" #email="ngModel" placeholder="E-mail" required>
     
         <!-- Password -->
-        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" name="password" ngModel class="form-control" placeholder="Password" required>
+        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" name="password" ngModel class="form-control" #password="ngModel" placeholder="Password" required>
     
         <div class="d-flex justify-content-around">
         <div>
@@ -26,28 +32,12 @@
         </div>
     
         <!-- Sign in button -->
-        <button mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
+        <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="!credentials.valid">Sign in</button>
     
         <!-- Register -->
         <p>Not a member?
         <a href="">Register</a>
         </p>
-    
-        <!-- Social login -->
-        <p>or sign in with:</p>
-    
-        <a type="button" class="light-blue-text mx-2">
-        <mdb-icon fab icon="facebook"></mdb-icon>
-        </a>
-        <a type="button" class="light-blue-text mx-2">
-        <mdb-icon fab icon="twitter"></mdb-icon>
-        </a>
-        <a type="button" class="light-blue-text mx-2">
-        <mdb-icon fab icon="linkedin"></mdb-icon>
-        </a>
-        <a type="button" class="light-blue-text mx-2">
-        <mdb-icon fab icon="github"></mdb-icon>
-        </a>
     
     </form>
     <!-- Default form login -->
