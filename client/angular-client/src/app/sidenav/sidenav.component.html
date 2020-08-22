@@ -1,4 +1,4 @@
-<ul class="sidenav-list">
+<ul *ngIf="auth.isLoggedIn()" class="sidenav-list">
     <li class="sidenav-list-item">
         <div class="sidenav-home">
             <span class="sidenav-icon"><fa-icon [icon]="HomeIcon"></fa-icon></span>
