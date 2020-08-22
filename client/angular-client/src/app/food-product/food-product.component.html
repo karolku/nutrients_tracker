@@ -1,5 +1,5 @@
-<p>food-producd Works well</p>
-<div class="search-input">
+<h1>Add Food products</h1>
+<div class="search-input search-box">
     <div class="md-form">
         <label for="form1" class="">Product name...</label>  
         <input 
@@ -13,9 +13,16 @@
 <ul class="list-group">
     <li *ngFor="let food of foods"
     class="list-group-item">
-    <button
-        (click)="updatePost(food)"
-        class="btn btn-default btn-sm">Add food</button>
-    {{ food.description }}
+        <div>
+            <button
+                (click)="updatePost(food)"
+                class="btn btn-default btn-sm">Add food</button>
+        </div>
+        <div>
+            {{ food.description }}
+        </div>
+        <div>
+            Brand Owner: {{ food.brandOwner}}
+        </div>
     </li>
 </ul>
