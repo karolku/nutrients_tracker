@@ -26,7 +26,19 @@ export class AuthenticationService {
             return false;
         }));
   }
-
+  
+  singUp(formInput) {
+    
+    let contentTypeHeaders = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+      this.http.post("http://localhost:8080/api/authentication/signup",
+        JSON.stringify(formInput), {headers: contentTypeHeaders})
+        .pipe(map((response : any) => {
+          console.log(response);  
+        }));
+  }
+  
   logout() {
     localStorage.removeItem('jwt');
   }
