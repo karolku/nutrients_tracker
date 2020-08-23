@@ -15,7 +15,7 @@ public class UserDto {
     private String password;
     private double weightInKg;
     private double heightInCm;
-    private double activityLevel;
+    private String activityLevel;
     private int caloriesDemand;
 
     public UserDto() {
@@ -23,7 +23,7 @@ public class UserDto {
 
     public UserDto(String firstName, String lastName, String gender,
                    String birthdayDate, String email, String password, double weightInKg,
-                   double heightInCm, double activityLevel, int caloriesDemand) {
+                   double heightInCm, String activityLevel, int caloriesDemand) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -108,11 +108,11 @@ public class UserDto {
         this.heightInCm = heightInCm;
     }
 
-    public double getActivityLevel() {
+    public String getActivityLevel() {
         return activityLevel;
     }
 
-    public void setActivityLevel(double activityLevel) {
+    public void setActivityLevel(String activityLevel) {
         this.activityLevel = activityLevel;
     }
 
@@ -131,15 +131,15 @@ public class UserDto {
         UserDto userDto = (UserDto) o;
         return Double.compare(userDto.weightInKg, weightInKg) == 0 &&
                 Double.compare(userDto.heightInCm, heightInCm) == 0 &&
-                Double.compare(userDto.activityLevel, activityLevel) == 0 &&
-                Double.compare(userDto.caloriesDemand, caloriesDemand) == 0 &&
+                caloriesDemand == userDto.caloriesDemand &&
                 Objects.equals(id, userDto.id) &&
                 Objects.equals(firstName, userDto.firstName) &&
                 Objects.equals(lastName, userDto.lastName) &&
                 Objects.equals(gender, userDto.gender) &&
                 Objects.equals(birthdayDate, userDto.birthdayDate) &&
                 Objects.equals(email, userDto.email) &&
-                Objects.equals(password, userDto.password);
+                Objects.equals(password, userDto.password) &&
+                Objects.equals(activityLevel, userDto.activityLevel);
     }
 
     @Override
