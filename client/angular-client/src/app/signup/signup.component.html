@@ -1,6 +1,7 @@
 
 <!-- Extended material form grid -->
-<form>
+<form #singupData="ngForm" (ngSubmit)="sendSignup(signupData.value)">
+
     <div class="form-row">
         <div class="signup">
             <h3 class="singup-text">Sign up</h3>
