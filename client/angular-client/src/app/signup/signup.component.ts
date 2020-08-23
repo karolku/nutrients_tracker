@@ -15,6 +15,9 @@ export class SignupComponent implements OnInit {
   }
 
   signUp(signupData){
-    console.log(signupData);
+    this.auth.singUp(signupData)
+    .subscribe(respone => {
+        console.log(respone);
+    })
   }
 }
