@@ -1,5 +1,7 @@
 package com.karolk.dto;
 
+import com.karolk.model.User;
+
 import java.util.Objects;
 
 public class SignUpResponse {
@@ -8,7 +10,10 @@ public class SignUpResponse {
     private String firstName;
     private String email;
 
-    public SignUpResponse() {
+    public SignUpResponse(User user) {
+        this.id = user.getId();
+        this.firstName = user.getFirstName();
+        this.email = user.getEmail();
     }
 
     public SignUpResponse(Long id, String firstName, String email) {
