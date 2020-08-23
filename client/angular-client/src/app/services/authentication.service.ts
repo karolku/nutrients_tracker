@@ -35,7 +35,7 @@ export class AuthenticationService {
       this.http.post("http://localhost:8080/api/authentication/signup",
         JSON.stringify(formInput), {headers: contentTypeHeaders})
         .pipe(map((response : any) => {
-          console.log(response);  
+          console.log(response);
         }));
   }
   
