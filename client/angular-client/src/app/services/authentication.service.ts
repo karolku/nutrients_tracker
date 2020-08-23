@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class AuthenticationService {
   public userName: string;
+  public email: string;
+  public jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient) {}
 
@@ -40,7 +42,19 @@ export class AuthenticationService {
         //   console.log(response);
         // }));
   }
-  
+
+  decodeToken() {
+    let token = localStorage.getItem('jwt');
+    console.log(token);
+    return this.jwtHelper.decodeToken(token);
+  }
+
+  getCurrentUserEmail() {
+    let decodedToken = this.decodeToken();
+    this.email = decodedToken.sub;
+    return this.email;
+  }
+
   logout() {
     localStorage.removeItem('jwt');
   }
