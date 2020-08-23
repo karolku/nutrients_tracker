@@ -20,9 +20,9 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity signUp(@RequestBody UserDto userDto) {
+    public ResponseEntity<String> signUp(@RequestBody UserDto userDto) {
         authenticationService.signup(userDto);
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<String>("Registration was successful!", HttpStatus.OK);
     }
 
     @PostMapping("/login")
