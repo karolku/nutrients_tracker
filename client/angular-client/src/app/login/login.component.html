@@ -1,6 +1,8 @@
 <div class="container-login">
     <!-- Default form login -->
-    <form class="text-center border border-light p-5" #credentials="ngForm" (ngSubmit)="signIn(credentials.value)"  >
+    <form class="text-center border border-light p-5" 
+        #credentials="ngForm" 
+        (ngSubmit)="signIn(credentials.value)"  >
 
         <p class="h4 mb-4">Sign in</p>
         
@@ -9,36 +11,60 @@
         </div>
 
         <!-- Email -->
-        <div *ngIf="email.touched && !email.valid" class="alert alert-danger">
+        <div *ngIf="email.touched && !email.valid" 
+            class="alert alert-danger">
             Email is required!
         </div>
-        <div *ngIf="password.touched && !password.valid" class="alert alert-danger">
+        <div *ngIf="password.touched && !password.valid" 
+            class="alert alert-danger">
             Password is required!
         </div>
-        <input type="email" id="defaultLoginFormEmail"  class="form-control mb-4" name="email" ngModel class="form-control" #email="ngModel" placeholder="E-mail" required>
+        
+        <input type="email" 
+                id="defaultLoginFormEmail"  
+                class="form-control mb-4" 
+                name="email" 
+                ngModel 
+                class="form-control" 
+                #email="ngModel" 
+                placeholder="E-mail" 
+                required>
     
         <!-- Password -->
-        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" name="password" ngModel class="form-control" #password="ngModel" placeholder="Password" required>
+        <input type="password" 
+            id="defaultLoginFormPassword" 
+            class="form-control mb-4" 
+            name="password" 
+            ngModel 
+            class="form-control" 
+            #password="ngModel" 
+            placeholder="Password" 
+            required>
     
         <div class="d-flex justify-content-around">
-        <div>
-            <!-- Remember me -->
-            <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
-        </div>
-        <div>
+            <div>
+                <!-- Remember me -->
+                <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
+            </div>
+            <div>
             <!-- Forgot password -->
             <a href="">Forgot password?</a>
-        </div>
+            </div>
         </div>
     
         <!-- Sign in button -->
-        <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="!credentials.valid">Sign in</button>
+        <button mdbBtn 
+                color="info" 
+                block="true" 
+                class="my-4" 
+                type="submit" 
+                [disabled]="!credentials.valid">
+                Sign in</button>
     
         <!-- Register -->
         <p>Not a member?
-        <a routerLink="/signup">Create an account ;)</a>
+            <a routerLink="/signup">Create an account ;)</a>
         </p>
-    
     </form>
     <!-- Default form login -->
 </div>
