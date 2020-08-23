@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
@@ -8,7 +9,7 @@ import * as moment from 'moment';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthenticationService) { }
 
   ngOnInit(): void {
   }
