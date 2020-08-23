@@ -2,6 +2,7 @@ package com.karolk.service;
 
 import com.karolk.dto.LoginAuthenticationRequest;
 import com.karolk.dto.LoginAuthenticationResponse;
+import com.karolk.dto.SignUpResponse;
 import com.karolk.dto.UserDto;
 import com.karolk.exception.InvalidUserException;
 import com.karolk.model.User;
@@ -36,7 +37,7 @@ public class AuthenticationService {
         this.jwtProvider = jwtProvider;
     }
 
-    public void signup(UserDto userDto) {
+    public SignUpResponse signup(UserDto userDto) {
         User user = new User();
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
@@ -51,8 +52,10 @@ public class AuthenticationService {
         user.setActivityLevel(userDto.getActivityLevel());
         user.setCaloriesDemand();
         user.setActive(true);
-
         userRepository.save(user);
+
+        SignUpResponse signUpResponse = new SignUpResponse(user);
+        return signUpResponse;
     }
 
     public LoginAuthenticationResponse authenticateLogin(LoginAuthenticationRequest loginAuthenticationRequest) {
