@@ -28,12 +28,11 @@ export class AuthenticationService {
   }
   
   singUp(formInput) {
-    
     let contentTypeHeaders = new HttpHeaders({
       'Content-Type': 'application/json'
     });
      return this.http.post("http://localhost:8080/api/authentication/signup",
-        JSON.stringify(formInput), {responseType: 'text'});
+        JSON.stringify(formInput), {headers: contentTypeHeaders});
   }
   
   logout() {
