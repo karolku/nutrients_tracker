@@ -1,3 +1,4 @@
+import { WelcomeComponent } from './welcome/welcome.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
@@ -12,7 +13,8 @@ const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot([
-    {path: '', component: HomeComponent},
+    {path: '', component: WelcomeComponent},
+    {path: 'home', component: HomeComponent},
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
     {path: 'settings', component: SettingsComponent, canActivate: [AuthGuardService]},
