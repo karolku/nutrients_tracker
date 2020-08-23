@@ -1,6 +1,6 @@
 
 <!-- Extended material form grid -->
-<form #singupData="ngForm" (ngSubmit)="sendSignup(signupData.value)">
+<form #signUpData="ngForm" (ngSubmit)="signUp(signUpData.value)">
 
     <div class="form-row">
         <div class="signup">
@@ -15,7 +15,12 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input mdbInput type="text" class="form-control" placeholder="First Name">
+            <input mdbInput 
+                ngModel
+                name="firstName"
+                type="text" 
+                class="form-control" 
+                placeholder="First Name">
             <label for="firstName">First Name</label>
           </div>
         </div>
@@ -25,7 +30,12 @@
         <div class="col-md-6">
           <!-- Material input -->
           <div class="md-form form-group">
-            <input mdbInput type="text" class="form-control" placeholder="Last Name">
+            <input mdbInput 
+                ngModel
+                name="lastName"
+                type="text" 
+                class="form-control" 
+                placeholder="Last Name">
             <label for="lastName">Last Name</label>
           </div>
         </div>
@@ -40,14 +50,18 @@
         <!-- Material input -->
         <div class="md-form form-group">
             <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
-            <input mdbInput mdbValidate ngModel name="email" 
+            <input mdbInput mdbValidate 
+                ngModel 
+                name="email" 
                 #email="ngModel"
                 type="email" 
                 class="form-control"  
                 required pattern="[^ @]*@[^ @]*" 
                 placeholder="Email">
           <label for="email">Email</label>
-          <mdb-error *ngIf="email.invalid && (email.touched && email.dirty)"><h6>Invalid Email</h6></mdb-error>
+          <mdb-error *ngIf="email.invalid && (email.touched && email.dirty)">
+              <h6>Invalid Email</h6>
+          </mdb-error>
         </div>
       </div>
       <!-- Grid column -->
@@ -57,14 +71,18 @@
         <!-- Material input -->
         <div class="md-form form-group">
             <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
-          <input mdbInput mdbValidate ngModel name="password"
+          <input mdbInput mdbValidate 
+                ngModel 
+                name="password"
                 #password="ngModel"
                 type="password" 
                 minlength="8"
                 class="form-control" 
                 placeholder="Password">
           <label for="password">Password</label>
-          <mdb-error *ngIf="password.invalid && (password.touched && password.dirty)"><h6>Minnimum password length is 8</h6></mdb-error>
+          <mdb-error *ngIf="password.invalid && (password.touched && password.dirty)">
+              <h6>Minnimum password length is 8</h6>
+          </mdb-error>
         </div>
       </div>
       <!-- Grid column -->
@@ -78,11 +96,15 @@
         <!-- Material input -->
         <div class="md-form">
             <mdb-icon fas icon="calendar-alt" class="prefix"></mdb-icon>
-            <input mdbInput  
+            <input mdbInput
+                ngModel
+                name="birthdayDate"  
                 type="date" 
                 id="date" 
                 class="form-control">
-            <label for="date">Birthday date in a format: yyyy-mm-dd</label>
+            <label for="date">
+                Birthday date in a format: yyyy-mm-dd
+            </label>
         </div>
       </div>
       <!-- Date column -->
@@ -94,14 +116,34 @@
         <div class="row radio-gender">
               <!-- Default unchecked -->
             <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="defaultUnchecked" name="defaultExampleRadios" mdbInput>
-                <label class="custom-control-label" for="defaultUnchecked">Female</label>
+                <input type="radio" 
+                    ngModel
+                    name="gender"
+                    value="FEMALE"
+                    class="custom-control-input" 
+                    id="female"  
+                    mdbInput>
+                <label class="custom-control-label" 
+                    for="female">
+                    Female
+                </label>
             </div>
             
             <!-- Default checked -->
             <div class="custom-control custom-radio radio-gender">
-                <input type="radio" class="custom-control-input" id="defaultChecked" name="defaultExampleRadios" checked mdbInput>
-                <label class="custom-control-label" for="defaultChecked">Male</label>
+                <input type="radio" 
+                    ngModel
+                    name="gender"
+                    class="custom-control-input" 
+                    id="male" 
+                    name="gender"
+                    value="MALE"
+                    checked
+                    mdbInput>
+                <label class="custom-control-label" 
+                    for="male">
+                    Male
+                </label>
             </div>
         </div> 
       <!-- Gender row -->
@@ -114,7 +156,10 @@
       <div class="col-md-6">
         <!-- Material input -->
         <div class="md-form form-group">
-          <input mdbInput type="number" 
+          <input mdbInput 
+                ngModel
+                name="weightInKg"
+                type="number" 
                 class="form-control" 
                 id="weight" 
                 placeholder="Weight in kilograms"
@@ -128,7 +173,10 @@
       <div class="col-md-6">
         <!-- Material input -->
         <div class="md-form form-group">
-          <input mdbInput type="number" 
+          <input mdbInput 
+                ngModel
+                name="heightInCm"
+                type="number" 
                 class="form-control" 
                 id="weight" 
                 placeholder="Height"
@@ -148,13 +196,15 @@
             <div class="row activity-text">
              Activity Level
             </div>
-                <select class="browser-default custom-select">
+                <select class="browser-default custom-select" 
+                    ngModel 
+                    name="activityLevel">
                     <option selected>Select your activity level</option>
-                    <option value="1">Sedentary</option>
-                    <option value="2">Low Activity</option>
-                    <option value="3">Moderate Activity</option>
-                    <option value="3">High Activity</option>
-                    <option value="3">Very High Activity</option>
+                    <option value="1.2">Sedentary</option>
+                    <option value="1.375">Low Activity</option>
+                    <option value="1.55">Moderate Activity</option>
+                    <option value="1.725">High Activity</option>
+                    <option value="1.9">Very High Activity</option>
                 </select>
             </div>
         <!-- Grid column -->

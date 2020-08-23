@@ -7,18 +7,13 @@ import * as moment from 'moment';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  date;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  isDateValid(){
-    return moment(this.date,"YYYY-MM-DD");
-  }
-
-  display(){
-    console.log(this.date);
+  signUp(signupData){
+    console.log(signupData);
   }
 }
