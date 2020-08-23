@@ -2,6 +2,7 @@ package com.karolk.controller.rest;
 
 import com.karolk.dto.LoginAuthenticationRequest;
 import com.karolk.dto.LoginAuthenticationResponse;
+import com.karolk.dto.SignUpResponse;
 import com.karolk.dto.UserDto;
 import com.karolk.service.AuthenticationService;
 import org.springframework.http.HttpStatus;
@@ -20,9 +21,9 @@ public class AuthenticationController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> signUp(@RequestBody UserDto userDto) {
-        authenticationService.signup(userDto);
-        return new ResponseEntity<String>("Registration was successful!", HttpStatus.OK);
+    public ResponseEntity signUp(@RequestBody UserDto userDto) {
+        SignUpResponse signUpResponse = authenticationService.signup(userDto);
+        return new ResponseEntity.ok(signUpResponse);
     }
 
     @PostMapping("/login")
