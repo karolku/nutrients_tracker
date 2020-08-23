@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(credentials)
       .subscribe((response: any) => {
         if(response)
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
         else
           this.invalidLogin = true;
       });

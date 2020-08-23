@@ -1,9 +1,17 @@
-<div class="main-header">
-    <div *ngIf="auth.isLoggedIn()" class="main-header-user">Hello, {{ auth.userName }}!</div>
-    <div class="main-header-updates">Goal for Today 2200 kcal = 100g protein + 150g carbs + 98g fat</div>
-</div>
-<div class="main-info">
-    <div class="info">
-        <app-food-product></app-food-product>
+<div class="row mx-lg-n5">
+    <div class="col-sm-2 side-nav">
+        <app-sidenav></app-sidenav>
+    </div>
+    <div class="col-sm-9">
+        <div class="main-header">
+            <div *ngIf="auth.isLoggedIn()" class="main-header-user">Hello, {{ auth.userName }}!</div>
+            <div class="main-header-updates">Goal for Today 2200 kcal = 100g protein + 150g carbs + 98g fat</div>
+        </div>
+        <div class="main-info">
+            <div class="info">
+                <app-food-product></app-food-product>
+            </div>
+        </div>
     </div>
 </div>
+
