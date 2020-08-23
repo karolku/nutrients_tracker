@@ -189,10 +189,11 @@ public class User {
         return activityLevel;
     }
 
-    public void setActivityLevel(double activityLevel) {
-        if(!(ActivityLevel.isActivityLevel(activityLevel)))
-            throw new InvalidUserException("Invalid activity level provided with value: " + activityLevel);
-        this.activityLevel = activityLevel;
+    public void setActivityLevel(String activityLevel) {
+        double convertedToDouble = Double.parseDouble(activityLevel);
+        if(!(ActivityLevel.isActivityLevel(convertedToDouble)))
+            throw new InvalidUserException("Invalid activity level provided with value: " + convertedToDouble);
+        this.activityLevel = convertedToDouble;
     }
 
     public int getCaloriesDemand() {
