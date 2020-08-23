@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,12 +28,17 @@ export class AuthenticationService {
         }));
   }
   
-  singUp(formInput) {
+  singUp(signUpData): Observable<any> {
+    console.log("Auth service: This is input from sign up component");
+    console.log(signUpData);
     let contentTypeHeaders = new HttpHeaders({
       'Content-Type': 'application/json'
     });
      return this.http.post("http://localhost:8080/api/authentication/signup",
-        JSON.stringify(formInput), {headers: contentTypeHeaders});
+        JSON.stringify(signUpData), {headers: contentTypeHeaders});
+        // .pipe(map((response: any) => {
+        //   console.log(response);
+        // }));
   }
   
   logout() {
