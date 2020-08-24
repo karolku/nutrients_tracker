@@ -11,6 +11,7 @@ export class AuthenticationService {
   public userName: string;
   public email: string;
   public id: number;
+  public user: any;
   public jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient) {}
@@ -75,6 +76,10 @@ export class AuthenticationService {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
     });
+    console.log('Message from auth service getUserById');
+    console.log(token);
+    console.log(headers);
+    console.log(this.http.get('http://localhost:8080/api/users/' + this.id, {headers: headers}));
     return this.http.get('http://localhost:8080/api/users/' + this.id, {headers: headers});
   }
 }
