@@ -18,9 +18,7 @@ export class HomeComponent implements OnInit {
     this.auth.getUserInfoById()
       .subscribe((response: any) => {
         this.user = response
-        console.log(response);
-        console.log(this.user);
+        // console.log(response);
       });
   }
-
 }

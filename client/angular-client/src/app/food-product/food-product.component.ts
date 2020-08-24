@@ -19,7 +19,6 @@ export class FoodProductComponent implements OnInit {
     this.service.searchFoodByName(input.value)
     .subscribe((response: any[]) => {
         this.foods = response;
-        console.log(response);
         // this.posts = Array.of(this.posts);
     });
   }  

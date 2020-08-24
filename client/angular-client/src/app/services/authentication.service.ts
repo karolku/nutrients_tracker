@@ -52,7 +52,6 @@ export class AuthenticationService {
 
   getCurrentUserEmail() {
     let decodedToken = this.decodeToken();
-    console.log(decodedToken);
     this.email = decodedToken.sub;
     return this.email;
   }
