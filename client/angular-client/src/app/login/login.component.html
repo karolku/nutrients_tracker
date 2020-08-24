@@ -58,7 +58,8 @@
                 block="true" 
                 class="my-4" 
                 type="submit" 
-                [disabled]="!credentials.valid">
+                [disabled]="!credentials.valid"
+                (click)="home.getUserInfo()">
                 Sign in</button>
     
         <!-- Register -->
