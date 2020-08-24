@@ -7,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  user: any;
 
   constructor(public auth: AuthenticationService) { }
 
   ngOnInit(): void {
+  }
+
+  getUserInfo() {
+    this.auth.getUserInfoById()
+      .subscribe((response: any) => {
+        this.user = response
+        console.log(response);
+        console.log(this.user);
+      });
   }
 
 }
