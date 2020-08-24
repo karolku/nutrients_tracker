@@ -68,7 +68,9 @@ public class FoodEntryControllerRest {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").
                 buildAndExpand(createdFoodEntry.getId())
                 .toUri();
-        return ResponseEntity.created(uri).body(FoodEntryMapper.INSTANCE.convertFoodEntryEntityToDto(createdFoodEntry));
+        FoodEntryDto foodEntryDtoCreated = FoodEntryMapper.INSTANCE.convertFoodEntryEntityToDto(createdFoodEntry);
+        foodEntryDtoCreated.setFoodInfo(savedFood);
+        return ResponseEntity.created(uri).body(foodEntryDtoCreated);
     }
 
     @PutMapping("/{foodEntryId}")
