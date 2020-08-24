@@ -70,12 +70,12 @@ export class AuthenticationService {
     return !isExpired;
   }
 
-  getUserInfoById(id) {
+  getUserInfoById() {
     let token = localStorage.getItem('jwt');
     let headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
     });
-    return this.http.get('http://localhost:8080/api/users/' + id, {headers: headers});
+    return this.http.get('http://localhost:8080/api/users/' + this.id, {headers: headers});
   }
 }
