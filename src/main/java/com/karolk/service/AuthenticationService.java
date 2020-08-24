@@ -8,6 +8,8 @@ import com.karolk.exception.InvalidUserException;
 import com.karolk.model.User;
 import com.karolk.repository.UserRepository;
 import com.karolk.util.JwtProvider;
+import com.karolk.util.UserMapper;
+import com.karolk.util.UserMapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -58,14 +60,15 @@ public class AuthenticationService {
         return signUpResponse;
     }
 
-    public LoginAuthenticationResponse authenticateLogin(LoginAuthenticationRequest loginAuthenticationRequest) {
+    public Optional<UserDto> authenticateLogin(LoginAuthenticationRequest loginAuthenticationRequest) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 loginAuthenticationRequest.getEmail(), loginAuthenticationRequest.getPassword()));
         UserDetails userDetails = userDetailsService.loadUserByUsername(loginAuthenticationRequest.getEmail());
         String jwt = jwtProvider.generateToken(userDetails);
-        Optional<User> user = userRepository.findUserByEmail(loginAuthenticationRequest.getEmail());
-        user.orElseThrow(() -> new InvalidUserException("There is no user with provided email: " + loginAuthenticationRequest.getEmail()));
-
-        return new LoginAuthenticationResponse(jwt, user.get().getFirstName(), user.get().getId());
+        Optional<UserDto> userDto = userRepository.findUserByEmail(loginAuthenticationRequest.getEmail())
+                .map(UserMapper.INSTANCE::convertEntityUserToUserDto);
+        userDto.get().setJwt(jwt);
+        //return new LoginAuthenticationResponse(jwt, user.get().getFirstName(), user.get().getId());
+        return userDto;
     }
 }
