@@ -12,6 +12,7 @@ public class FoodEntryDto {
     private Long id;
     private Long userId;
     private Long foodId;
+    private Foods foodInfo;
     private double amountOfServing;
     private String servingType;
     private Date dateOfFoodEntry;
@@ -20,10 +21,11 @@ public class FoodEntryDto {
     public FoodEntryDto() {
     }
 
-    public FoodEntryDto(Long userId, Long foodId, double amountOfServing, String servingType,
+    public FoodEntryDto(Long userId, Long foodId, Foods foodInfo, double amountOfServing, String servingType,
                         Date dateOfFoodEntry, FoodEntry.MealTime mealTime) {
         this.userId = userId;
         this.foodId = foodId;
+        this.foodInfo = foodInfo;
         this.amountOfServing = amountOfServing;
         this.servingType = servingType;
         this.dateOfFoodEntry = dateOfFoodEntry;
@@ -86,6 +88,14 @@ public class FoodEntryDto {
         this.mealTime = mealTime;
     }
 
+    public Foods getFoodInfo() {
+        return foodInfo;
+    }
+
+    public void setFoodInfo(Foods foodInfo) {
+        this.foodInfo = foodInfo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,12 +107,13 @@ public class FoodEntryDto {
                 Objects.equals(foodId, that.foodId) &&
                 Objects.equals(servingType, that.servingType) &&
                 Objects.equals(dateOfFoodEntry, that.dateOfFoodEntry) &&
+                Objects.equals(foodInfo, that.foodInfo) &&
                 mealTime == that.mealTime;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userId, foodId, amountOfServing, servingType, dateOfFoodEntry, mealTime);
+        return Objects.hash(id, userId, foodId, foodInfo, amountOfServing, servingType, dateOfFoodEntry, mealTime);
     }
 
     @Override
@@ -115,6 +126,7 @@ public class FoodEntryDto {
                 ", servingType='" + servingType + '\'' +
                 ", timestamp=" + dateOfFoodEntry +
                 ", mealTime=" + mealTime +
+                ", foodInfo=" + foodInfo.toString() +
                 '}';
     }
 }
