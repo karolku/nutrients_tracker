@@ -7,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  userName = {
-    firstName: localStorage.getItem('firstName')
+  currentUser = {
+    id: localStorage.getItem('id'),
+    firstName: localStorage.getItem('firstName'),
+    lastName: localStorage.getItem('lastName'),
+    gender: localStorage.getItem('gender'),
+    birthdayDate: localStorage.getItem('birthdayDate'),
+    email: localStorage.getItem('email'),
+    weightInKg: localStorage.getItem('weightInKg'),
+    heightInCm: localStorage.getItem('heightInCm'),
+    activityLevel: localStorage.getItem('activityLevel'),
+    caloriesDemand: localStorage.getItem('caloriesDemand')
   }
 
   constructor(public auth: AuthenticationService) { }
