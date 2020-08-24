@@ -8,10 +8,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  public userName: string;
-  public email: string;
-  public id: number;
-  public user: any;
   public jwtHelper = new JwtHelperService();
 
   constructor(private http: HttpClient) {}
@@ -24,9 +20,7 @@ export class AuthenticationService {
         JSON.stringify(credentials), {headers: contentTypeHeaders})
         .pipe(map((response : any) => {
             if(response && response.jwt) {
-              this.id = response.id;
-              this.userName = response.username;
-              localStorage.setItem('jwt', response.jwt)
+              this.storeUserInfo(response);
               return true;
             }
             return false;
