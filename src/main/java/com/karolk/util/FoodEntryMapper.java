@@ -11,6 +11,7 @@ import org.mapstruct.factory.Mappers;
 public interface FoodEntryMapper {
     FoodEntryMapper INSTANCE = Mappers.getMapper(FoodEntryMapper.class);
 
+    @Mapping(target = "foodInfo", ignore = true)
     FoodEntryDto convertFoodEntryEntityToDto(FoodEntry foodEntry);
 
     default Long toLongUser(User user) {
