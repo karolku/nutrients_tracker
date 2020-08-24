@@ -45,12 +45,12 @@ export class AuthenticationService {
 
   decodeToken() {
     let token = localStorage.getItem('jwt');
-    console.log(token);
     return this.jwtHelper.decodeToken(token);
   }
 
   getCurrentUserEmail() {
     let decodedToken = this.decodeToken();
+    console.log(decodedToken);
     this.email = decodedToken.sub;
     return this.email;
   }
