@@ -49,7 +49,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
   providers: [
     FoodProductService,
     AuthenticationService,
-    AuthGuardService
+    AuthGuardService,
+    HomeComponent
   ],
   bootstrap: [AppComponent]
 })
