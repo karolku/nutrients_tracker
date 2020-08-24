@@ -15,6 +15,6 @@ export class HomeComponent implements OnInit {
   }
 
   getUserInfo() {
-    this.userName = localStorage.getItem('userName');
+    this.userName = localStorage.getItem('firstName');
   }
 }

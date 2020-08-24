@@ -4,9 +4,8 @@
     </div>
     <div class="col-sm-9">
         <div class="main-header">
-            <div *ngIf="auth.isLoggedIn()" class="main-header-user">Hello, {{ auth.userName }}!</div>
+            <div *ngIf="auth.isLoggedIn()" class="main-header-user">Hello, {{ getUserInfo() }}!</div>
             <div class="main-header-updates">Goal for Today 2200 kcal = 100g protein + 150g carbs + 98g fat</div>
-            <div> User id from auth service {{ auth.id }}</div>
         </div>
         <div class="main-info">
             <div class="info">
