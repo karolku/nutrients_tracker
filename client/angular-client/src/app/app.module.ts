@@ -50,7 +50,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
     FoodProductService,
     AuthenticationService,
     AuthGuardService,
-    HomeComponent
   ],
   bootstrap: [AppComponent]
 })
