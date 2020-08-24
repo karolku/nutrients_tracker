@@ -69,4 +69,13 @@ export class AuthenticationService {
     let isExpired = jwtHelper.isTokenExpired(token);
     return !isExpired;
   }
+
+  getUserInfoById(id) {
+    let token = localStorage.getItem('jwt');
+    let headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+    });
+    return this.http.get('http://localhost:8080/api/users/' + id, {headers: headers});
+  }
 }
