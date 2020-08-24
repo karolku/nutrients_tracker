@@ -66,6 +66,6 @@ public class AuthenticationService {
         Optional<User> user = userRepository.findUserByEmail(loginAuthenticationRequest.getEmail());
         user.orElseThrow(() -> new InvalidUserException("There is no user with provided email: " + loginAuthenticationRequest.getEmail()));
 
-        return new LoginAuthenticationResponse(jwt, user.get().getFirstName());
+        return new LoginAuthenticationResponse(jwt, user.get().getFirstName(), user.get().getId());
     }
 }
