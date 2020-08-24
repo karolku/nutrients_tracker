@@ -46,7 +46,8 @@ export class AuthenticationService {
   }
 
   logout() {
-    localStorage.removeItem('jwt');
+    // localStorage.removeItem('jwt');
+    localStorage.clear();
   }
 
   isLoggedIn() {
@@ -57,7 +58,7 @@ export class AuthenticationService {
     let isExpired = jwtHelper.isTokenExpired(token);
     return !isExpired;
   }
-  
+
   storeUserInfo(user) {
     for(let key in user)
       localStorage.setItem(key, user[key]);
