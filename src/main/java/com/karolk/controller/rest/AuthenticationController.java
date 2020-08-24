@@ -28,13 +28,8 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody LoginAuthenticationRequest loginAuthenticationRequest) throws Exception {
-        LoginAuthenticationResponse loginAuthenticationResponse;
-        try {
-            loginAuthenticationResponse = authenticationService.authenticateLogin(loginAuthenticationRequest);
-        } catch (BadCredentialsException e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).
-                    body("Invalid email or password for user: " + loginAuthenticationRequest.getEmail());
-        }
-        return ResponseEntity.ok(loginAuthenticationResponse);
+        return authenticationService.authenticateLogin(loginAuthenticationRequest)
+                    .map(ResponseEntity::ok)
+                    .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
     }
 }
