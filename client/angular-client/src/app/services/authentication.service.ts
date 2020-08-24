@@ -82,4 +82,9 @@ export class AuthenticationService {
     console.log(this.http.get('http://localhost:8080/api/users/' + this.id, {headers: headers}));
     return this.http.get('http://localhost:8080/api/users/' + this.id, {headers: headers});
   }
+
+  storeUserInfo(user) {
+    for(let key in user)
+      localStorage.setItem(key, user[key]);
+  }
 }
