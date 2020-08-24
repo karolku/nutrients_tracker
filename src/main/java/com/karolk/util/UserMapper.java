@@ -12,6 +12,7 @@ public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
     @Mapping(target = "password", ignore = true)
+    @Mapping(target = "jwt", ignore = true)
     UserDto convertEntityUserToUserDto(User user);
 
     @Mapping(target = "caloriesDemand", ignore = true)
