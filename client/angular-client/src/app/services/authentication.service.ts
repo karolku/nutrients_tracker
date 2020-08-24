@@ -45,12 +45,6 @@ export class AuthenticationService {
     return this.jwtHelper.decodeToken(token);
   }
 
-  getCurrentUserEmail() {
-    let decodedToken = this.decodeToken();
-    this.email = decodedToken.sub;
-    return this.email;
-  }
-
   logout() {
     localStorage.removeItem('jwt');
   }
@@ -63,20 +57,7 @@ export class AuthenticationService {
     let isExpired = jwtHelper.isTokenExpired(token);
     return !isExpired;
   }
-
-  getUserInfoById() {
-    let token = localStorage.getItem('jwt');
-    let headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-    });
-    console.log('Message from auth service getUserById');
-    console.log(token);
-    console.log(headers);
-    console.log(this.http.get('http://localhost:8080/api/users/' + this.id, {headers: headers}));
-    return this.http.get('http://localhost:8080/api/users/' + this.id, {headers: headers});
-  }
-
+  
   storeUserInfo(user) {
     for(let key in user)
       localStorage.setItem(key, user[key]);
