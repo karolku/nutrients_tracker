@@ -9,7 +9,7 @@ import { Component, OnInit, DefaultIterableDiffer, Output, EventEmitter } from '
 })
 export class FoodProductComponent implements OnInit {
   foods: any[];
-  foodsNutrients: any;
+  food: any;
   @Output() eventMessage = new EventEmitter<any[]>();
   constructor(private service: FoodProductService) { 
   }
@@ -27,8 +27,8 @@ export class FoodProductComponent implements OnInit {
   }  
 
   sendNutrients(dataFromView){
-    this.foodsNutrients = dataFromView;
-    this.eventMessage.emit(this.foodsNutrients);
+    this.food = dataFromView;
+    this.eventMessage.emit(this.food);
   }
 
   createFoodProduct(input: HTMLInputElement){

@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     activityLevel: localStorage.getItem('activityLevel'),
     caloriesDemand: localStorage.getItem('caloriesDemand')
   }
-
+  food: any;
   foodsNutrients: any[];
   constructor(public auth: AuthenticationService) { }
 
@@ -27,13 +27,16 @@ export class HomeComponent implements OnInit {
   }
 
   receiveFoodNutrientsData($event) {
-    this.foodsNutrients = $event;
+    this.food = $event;
+    this.foodsNutrients = this.food.foodNutrients;
     console.log('Data received from the child');
-    console.log(this.foodsNutrients);
+    console.log(this.food);
   }
 
   sendFoodEntry(foodEntry) {
     foodEntry.userId = localStorage.getItem('id');
+    foodEntry.servingType = "gram";
+    foodEntry.fdcId = this.food.fdcId;
     console.log(foodEntry);
   }
 }
