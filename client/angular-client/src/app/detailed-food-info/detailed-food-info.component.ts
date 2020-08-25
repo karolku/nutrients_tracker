@@ -7,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detailed-food-info.component.scss']
 })
 export class DetailedFoodInfoComponent implements OnInit {
-
+  foodNutrients: any[];
   constructor(public food: FoodProductComponent) { }
 
   ngOnInit(): void {
   }
 
+  getNutrientsInfo(nutrients) {
+      this.foodNutrients = nutrients;
+  }
 }
