@@ -1,3 +1,4 @@
+import { FoodEntryService } from './services/food-entry.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/authentication.service';
 import { FoodProductService } from './services/food-product.service';
@@ -52,6 +53,7 @@ import { DetailedFoodInfoComponent } from './detailed-food-info/detailed-food-in
     FoodProductService,
     AuthenticationService,
     AuthGuardService,
+    FoodEntryService
   ],
   bootstrap: [AppComponent]
 })
