@@ -1,3 +1,4 @@
+import { FoodEntryService } from './../services/food-entry.service';
 import { AuthenticationService } from './../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -21,7 +22,7 @@ export class HomeComponent implements OnInit {
   }
   food: any;
   foodsNutrients: any[];
-  constructor(public auth: AuthenticationService) { }
+  constructor(public auth: AuthenticationService, public foodEntryService: FoodEntryService) { }
 
   ngOnInit(): void {
   }
@@ -38,5 +39,6 @@ export class HomeComponent implements OnInit {
     foodEntry.servingType = "gram";
     foodEntry.fdcId = this.food.fdcId;
     console.log(foodEntry);
+    this.foodEntryService.createFoodEntry(foodEntry);
   }
 }
