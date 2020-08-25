@@ -16,6 +16,9 @@ export class FoodEntryService {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + token
   });
+    console.log('FoodEntry object send by the service');
+    console.log(entryData);
+    console.log(this.httpClient.post(this.url, JSON.stringify(entryData), {headers: authHeaders}));
     this.httpClient.post(this.url, JSON.stringify(entryData), {headers: authHeaders});
   }
 }
