@@ -30,22 +30,4 @@ export class FoodProductComponent implements OnInit {
     this.food = dataFromView;
     this.eventMessage.emit(this.food);
   }
-
-  createFoodProduct(input: HTMLInputElement){
-    let post = {title: input.value};
-    input.value = '';
-    this.service.createFoodProduct(post)
-        .subscribe((response: any) => {
-          post['id'] = response.id;
-          this.foods.splice(0,0, post);
-          console.log(response);
-        });
-  }
-
-  updatePost(post) {
-      this.service.updateFoodProduct(post)
-        .subscribe((response: any) => {
-            console.log(response);
-        });
-  }
 }

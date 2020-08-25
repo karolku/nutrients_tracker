@@ -21,12 +21,4 @@ export class FoodProductService {
     console.log(this.httpClient.get(this.url + '/search/' + foodName, {headers: authHeaders}));
     return this.httpClient.get(this.url + '/search/' + foodName, {headers: authHeaders});
   }
-
-  createFoodProduct(post){
-    return this.httpClient.post(this.url, JSON.stringify(post));
-  }
-
-  updateFoodProduct(post){
-    return this.httpClient.put(this.url + '/' + post.id, JSON.stringify(post));
-  }
 }
