@@ -20,8 +20,15 @@ export class HomeComponent implements OnInit {
     caloriesDemand: localStorage.getItem('caloriesDemand')
   }
 
+  foodsNutrients: any[];
   constructor(public auth: AuthenticationService) { }
 
   ngOnInit(): void {
+  }
+
+  receiveFoodNutrientsData($event) {
+    this.foodsNutrients = $event;
+    console.log('Data received from the child');
+    console.log(this.foodsNutrients);
   }
 }

@@ -10,19 +10,22 @@
         (click)="searchForProduct(foodProduct)"
         mdbBtn type="button" color="primary" mdbWavesEffect>Search</button>
 </div>
-<ul class="list-group">
-    <li *ngFor="let food of foods"
-    class="list-group-item">
+
+<table mdbTable mdbTableScroll scrollY="true" maxHeight="300" bordered="true">
+    <thead>
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Brand</th>
+        </tr>
+      </thead>
+    <tbody>
+      <tr *ngFor="let food of foods">
+        <td>{{ food.description }}</td>
+        <td>{{ food.brandOwner }}</td>
         <div>
-            <button
-                (click)="updatePost(food)"
-                class="btn btn-default btn-sm">Get more info</button>
+            <button (click)="sendNutrients(food.foodNutrients)"
+            class="btn btn-default btn-sm">Get Info</button>
         </div>
-        <div>
-            {{ food.description }}
-        </div>
-        <div>
-            Brand Owner: {{ food.brandOwner}}
-        </div>
-    </li>
-</ul>
+      </tr>
+    </tbody>
+  </table>

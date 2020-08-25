@@ -1,5 +1,6 @@
+import { DetailedFoodInfoComponent } from './../detailed-food-info/detailed-food-info.component';
 import { FoodProductService } from './../services/food-product.service';
-import { Component, OnInit, DefaultIterableDiffer } from '@angular/core';
+import { Component, OnInit, DefaultIterableDiffer, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-food-product',
@@ -8,13 +9,14 @@ import { Component, OnInit, DefaultIterableDiffer } from '@angular/core';
 })
 export class FoodProductComponent implements OnInit {
   foods: any[];
-  
+  foodsNutrients: any;
+  @Output() eventMessage = new EventEmitter<any[]>();
   constructor(private service: FoodProductService) { 
   }
 
   ngOnInit() {
   }
-
+  
   searchForProduct(input: HTMLInputElement) {
     this.service.searchFoodByName(input.value)
     .subscribe((response: any[]) => {
@@ -23,6 +25,11 @@ export class FoodProductComponent implements OnInit {
         // this.posts = Array.of(this.posts);
     });
   }  
+
+  sendNutrients(dataFromView){
+    this.foodsNutrients = dataFromView;
+    this.eventMessage.emit(this.foodsNutrients);
+  }
 
   createFoodProduct(input: HTMLInputElement){
     let post = {title: input.value};
