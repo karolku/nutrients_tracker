@@ -1,3 +1,4 @@
+import { FoodProductComponent } from './../food-product/food-product.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailedFoodInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public food: FoodProductComponent) { }
 
   ngOnInit(): void {
   }

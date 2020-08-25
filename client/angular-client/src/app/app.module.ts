@@ -52,6 +52,7 @@ import { DetailedFoodInfoComponent } from './detailed-food-info/detailed-food-in
     FoodProductService,
     AuthenticationService,
     AuthGuardService,
+    FoodProductComponent
   ],
   bootstrap: [AppComponent]
 })
