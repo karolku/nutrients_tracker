@@ -35,10 +35,13 @@ export class HomeComponent implements OnInit {
   }
 
   sendFoodEntry(foodEntry) {
-    foodEntry.userId = localStorage.getItem('id');
+    foodEntry.userId = parseInt(localStorage.getItem('id'));
     foodEntry.servingType = "gram";
     foodEntry.foodId = this.food.fdcId;
     console.log(foodEntry);
-    this.foodEntryService.createFoodEntry(foodEntry);
+    this.foodEntryService.createFoodEntry(foodEntry)
+    .subscribe((response: any) => {
+      console.log(response);
+    });
   }
 }
