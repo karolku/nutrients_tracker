@@ -12,7 +12,7 @@ public class FoodEntryDto {
     private Long id;
     private Long userId;
     private Long foodId;
-    private Foods foodInfo;
+    private FoodsDto foodInfo;
     private double amountOfServing;
     private String servingType;
     private Date dateOfFoodEntry;
@@ -21,7 +21,7 @@ public class FoodEntryDto {
     public FoodEntryDto() {
     }
 
-    public FoodEntryDto(Long userId, Long foodId, Foods foodInfo, double amountOfServing, String servingType,
+    public FoodEntryDto(Long userId, Long foodId, FoodsDto foodInfo, double amountOfServing, String servingType,
                         Date dateOfFoodEntry, FoodEntry.MealTime mealTime) {
         this.userId = userId;
         this.foodId = foodId;
@@ -88,11 +88,11 @@ public class FoodEntryDto {
         this.mealTime = mealTime;
     }
 
-    public Foods getFoodInfo() {
+    public FoodsDto getFoodInfo() {
         return foodInfo;
     }
 
-    public void setFoodInfo(Foods foodInfo) {
+    public void setFoodInfo(FoodsDto foodInfo) {
         this.foodInfo = foodInfo;
     }
 

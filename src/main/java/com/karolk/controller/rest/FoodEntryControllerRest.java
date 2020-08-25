@@ -3,6 +3,7 @@ package com.karolk.controller.rest;
 import com.karolk.api.model.FoodsApi;
 import com.karolk.api.model.NutrientsApi;
 import com.karolk.dto.FoodEntryDto;
+import com.karolk.dto.FoodsDto;
 import com.karolk.dto.FoodsNutrientsDto;
 import com.karolk.exception.InvalidFoodsException;
 import com.karolk.model.FoodEntry;
@@ -18,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -69,7 +71,8 @@ public class FoodEntryControllerRest {
                 buildAndExpand(createdFoodEntry.getId())
                 .toUri();
         FoodEntryDto foodEntryDtoCreated = FoodEntryMapper.INSTANCE.convertFoodEntryEntityToDto(createdFoodEntry);
-        foodEntryDtoCreated.setFoodInfo(savedFood);
+        FoodsDto foodsDto = FoodsMapper.INSTANCE.convertEntityFoodsToDto(savedFood);
+        foodEntryDtoCreated.setFoodInfo(foodsDto);
         return ResponseEntity.created(uri).body(foodEntryDtoCreated);
     }
 
@@ -78,6 +81,7 @@ public class FoodEntryControllerRest {
         if(!(foodEntryId.equals(foodEntryDto.getId())))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "The provided id needs to be the same as the provided user id");
         FoodEntryDto updatedFoodEntry = foodEntryService.update(foodEntryDto);
+
         return ResponseEntity.ok(updatedFoodEntry);
     }
 }
