@@ -1,6 +1,10 @@
 <p>detailed-food-info works!</p>
 <ul class="list-group">
-    <li class="list-group-item">
-
+    <li 
+        *ngFor="let nutrient of foodNutrients"
+    class="list-group-item">
+        <div>
+            {{ nutrient.id }}
+        </div>
     </li>
 </ul>
