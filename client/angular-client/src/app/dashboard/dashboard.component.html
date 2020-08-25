@@ -19,18 +19,7 @@
               </div>
       </div>  
       <div class="overviewbox">
-        <div style="display: block">
-            <canvas mdbChart
-                [chartType]="chartType"
-                [datasets]="chartDatasets"
-                [labels]="chartLabels"
-                [colors]="chartColors"
-                [options]="chartOptions"
-                [legend]="true"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)">
-            </canvas>
-          </div>
+        <app-doughnut-chart class="dough-chart"></app-doughnut-chart>
     </div>   
 </div>
 <div class="main-info">

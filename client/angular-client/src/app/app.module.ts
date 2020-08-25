@@ -23,6 +23,7 @@ import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { DetailedFoodInfoComponent } from './detailed-food-info/detailed-food-info.component';
+import { DoughnutChartComponent } from './doughnut-chart/doughnut-chart.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DetailedFoodInfoComponent } from './detailed-food-info/detailed-food-in
     LoginComponent,
     SignupComponent,
     WelcomeComponent,
-    DetailedFoodInfoComponent
+    DetailedFoodInfoComponent,
+    DoughnutChartComponent
   ],
   imports: [
     BrowserModule,
