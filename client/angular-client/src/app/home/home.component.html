@@ -30,7 +30,59 @@
                 </table>
             </div>
             <div class="info">
-                Test Info
+                <h3>Add Food product</h3>
+                <form action="">
+                   <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="md-form form-group">
+                            <input mdbInput 
+                                    ngModel
+                                    name="amountOfServing"
+                                    type="number" 
+                                    class="form-control" 
+                                    id="amountOfServing" 
+                                    placeholder="Amount of serving"
+                                    min=0
+                                    step="0.1"
+                                    >
+                            <label for="amountOfServing">Amount of Serving: 1 = 100g</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row meal-text">
+                                 Time of the Meal
+                            </div>
+                            <select class="browser-default custom-select" 
+                                    ngModel 
+                                    name="mealTime">
+                                <option selected>Select meal time</option>
+                                <option value="BREAKFAST">Breakfast</option>
+                                <option value="LUNCH">Lunch</option>
+                                <option value="DINNER">Dinner</option>
+                                <option value="SNACK">Snack</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1 serving-type">
+                            <input type="radio" 
+                                ngModel
+                                name="servingType"
+                                class="custom-control-input" 
+                                id="servingType"
+                                value="gram"
+                                checked
+                                mdbInput>
+                            <label class="custom-control-label" 
+                                   for="servingType">
+                                    gram
+                            </label>
+                        </div>
+                    </div> 
+                    <div>
+                        <button  class="btn btn-default btn-sm">
+                            Add food entry
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
