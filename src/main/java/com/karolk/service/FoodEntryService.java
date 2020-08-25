@@ -11,6 +11,7 @@ import com.karolk.repository.FoodEntryRepository;
 import com.karolk.repository.FoodsRepository;
 import com.karolk.repository.UserRepository;
 import com.karolk.util.FoodEntryMapper;
+import com.karolk.util.FoodsMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,12 +41,26 @@ public class FoodEntryService {
 
     public List<FoodEntryDto> findFoodEntriesByUserId(Long userId) {
         Optional<User> user = userRepository.findById(userId);
-
-        return foodEntryRepository.findFoodEntriesByUserId(user.orElseThrow(() ->
+        List<FoodEntry> foodEntryList = foodEntryRepository.findFoodEntriesByUserId(user.orElseThrow(() ->
                 new InvalidFoodEntryException("Food entry with this user does not exist.")))
                 .stream()
+                .collect(Collectors.toList());
+
+        List<FoodEntryDto> foodEntryDtoList = foodEntryList.
+                stream()
                 .map(FoodEntryMapper.INSTANCE::convertFoodEntryEntityToDto)
                 .collect(Collectors.toList());
+
+        for(int i = 0; i < foodEntryDtoList.size(); i++) {
+            foodEntryDtoList.get(i).setFoodInfo(
+                    FoodsMapper.INSTANCE.convertEntityFoodsToDto(foodEntryList.get(i).getFoodId()));
+        }
+        return foodEntryDtoList;
+//        return foodEntryRepository.findFoodEntriesByUserId(user.orElseThrow(() ->
+//                new InvalidFoodEntryException("Food entry with this user does not exist.")))
+//                .stream()
+//                .map(FoodEntryMapper.INSTANCE::convertFoodEntryEntityToDto)
+//                .collect(Collectors.toList());
     }
 
     public FoodEntry createFoodEntry(FoodEntryDto foodEntryDto, Foods foods) {
