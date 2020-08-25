@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { DetailedFoodInfoComponent } from './detailed-food-info/detailed-food-info.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     FoodProductComponent,
     LoginComponent,
     SignupComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    DetailedFoodInfoComponent
   ],
   imports: [
     BrowserModule,
