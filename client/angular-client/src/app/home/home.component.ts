@@ -31,4 +31,9 @@ export class HomeComponent implements OnInit {
     console.log('Data received from the child');
     console.log(this.foodsNutrients);
   }
+
+  sendFoodEntry(foodEntry) {
+    foodEntry.userId = localStorage.getItem('id');
+    console.log(foodEntry);
+  }
 }
