@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   }
   food: any;
   foodsNutrients: any[];
+  isSuccessEntry: boolean;
   constructor(public auth: AuthenticationService, public foodEntryService: FoodEntryService) { }
 
   ngOnInit(): void {
@@ -42,6 +43,7 @@ export class HomeComponent implements OnInit {
     this.foodEntryService.createFoodEntry(foodEntry)
     .subscribe((response: any) => {
       console.log(response);
+      this.isSuccessEntry = true;
     });
   }
 }
