@@ -57,6 +57,7 @@ public class FoodsNutrientsService {
             for(int j = 0; j < foodsNutrientsList.size(); j++) {
                  nutrientsDtoListForOneEntry.add(
                          NutrientsMapper.INSTANCE.convertNutrientsToDto(foodsNutrientsList.get(j).getNutrients()));
+                 nutrientsDtoListForOneEntry.get(j).setValue(foodsNutrientsList.get(j).getValue());
             }
             foodEntryDtoList.get(i).getFoodInfo().setNutrientsDtoList(nutrientsDtoListForOneEntry);
             System.out.println("Nutrients list from the foodEntryDto");

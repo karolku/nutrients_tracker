@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 })
 export class FoodEntryService {
   private url = 'http://localhost:8080/api/foodEntry';
+  private urlFoodsNutrients = 'http://localhost:8080/api/foodsNutrients';
 
   constructor(private httpClient: HttpClient, private foodService: FoodProductService) { }
 
@@ -21,6 +22,6 @@ export class FoodEntryService {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
       })
-      return this.httpClient.get(this.url + '/user/' + userId + '/date/' + date, {headers: headers});
+      return this.httpClient.get(this.urlFoodsNutrients + '/user/' + userId + '/date/' + date, {headers: headers});
   }
 }
