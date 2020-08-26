@@ -20,7 +20,8 @@ export class FoodEntryService {
     return this.httpClient.post(this.url, JSON.stringify(entryData), {headers: this.foodService.authHeaders});
   }
 
-  getFoodEntryByUserIdAndDate(userId, date) {
-    
+  getFoodEntryByUserIdAndDate(date) {
+      let userId = parseInt(localStorage.getItem('id'));
+      return this.httpClient.get(this.url + '/user/' + userId + '/date/' + date, {headers: this.foodService.authHeaders});
   }
 }

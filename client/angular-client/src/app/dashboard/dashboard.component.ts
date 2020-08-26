@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  foodEntries: any[];
 
   constructor() { }
 
@@ -48,4 +49,8 @@ export class DashboardComponent implements OnInit {
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
 
+
+  getFoodEntriesByDateAndUserId(date) {
+    console.log(date);
+  }
 }
