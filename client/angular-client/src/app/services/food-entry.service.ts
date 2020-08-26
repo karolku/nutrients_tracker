@@ -19,4 +19,8 @@ export class FoodEntryService {
     console.log(this.httpClient.post(this.url, JSON.stringify(entryData), {headers: this.foodService.authHeaders}));
     return this.httpClient.post(this.url, JSON.stringify(entryData), {headers: this.foodService.authHeaders});
   }
+
+  getFoodEntryByUserIdAndDate(userId, date) {
+    
+  }
 }
