@@ -1,3 +1,4 @@
+import { FoodEntryService } from './../services/food-entry.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
   foodEntries: any[];
 
-  constructor() { }
+  constructor(private foodEntryService: FoodEntryService) { }
 
   ngOnInit(): void {
   }
@@ -51,6 +52,10 @@ export class DashboardComponent implements OnInit {
 
 
   getFoodEntriesByDateAndUserId(date) {
-    console.log(date);
+    this.foodEntryService.getFoodEntryByUserIdAndDate(date)
+      .subscribe((response: any) => {
+        this.foodEntries = response;
+        console.log(this.foodEntries);
+      })
   }
 }
