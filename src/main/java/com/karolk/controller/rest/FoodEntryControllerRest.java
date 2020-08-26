@@ -46,9 +46,14 @@ public class FoodEntryControllerRest {
         return foodEntryService.findAllFoodEntries();
     }
 
-    @GetMapping(path = "user/{userId}")
+    @GetMapping(path = "/user/{userId}")
     public List<FoodEntryDto> findFoodEntriesByUserId(@PathVariable Long userId) {
         return foodEntryService.findFoodEntriesByUserId(userId);
+    }
+
+    @GetMapping(path = "/user/{userId}/date/{foodEntryDate}")
+    public List<FoodEntryDto> findFoodEntriesByUserIdAndDate(@PathVariable Long userId, String foodEntryDate) {
+        return foodEntryService.findFoodEntriesByUserIdAndDate(userId, foodEntryDate);
     }
 
     @PostMapping()
