@@ -53,7 +53,7 @@ public class FoodEntryService {
     public List<FoodEntryDto> findFoodEntriesByUserIdAndDate(Long userId, String date) {
         Date foodEntryDate = Date.valueOf(date);
         Optional<User> user = userRepository.findById(userId);
-        List<FoodEntry> foodEntryList = foodEntryRepository.findFoodEntriesByUserIdAndDateOfFoodEntry(
+        List<FoodEntry> foodEntryList = foodEntryRepository.findFoodEntriesByDateOfFoodEntryAndUserId(
                 foodEntryDate,user.orElseThrow(() ->
                 new InvalidFoodEntryException("Food entry with this user does not exist.")))
                 .stream()
