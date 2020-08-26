@@ -66,12 +66,14 @@
               <tr *ngFor="let entry of foodEntries">
                 <td> {{ entry.foodInfo.description }} </td>
                 <td> {{ entry.foodInfo.brandOwner }} </td>
-                <td> {{ entry.amountOfServing }} </td>
+                <td> {{ entry.amountOfServing * 100 }} </td>
                 <td> {{ entry.mealTime }} </td>
                 <td> {{ entry.dateOfFoodEntry }} </td>
               </tr>
             </tbody>
           </table>
+          <br>
+          <br>
           <div *ngIf="isEntryEmpty"
                 class="alert alert-warning">
                 There were no food entries for that day ;)
