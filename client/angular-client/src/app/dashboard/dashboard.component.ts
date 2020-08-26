@@ -10,6 +10,7 @@ export class DashboardComponent implements OnInit {
   foodEntries: any[];
   foodInfo: any[] = [];
   isEntryEmpty: boolean;
+  caloriesDemand = localStorage.getItem('caloriesDemand');
 
   constructor(private foodEntryService: FoodEntryService) { }
 
