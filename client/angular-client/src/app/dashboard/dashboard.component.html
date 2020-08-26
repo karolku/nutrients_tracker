@@ -63,12 +63,12 @@
                 </tr>
               </thead>
             <tbody>
-              <tr>
-                <td> Food Description </td>
-                <td> Best brand </td>
-                <td> 200 </td>
-                <td> Dinner </td>
-                <td> 2020-08-25 </td>
+              <tr *ngFor="let entry of foodEntries">
+                <td> {{ entry.foodInfo.description }} </td>
+                <td> {{ entry.foodInfo.brandOwner }} </td>
+                <td> {{ entry.amountOfServing }} </td>
+                <td> {{ entry.mealTime }} </td>
+                <td> {{ entry.dateOfFoodEntry }} </td>
               </tr>
             </tbody>
           </table>
