@@ -24,17 +24,33 @@
 </div>
 <div class="main-info">
     <div class="info">
-        <div class="row">
-            <div class="col-md-12">
-                <button mdbBtn 
-                        type="button" 
-                        color="default" 
-                        mdbWavesEffect 
-                        size="sm">
-                        Get food entries
-                </button>
+        <form #dashboardDate="ngForm" (ngSubmit)="getFoodEntriesByDateAndUserId(dashboardDate.value)">
+            <div class="row date-form">
+                <div class="col-md-8 date-input">
+                    <div class="md-form">
+                        <input mdbInput
+                                ngModel
+                                name="dateOfFoodEntry"  
+                                type="date" 
+                                id="dateOfFoodEntry" 
+                                class="form-control">
+                        <label for="dateOfFoodEntry">
+                            Choose date for food entries 
+                        </label>
+                    </div>    
+                    
+                </div>
+                <div class="col-md-4 button-table-1">
+                    <button mdbBtn 
+                            type="button" 
+                            color="default" 
+                            mdbWavesEffect 
+                            size="sm">
+                            Get data
+                    </button>
+                </div>
             </div>
-        </div>
+        </form>
         <table mdbTable mdbTableScroll scrollY="true" maxHeight="300">
             <thead>
                 <tr>
