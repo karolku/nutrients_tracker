@@ -10,10 +10,10 @@ export class DoughnutChartComponent {
   public chartType: string = 'doughnut';
 
   public chartDatasets: Array<any> = [
-    { data: [300, 50, 100, 40, 120], label: 'My First dataset' }
+    { data: [250, 150, 80], label: 'Macro Nutrients For Today' }
   ];
 
-  public chartLabels: Array<any> = ['Red', 'Green', 'Yellow', 'Grey', 'Dark Grey'];
+  public chartLabels: Array<any> = ['CarboHydrates', 'Protein', 'Fat'];
 
   public chartColors: Array<any> = [
     {

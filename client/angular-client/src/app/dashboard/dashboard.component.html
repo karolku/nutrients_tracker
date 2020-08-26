@@ -79,6 +79,42 @@
                 There were no food entries for that day ;)
           </div>
     </div>
-    <div class="info">Table 2</div>
+    <div class="info">
+        <h4>Nutrients</h4>
+        <table mdbTable mdbTableScroll scrollY="true" maxHeight="300">
+            <thead>
+                <tr>
+                  <th scope="col"><strong>Nutrient Name</strong></th>
+                  <th scope="col"><strong>Value</strong></th>
+                  <th scope="col"><strong>Unit</strong></th>
+                </tr>
+              </thead>
+            <tbody>
+                <tr *ngFor="let entry of foodEntries">
+                    <td>
+                      <ul>
+                        <li *ngFor="let nutrient of entry.foodInfo.nutrientsDtoList" class="custom-list">
+                            {{nutrient.nutrientName}}
+                        </li>
+                      </ul>
+                    </td>
+                    <td>
+                        <ul>
+                          <li *ngFor="let nutrient of entry.foodInfo.nutrientsDtoList" class="custom-list">
+                              {{nutrient.value}}
+                          </li>
+                        </ul>
+                      </td>
+                      <td>
+                        <ul>
+                          <li *ngFor="let nutrient of entry.foodInfo.nutrientsDtoList" class="custom-list">
+                              {{nutrient.unitName}}
+                          </li>
+                        </ul>
+                      </td>
+                  </tr>
+            </tbody>
+          </table>
+    </div>
     <div class="info">Chart 2</div>
 </div>

@@ -62,13 +62,15 @@
 }
 
 .bar-chart {
-    width: 500px;
+    width: 550px;
     justify-content: center;
+    margin-left: 10px;
 }
 
 .dough-chart {
     width: 400px;
     justify-content: center;
+    margin-left: 70px;
 }
 
 .button-table-1 {
@@ -81,4 +83,10 @@
 
 .date-form {
     margin-top: 20px;
+}
+
+.custom-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }

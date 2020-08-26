@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   foodEntries: any[];
+  foodInfo: any[] = [];
   isEntryEmpty: boolean;
 
   constructor(private foodEntryService: FoodEntryService) { }
@@ -18,10 +19,10 @@ export class DashboardComponent implements OnInit {
   public chartType: string = 'bar';
 
   public chartDatasets: Array<any> = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'My First dataset' }
+    { data: [1500, 2200, 1800, 1900, 2100, 1950, 2100], label: 'Calories for this week' }
   ];
 
-  public chartLabels: Array<any> = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+  public chartLabels: Array<any> = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
   public chartColors: Array<any> = [
     {
@@ -31,6 +32,7 @@ export class DashboardComponent implements OnInit {
         'rgba(255, 206, 86, 0.2)',
         'rgba(75, 192, 192, 0.2)',
         'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
         'rgba(255, 159, 64, 0.2)'
       ],
       borderColor: [
@@ -39,6 +41,7 @@ export class DashboardComponent implements OnInit {
         'rgba(255, 206, 86, 1)',
         'rgba(75, 192, 192, 1)',
         'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
         'rgba(255, 159, 64, 1)'
       ],
       borderWidth: 3,
