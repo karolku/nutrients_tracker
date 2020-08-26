@@ -7,6 +7,7 @@ import com.karolk.exception.InvalidFoodsException;
 import com.karolk.exception.InvalidUserException;
 import com.karolk.model.FoodEntry;
 import com.karolk.model.Foods;
+import com.karolk.model.FoodsNutrients;
 import com.karolk.model.User;
 import com.karolk.repository.FoodEntryRepository;
 import com.karolk.repository.FoodsNutrientsRepository;
@@ -14,6 +15,7 @@ import com.karolk.repository.FoodsRepository;
 import com.karolk.repository.UserRepository;
 import com.karolk.util.FoodEntryMapper;
 import com.karolk.util.FoodsMapper;
+import com.karolk.util.NutrientsMapper;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -74,6 +76,11 @@ public class FoodEntryService {
         for(int i = 0; i < foodEntryDtoList.size(); i++) {
             foodEntryDtoList.get(i).setFoodInfo(
                     FoodsMapper.INSTANCE.convertEntityFoodsToDto(foodEntryList.get(i).getFoodId()));
+            List<FoodsNutrients> foodsNutrientsList = foodsNutrientsRepository.
+                    findFoodsNutrientsByFoodEntry(foodEntryList.get(i));
+
+            foodEntryDtoList.get(i).getFoodInfo().setNutrientsDto(
+                    NutrientsMapper.INSTANCE.convertNutrientsToDto(foodsNutrientsList.get(i).getNutrients()));
         }
         return foodEntryDtoList;
     }

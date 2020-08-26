@@ -11,18 +11,16 @@ public class FoodsNutrientsDto {
     private Foods foods;
     private Nutrients nutrients;
     private double value;
-    private FoodsNutrients foodsNutrients;
 
     public FoodsNutrientsDto() {
     }
 
     public FoodsNutrientsDto(Long id, Foods foodId, Nutrients nutrientId,
-                             double value, FoodsNutrients foodsNutrients) {
+                             double value) {
         this.id = id;
         this.foods = foodId;
         this.nutrients = nutrientId;
         this.value = value;
-        this.foodsNutrients = foodsNutrients;
     }
 
     public Long getId() {
@@ -57,13 +55,6 @@ public class FoodsNutrientsDto {
         this.value = value;
     }
 
-    public FoodsNutrients getFoodsNutrients() {
-        return foodsNutrients;
-    }
-
-    public void setFoodsNutrients(FoodsNutrients foodsNutrients) {
-        this.foodsNutrients = foodsNutrients;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -73,13 +64,12 @@ public class FoodsNutrientsDto {
         return Double.compare(that.value, value) == 0 &&
                 Objects.equals(id, that.id) &&
                 Objects.equals(foods, that.foods) &&
-                Objects.equals(nutrients, that.nutrients) &&
-                Objects.equals(foodsNutrients, that.foodsNutrients);
+                Objects.equals(nutrients, that.nutrients);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, foods, nutrients, value, foodsNutrients);
+        return Objects.hash(id, foods, nutrients, value);
     }
 
     @Override
@@ -89,7 +79,6 @@ public class FoodsNutrientsDto {
                 ", foodId=" + foods +
                 ", nutrientId=" + nutrients +
                 ", value=" + value +
-                ", foodsNutrients=" + foodsNutrients +
                 '}';
     }
 }
