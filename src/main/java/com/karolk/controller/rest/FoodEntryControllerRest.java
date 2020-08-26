@@ -52,7 +52,7 @@ public class FoodEntryControllerRest {
     }
 
     @GetMapping(path = "/user/{userId}/date/{foodEntryDate}")
-    public List<FoodEntryDto> findFoodEntriesByUserIdAndDate(@PathVariable Long userId, String foodEntryDate) {
+    public List<FoodEntryDto> findFoodEntriesByUserIdAndDate(@PathVariable Long userId, @PathVariable String foodEntryDate) {
         return foodEntryService.findFoodEntriesByUserIdAndDate(userId, foodEntryDate);
     }
 
