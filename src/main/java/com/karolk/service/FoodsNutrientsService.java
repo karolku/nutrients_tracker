@@ -1,7 +1,9 @@
 package com.karolk.service;
 
 import com.karolk.api.model.NutrientsApi;
+import com.karolk.dto.FoodEntryDto;
 import com.karolk.dto.FoodsNutrientsDto;
+import com.karolk.dto.NutrientsDto;
 import com.karolk.exception.InvalidFoodsException;
 import com.karolk.exception.InvalidNutrientsException;
 import com.karolk.model.FoodEntry;
@@ -26,13 +28,16 @@ public class FoodsNutrientsService {
     private FoodsRepository foodsRepository;
     private NutrientsRepository nutrientsRepository;
     private FoodsNutrientsRepository foodsNutrientsRepository;
+    private FoodEntryService foodEntryService;
 
     public FoodsNutrientsService(FoodsRepository foodsRepository,
                                  NutrientsRepository nutrientsRepository,
-                                 FoodsNutrientsRepository foodsNutrientsRepository) {
+                                 FoodsNutrientsRepository foodsNutrientsRepository,
+                                 FoodEntryService foodEntryService) {
         this.foodsRepository = foodsRepository;
         this.nutrientsRepository = nutrientsRepository;
         this.foodsNutrientsRepository = foodsNutrientsRepository;
+        this.foodEntryService = foodEntryService;
     }
 
     public List<FoodsNutrientsDto> findAllFoodsNutrients() {
@@ -42,9 +47,23 @@ public class FoodsNutrientsService {
                 .collect(Collectors.toList());
     }
 
-//    public List<FoodsNutrientsDto> findFoodsNutrientsByFoodEntry() {
-//        return foodsNutrientsRepository.findFoodsNutrientsByFoodEntry()
-//    }
+    public List<FoodEntryDto> findFoodsNutrientsForFoodEntry(Long userId, String date) {
+        List<FoodEntry> foodEntryList = foodEntryService.findFoodEntriesEntityByUserIdAndDate(userId, date);
+        List<FoodEntryDto> foodEntryDtoList = foodEntryService.getFoodEntryDtos(foodEntryList);
+        List<FoodsNutrients> foodsNutrientsList;
+        for(int i = 0; i < foodEntryList.size(); i++) {
+            List<NutrientsDto> nutrientsDtoListForOneEntry = new ArrayList<>();
+            foodsNutrientsList = foodsNutrientsRepository.findFoodsNutrientsByFoodEntry(foodEntryList.get(i));
+            for(int j = 0; j < foodsNutrientsList.size(); j++) {
+                 nutrientsDtoListForOneEntry.add(
+                         NutrientsMapper.INSTANCE.convertNutrientsToDto(foodsNutrientsList.get(j).getNutrients()));
+            }
+            foodEntryDtoList.get(i).getFoodInfo().setNutrientsDtoList(nutrientsDtoListForOneEntry);
+            System.out.println("Nutrients list from the foodEntryDto");
+            foodEntryDtoList.get(i).getFoodInfo().getNutrientsDtoList();
+        }
+        return foodEntryDtoList;
+    }
 
     public List<FoodsNutrientsDto> saveFoodNutrients(List<NutrientsApi> nutrientsApiList, Foods foods, FoodEntry foodEntry) {
         List<FoodsNutrientsDto> savedFoodNutrientsList = new ArrayList<>();

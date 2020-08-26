@@ -67,7 +67,7 @@ public class FoodEntryService {
         return getFoodEntryDtos(foodEntryList);
     }
 
-    private List<FoodEntryDto> getFoodEntryDtos(List<FoodEntry> foodEntryList) {
+    public List<FoodEntryDto> getFoodEntryDtos(List<FoodEntry> foodEntryList) {
         List<FoodEntryDto> foodEntryDtoList = foodEntryList.
                 stream()
                 .map(FoodEntryMapper.INSTANCE::convertFoodEntryEntityToDto)
@@ -78,6 +78,17 @@ public class FoodEntryService {
                     FoodsMapper.INSTANCE.convertEntityFoodsToDto(foodEntryList.get(i).getFoodId()));
         }
         return foodEntryDtoList;
+    }
+
+    public List<FoodEntry> findFoodEntriesEntityByUserIdAndDate(Long userId, String date) {
+        Date foodEntryDate = Date.valueOf(date);
+        Optional<User> user = userRepository.findById(userId);
+        List<FoodEntry> foodEntryList = foodEntryRepository.findFoodEntriesByDateOfFoodEntryAndUserId(
+                foodEntryDate,user.orElseThrow(() ->
+                        new InvalidFoodEntryException("Food entry with this user does not exist.")))
+                .stream()
+                .collect(Collectors.toList());
+        return foodEntryList;
     }
 
     public FoodEntry createFoodEntry(FoodEntryDto foodEntryDto, Foods foods) {

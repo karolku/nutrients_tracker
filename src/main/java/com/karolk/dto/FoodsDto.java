@@ -1,20 +1,22 @@
 package com.karolk.dto;
 
+import java.util.List;
+
 public class FoodsDto {
 
     private Long id;
     private Long fdcId;
     private String description;
     private String brandOwner;
-    private NutrientsDto nutrientsDto;
+    private List<NutrientsDto> nutrientsDtoList;
 
     public FoodsDto(){}
 
-    public FoodsDto(Long fdcId, String description, String brandOwner, NutrientsDto nutrientsDto) {
+    public FoodsDto(Long fdcId, String description, String brandOwner, List<NutrientsDto> nutrientsDtoList) {
         this.fdcId = fdcId;
         this.description = description;
         this.brandOwner = brandOwner;
-        this.nutrientsDto = nutrientsDto;
+        this.nutrientsDtoList = nutrientsDtoList;
     }
 
     public Long getId() {
@@ -49,12 +51,12 @@ public class FoodsDto {
         this.brandOwner = brandOwner;
     }
 
-    public NutrientsDto getNutrientsDto() {
-        return nutrientsDto;
+    public List<NutrientsDto> getNutrientsDtoList() {
+        return nutrientsDtoList;
     }
 
-    public void setNutrientsDto(NutrientsDto nutrientsDto) {
-        this.nutrientsDto = nutrientsDto;
+    public void setNutrientsDtoList(List<NutrientsDto> nutrientsDtoList) {
+        this.nutrientsDtoList = nutrientsDtoList;
     }
 
     @Override
@@ -64,7 +66,7 @@ public class FoodsDto {
                 ", fdcId=" + fdcId +
                 ", description='" + description + '\'' +
                 ", brandOwner='" + brandOwner + '\'' +
-                ", nutrientsDto=" + nutrientsDto +
+                ", nutrientsDtoList=" + nutrientsDtoList +
                 '}';
     }
 }

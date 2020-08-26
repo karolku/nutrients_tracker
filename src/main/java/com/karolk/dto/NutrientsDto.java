@@ -56,4 +56,15 @@ public class NutrientsDto {
     public void setValue(double value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "NutrientsDto{" +
+                "id=" + id +
+                ", nutrientId=" + nutrientId +
+                ", nutrientName='" + nutrientName + '\'' +
+                ", unitName='" + unitName + '\'' +
+                ", value=" + value +
+                '}';
+    }
 }
