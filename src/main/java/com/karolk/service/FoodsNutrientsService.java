@@ -42,6 +42,10 @@ public class FoodsNutrientsService {
                 .collect(Collectors.toList());
     }
 
+//    public List<FoodsNutrientsDto> findFoodsNutrientsByFoodEntry() {
+//        return foodsNutrientsRepository.findFoodsNutrientsByFoodEntry()
+//    }
+
     public List<FoodsNutrientsDto> saveFoodNutrients(List<NutrientsApi> nutrientsApiList, Foods foods, FoodEntry foodEntry) {
         List<FoodsNutrientsDto> savedFoodNutrientsList = new ArrayList<>();
         Optional<Foods> foodsEntity = foodsRepository.findByFdcId(foods.getFdcId());

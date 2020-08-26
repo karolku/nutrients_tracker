@@ -76,11 +76,6 @@ public class FoodEntryService {
         for(int i = 0; i < foodEntryDtoList.size(); i++) {
             foodEntryDtoList.get(i).setFoodInfo(
                     FoodsMapper.INSTANCE.convertEntityFoodsToDto(foodEntryList.get(i).getFoodId()));
-            List<FoodsNutrients> foodsNutrientsList = foodsNutrientsRepository.
-                    findFoodsNutrientsByFoodEntry(foodEntryList.get(i));
-
-            foodEntryDtoList.get(i).getFoodInfo().setNutrientsDto(
-                    NutrientsMapper.INSTANCE.convertNutrientsToDto(foodsNutrientsList.get(i).getNutrients()));
         }
         return foodEntryDtoList;
     }
