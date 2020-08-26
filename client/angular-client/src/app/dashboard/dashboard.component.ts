@@ -55,6 +55,7 @@ export class DashboardComponent implements OnInit {
     this.foodEntryService.getFoodEntryByUserIdAndDate(date)
       .subscribe((response: any) => {
         this.foodEntries = response;
+        console.log('Component: Food Entries from the service');
         console.log(this.foodEntries);
       })
   }

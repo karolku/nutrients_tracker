@@ -24,12 +24,12 @@
 </div>
 <div class="main-info">
     <div class="info">
-        <form #dashboardDate="ngForm" (ngSubmit)="getFoodEntriesByDateAndUserId(dashboardDate.value)">
+        <form>
             <div class="row date-form">
                 <div class="col-md-8 date-input">
                     <div class="md-form">
                         <input mdbInput
-                                ngModel
+                                #dashboardDate
                                 name="dateOfFoodEntry"  
                                 type="date" 
                                 id="dateOfFoodEntry" 
@@ -45,7 +45,8 @@
                             type="submit" 
                             color="default" 
                             mdbWavesEffect 
-                            size="sm">
+                            size="sm"
+                            (click)="getFoodEntriesByDateAndUserId(dashboardDate.value)">
                             Get data
                     </button>
                 </div>
