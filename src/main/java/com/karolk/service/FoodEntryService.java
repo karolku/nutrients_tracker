@@ -14,6 +14,7 @@ import com.karolk.util.FoodEntryMapper;
 import com.karolk.util.FoodsMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,6 +47,21 @@ public class FoodEntryService {
                 .stream()
                 .collect(Collectors.toList());
 
+        return getFoodEntryDtos(foodEntryList);
+    }
+
+    public List<FoodEntryDto> findFoodEntriesByUserIdAndDate(Long userId, Date date) {
+        Optional<User> user = userRepository.findById(userId);
+        List<FoodEntry> foodEntryList = foodEntryRepository.findFoodEntriesByUserIdAndDateOfFoodEntry(
+                date,user.orElseThrow(() ->
+                new InvalidFoodEntryException("Food entry with this user does not exist.")))
+                .stream()
+                .collect(Collectors.toList());
+
+        return getFoodEntryDtos(foodEntryList);
+    }
+
+    private List<FoodEntryDto> getFoodEntryDtos(List<FoodEntry> foodEntryList) {
         List<FoodEntryDto> foodEntryDtoList = foodEntryList.
                 stream()
                 .map(FoodEntryMapper.INSTANCE::convertFoodEntryEntityToDto)
