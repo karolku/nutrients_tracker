@@ -1,1 +1,227 @@
-<p>settings works!</p>
+<div class="col-sm-8 signup-container">
+    <!-- Extended material form grid -->
+    <form>
+
+        <div class="form-row">
+            <div class="signup-heading">
+                <h2 class="singup-text">Sign up</h2>
+            </div>
+        </div>
+        <br>
+
+        <!-- First and Last Name -->
+        <div class="form-row">
+            <!-- Grid column -->
+            <div class="col-md-6">
+            <!-- Material input -->
+            <div class="md-form form-group">
+                <input mdbInput 
+                    ngModel
+                    name="firstName"
+                    type="text" 
+                    class="form-control" 
+                    placeholder="First Name">
+                <label for="firstName">First Name</label>
+            </div>
+            </div>
+            <!-- Grid column -->
+        
+            <!-- Grid column -->
+            <div class="col-md-6">
+            <!-- Material input -->
+            <div class="md-form form-group">
+                <input mdbInput 
+                    ngModel
+                    name="lastName"
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Last Name">
+                <label for="lastName">Last Name</label>
+            </div>
+            </div>
+            <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+
+        <!-- Grid row -->
+        <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-6">
+            <!-- Material input -->
+            <div class="md-form form-group">
+                <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
+                <input mdbInput mdbValidate 
+                    ngModel 
+                    name="email" 
+                    #email="ngModel"
+                    type="email" 
+                    class="form-control"  
+                    required pattern="[^ @]*@[^ @]*" 
+                    placeholder="Email">
+            <label for="email">Email</label>
+            <mdb-error *ngIf="email.invalid && (email.touched && email.dirty)">
+                <h6>Invalid Email</h6>
+            </mdb-error>
+            </div>
+        </div>
+        <!-- Grid column -->
+    
+        <!-- Grid column -->
+        <div class="col-md-6">
+            <!-- Material input -->
+            <div class="md-form form-group">
+                <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+            <input mdbInput mdbValidate 
+                    ngModel 
+                    name="password"
+                    #password="ngModel"
+                    type="password" 
+                    minlength="8"
+                    class="form-control" 
+                    placeholder="Password">
+            <label for="password">Password</label>
+            <mdb-error *ngIf="password.invalid && (password.touched && password.dirty)">
+                <h6>Minnimum password length is 8</h6>
+            </mdb-error>
+            </div>
+        </div>
+        <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+    
+        <!-- Grid row -->
+        <div class="row">
+        <!-- Date column -->
+        <div class="col-md-12">
+            <!-- Material input -->
+            <div class="md-form">
+                <mdb-icon fas icon="calendar-alt" class="prefix"></mdb-icon>
+                <input mdbInput
+                    ngModel
+                    name="birthdayDate"  
+                    type="date" 
+                    id="date" 
+                    class="form-control">
+                <label for="date">
+                    Birthday date in a format: yyyy-mm-dd
+                </label>
+            </div>
+        </div>
+        <!-- Date column -->
+        </div>
+        <br>
+        <!-- Gender row -->
+        <div class="row">
+        <span class="gender-text">Gender</span>
+            <div class="row radio-gender">
+                <!-- Default unchecked -->
+                <div class="custom-control custom-radio">
+                    <input type="radio" 
+                        ngModel
+                        name="gender"
+                        value="FEMALE"
+                        class="custom-control-input" 
+                        id="female"  
+                        mdbInput>
+                    <label class="custom-control-label" 
+                        for="female">
+                        Female
+                    </label>
+                </div>
+                
+                <!-- Default checked -->
+                <div class="custom-control custom-radio radio-gender">
+                    <input type="radio" 
+                        ngModel
+                        name="gender"
+                        class="custom-control-input" 
+                        id="male" 
+                        name="gender"
+                        value="MALE"
+                        checked
+                        mdbInput>
+                    <label class="custom-control-label" 
+                        for="male">
+                        Male
+                    </label>
+                </div>
+            </div> 
+        <!-- Gender row -->
+        </div>
+        <!-- Grid row -->
+        <br>
+        <!-- Grid row -->
+        <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-6">
+            <!-- Material input -->
+            <div class="md-form form-group">
+            <input mdbInput 
+                    ngModel
+                    name="weightInKg"
+                    type="number" 
+                    class="form-control" 
+                    id="weight" 
+                    placeholder="Weight in kilograms"
+                    min=1>
+            <label for="weight">Weight</label>
+            </div>
+        </div>
+        <!-- Grid column -->
+    
+        <!-- Grid column -->
+        <div class="col-md-6">
+            <!-- Material input -->
+            <div class="md-form form-group">
+            <input mdbInput 
+                    ngModel
+                    name="heightInCm"
+                    type="number" 
+                    class="form-control" 
+                    id="height" 
+                    placeholder="Height"
+                    min=1>
+            <label for="weight">Height in centimiters</label>
+            </div>
+        </div>
+        <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+
+        <!-- Grid row -->
+        <div class="form-row">
+            <!-- Grid column -->
+            <div class="col-md-6">
+            <!-- Material input -->
+                <div class="row activity-text">
+                Activity Level
+                </div>
+                    <select class="browser-default custom-select" 
+                        ngModel 
+                        name="activityLevel">
+                        <option selected>Select your activity level</option>
+                        <option value="1.2">Sedentary</option>
+                        <option value="1.375">Low Activity</option>
+                        <option value="1.55">Moderate Activity</option>
+                        <option value="1.725">High Activity</option>
+                        <option value="1.9">Very High Activity</option>
+                    </select>
+                </div>
+            <!-- Grid column -->
+        </div>
+        
+        <br>
+        <br>
+        
+        <button type="submit" 
+            mdbBtn 
+            color="primary">
+            Sign in
+        </button>
+        
+        <br>
+        <br>
+        <br>
+    </form>
+    <!-- Extended material form grid -->
+</div>
