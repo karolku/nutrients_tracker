@@ -56,11 +56,6 @@ public class FoodEntryService {
                     FoodsMapper.INSTANCE.convertEntityFoodsToDto(foodEntryList.get(i).getFoodId()));
         }
         return foodEntryDtoList;
-//        return foodEntryRepository.findFoodEntriesByUserId(user.orElseThrow(() ->
-//                new InvalidFoodEntryException("Food entry with this user does not exist.")))
-//                .stream()
-//                .map(FoodEntryMapper.INSTANCE::convertFoodEntryEntityToDto)
-//                .collect(Collectors.toList());
     }
 
     public FoodEntry createFoodEntry(FoodEntryDto foodEntryDto, Foods foods) {
