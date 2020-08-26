@@ -72,6 +72,10 @@
               </tr>
             </tbody>
           </table>
+          <div *ngIf="isEntryEmpty"
+                class="alert alert-warning">
+                There were no food entries for that day ;)
+          </div>
     </div>
     <div class="info">Table 2</div>
     <div class="info">Chart 2</div>

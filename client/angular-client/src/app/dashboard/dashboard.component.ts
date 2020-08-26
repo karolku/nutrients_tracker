@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   foodEntries: any[];
+  isEntryEmpty: boolean;
 
   constructor(private foodEntryService: FoodEntryService) { }
 
@@ -55,8 +56,10 @@ export class DashboardComponent implements OnInit {
     this.foodEntryService.getFoodEntryByUserIdAndDate(date)
       .subscribe((response: any) => {
         this.foodEntries = response;
-        console.log('Component: Food Entries from the service');
-        console.log(this.foodEntries);
+        if(this.foodEntries.length === 0)
+            this.isEntryEmpty = true;
+        else
+            this.isEntryEmpty = false;
       })
   }
 }
