@@ -1,6 +1,7 @@
 package com.karolk.service;
 
 import com.karolk.dto.FoodEntryDto;
+import com.karolk.dto.FoodsNutrientsDto;
 import com.karolk.exception.InvalidFoodEntryException;
 import com.karolk.exception.InvalidFoodsException;
 import com.karolk.exception.InvalidUserException;
@@ -8,6 +9,7 @@ import com.karolk.model.FoodEntry;
 import com.karolk.model.Foods;
 import com.karolk.model.User;
 import com.karolk.repository.FoodEntryRepository;
+import com.karolk.repository.FoodsNutrientsRepository;
 import com.karolk.repository.FoodsRepository;
 import com.karolk.repository.UserRepository;
 import com.karolk.util.FoodEntryMapper;
@@ -24,6 +26,7 @@ public class FoodEntryService {
     FoodEntryRepository foodEntryRepository;
     UserRepository userRepository;
     FoodsRepository foodsRepository;
+    FoodsNutrientsRepository foodsNutrientsRepository;
 
     public FoodEntryService(FoodEntryRepository foodEntryRepository,
                             UserRepository userRepository,
