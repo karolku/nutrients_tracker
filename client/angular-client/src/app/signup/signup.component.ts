@@ -9,11 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
+  isSuccess: boolean;
   constructor(private auth: AuthenticationService,
               private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  isSignUp(){
+    return this.isSuccess;
   }
 
   signUp(signUpData){
@@ -21,7 +25,8 @@ export class SignupComponent implements OnInit {
     this.auth.singUp(signUpData)
     .subscribe((respone: any) => {
         console.log(respone);
-        this.router.navigate(['/login']);
+          this.isSuccess = true;
+          this.router.navigate(['/login']);
     })
   }
 }

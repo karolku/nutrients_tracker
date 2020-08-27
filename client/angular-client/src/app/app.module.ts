@@ -55,7 +55,8 @@ import { DoughnutChartComponent } from './doughnut-chart/doughnut-chart.componen
     FoodProductService,
     AuthenticationService,
     AuthGuardService,
-    FoodEntryService
+    FoodEntryService,
+    SignupComponent
   ],
   bootstrap: [AppComponent]
 })

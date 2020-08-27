@@ -1,3 +1,4 @@
+import { SignupComponent } from './../signup/signup.component';
 import { NavbarComponent } from './../navbar/navbar.component';
 import { AppRoutingModule } from './../app-routing.module';
 import { RouterModule, Router } from '@angular/router';
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   invalidLogin: boolean;
 
   constructor(private auth: AuthenticationService,
-              private router: Router) { }
+              private router: Router,
+              public signup: SignupComponent) { }
 
   ngOnInit(): void {
   }

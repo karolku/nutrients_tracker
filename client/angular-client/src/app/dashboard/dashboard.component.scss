@@ -54,7 +54,7 @@
 }
 
 .info:nth-child(2) {
-    height: 260px;
+    height: 320px;
 }
 
 .info:nth-child(3) {
@@ -89,4 +89,8 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+.nutrients-table {
+    height: 600px;
 }

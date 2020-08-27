@@ -1,5 +1,8 @@
 <div class="container-login">
     <!-- Default form login -->
+    <div class="alert alert-success" *ngIf="signup.isSignUp()">
+        SignUp was Successfull! You can now login with your email and password.
+    </div>
     <form class="text-center border border-light p-5" 
         #credentials="ngForm" 
         (ngSubmit)="signIn(credentials.value)"  >
