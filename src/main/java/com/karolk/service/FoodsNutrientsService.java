@@ -29,6 +29,8 @@ public class FoodsNutrientsService {
     private FoodsNutrientsRepository foodsNutrientsRepository;
     private FoodEntryService foodEntryService;
 
+    private final int ENERGY_ID = 1008;
+
     public FoodsNutrientsService(FoodsRepository foodsRepository,
                                  NutrientsRepository nutrientsRepository,
                                  FoodsNutrientsRepository foodsNutrientsRepository,
@@ -93,8 +95,8 @@ public class FoodsNutrientsService {
         for(int i = 0; i < foodEntryDtoList.size(); i++) {
             List<NutrientsDto> nutrientsDtoList = foodEntryDtoList.get(i).getFoodInfo().getNutrientsDtoList();
             for(int j = 0; j < nutrientsDtoList.size(); j++) {
-                if(nutrientsDtoList.get(j).getNutrientId() == 1008)
-                    nutrientsConsumed.setCalories(nutrientsDtoList.get(j).getValue());
+                if(nutrientsDtoList.get(j).getNutrientId() == ENERGY_ID)
+                    nutrientsConsumed.addCalories(nutrientsDtoList.get(j).getValue());
             }
         }
         return nutrientsConsumed;
