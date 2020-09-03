@@ -24,6 +24,10 @@ public class NutrientsConsumed {
         this.calories = calories;
     }
 
+    public void addCalories(double calories) {
+        this.calories += calories;
+    }
+
     public double getProtein() {
         return protein;
     }
