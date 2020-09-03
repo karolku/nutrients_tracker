@@ -36,6 +36,10 @@ public class NutrientsConsumed {
         this.protein = protein;
     }
 
+    public void addProtein(double protein) {
+        this.protein += protein;
+    }
+
     public double getCarbohydrated() {
         return carbohydrated;
     }
@@ -44,12 +48,20 @@ public class NutrientsConsumed {
         this.carbohydrated = carbohydrated;
     }
 
+    public void addCarbohydrated(double carbohydrated) {
+        this.carbohydrated += carbohydrated;
+    }
+
     public double getFat() {
         return fat;
     }
 
     public void setFat(double fat) {
         this.fat = fat;
+    }
+
+    public void addFat(double fat) {
+        this.fat += fat;
     }
 
     @Override
