@@ -2,6 +2,7 @@ package com.karolk.controller.rest;
 
 import com.karolk.dto.FoodEntryDto;
 import com.karolk.dto.FoodsNutrientsDto;
+import com.karolk.dto.NutrientsConsumed;
 import com.karolk.service.FoodsNutrientsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +32,8 @@ public class FoodsNutrientsController {
     }
 
     @GetMapping("calories/user/{userId}/date/{date}")
-    public ResponseEntity<Double> findCaloriesConsumedInADay(@PathVariable Long userId, @PathVariable String date) {
-        double caloriesConsumed = foodsNutrientsService.findCaloriesConsumedInADay(userId, date);
-        return ResponseEntity.ok().body(caloriesConsumed);
+    public ResponseEntity<NutrientsConsumed> findCaloriesConsumedInADay(@PathVariable Long userId, @PathVariable String date) {
+        NutrientsConsumed nutrientsConsumed = foodsNutrientsService.findCaloriesConsumedInADay(userId, date);
+        return ResponseEntity.ok().body(nutrientsConsumed);
     }
 }

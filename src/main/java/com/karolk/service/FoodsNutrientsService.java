@@ -1,10 +1,7 @@
 package com.karolk.service;
 
 import com.karolk.api.model.NutrientsApi;
-import com.karolk.dto.FoodEntryDto;
-import com.karolk.dto.FoodsDto;
-import com.karolk.dto.FoodsNutrientsDto;
-import com.karolk.dto.NutrientsDto;
+import com.karolk.dto.*;
 import com.karolk.exception.InvalidFoodsException;
 import com.karolk.exception.InvalidNutrientsException;
 import com.karolk.model.FoodEntry;
@@ -89,17 +86,18 @@ public class FoodsNutrientsService {
         return savedFoodNutrientsList;
     }
 
-    public Double findCaloriesConsumedInADay(Long userId, String date) {
+    public NutrientsConsumed findCaloriesConsumedInADay(Long userId, String date) {
         List<FoodEntryDto> foodEntryDtoList = findFoodsNutrientsForFoodEntry(userId, date);
         Double caloriesConsumed = (double) 0;
+        NutrientsConsumed nutrientsConsumed = new NutrientsConsumed();
         for(int i = 0; i < foodEntryDtoList.size(); i++) {
             List<NutrientsDto> nutrientsDtoList = foodEntryDtoList.get(i).getFoodInfo().getNutrientsDtoList();
             for(int j = 0; j < nutrientsDtoList.size(); j++) {
                 if(nutrientsDtoList.get(j).getNutrientId() == 1008)
-                    caloriesConsumed += nutrientsDtoList.get(j).getValue();
+                    nutrientsConsumed.setCalories(nutrientsDtoList.get(j).getValue());
             }
         }
-        return caloriesConsumed;
+        return nutrientsConsumed;
     }
 }
 
