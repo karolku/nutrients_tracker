@@ -30,6 +30,9 @@ public class FoodsNutrientsService {
     private FoodEntryService foodEntryService;
 
     private final int ENERGY_ID = 1008;
+    private final int CARBOHYDRATE_ID = 1005;
+    private final int PROTEIN_ID = 1003;
+    private final int FAT_ID = 1004;
 
     public FoodsNutrientsService(FoodsRepository foodsRepository,
                                  NutrientsRepository nutrientsRepository,
