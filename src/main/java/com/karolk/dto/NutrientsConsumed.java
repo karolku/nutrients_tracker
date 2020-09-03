@@ -1,5 +1,7 @@
 package com.karolk.dto;
 
+import com.karolk.util.Round;
+
 public class NutrientsConsumed {
     private double calories;
     private double protein;
@@ -25,7 +27,8 @@ public class NutrientsConsumed {
     }
 
     public void addCalories(double calories) {
-        this.calories += calories;
+        double rounded = Round.roundToTwoDecimal(this.calories += calories);
+        this.calories = rounded;
     }
 
     public double getProtein() {
@@ -37,7 +40,8 @@ public class NutrientsConsumed {
     }
 
     public void addProtein(double protein) {
-        this.protein += protein;
+        double rounded = Round.roundToTwoDecimal(this.protein += protein);
+        this.protein = rounded;
     }
 
     public double getCarbohydrated() {
@@ -49,7 +53,8 @@ public class NutrientsConsumed {
     }
 
     public void addCarbohydrated(double carbohydrated) {
-        this.carbohydrated += carbohydrated;
+        double rounded = Round.roundToTwoDecimal(this.carbohydrated += carbohydrated);
+        this.carbohydrated = rounded;
     }
 
     public double getFat() {
@@ -61,7 +66,8 @@ public class NutrientsConsumed {
     }
 
     public void addFat(double fat) {
-        this.fat += fat;
+        double rounded = Round.roundToTwoDecimal(this.fat += fat);
+        this.fat = rounded;
     }
 
     @Override
