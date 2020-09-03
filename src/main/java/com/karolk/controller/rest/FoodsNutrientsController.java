@@ -30,8 +30,9 @@ public class FoodsNutrientsController {
         return foodsNutrientsService.findFoodsNutrientsForFoodEntry(userId, date);
     }
 
-    @GetMapping("/user/{userId}/date/{date}")
+    @GetMapping("calories/user/{userId}/date/{date}")
     public ResponseEntity<Double> findCaloriesConsumedInADay(@PathVariable Long userId, @PathVariable String date) {
-        return foodsNutrientsService.findCaloriesConsumedInADay(userId, date);
+        double caloriesConsumed = foodsNutrientsService.findCaloriesConsumedInADay(userId, date);
+        return ResponseEntity.ok().body(caloriesConsumed);
     }
 }
