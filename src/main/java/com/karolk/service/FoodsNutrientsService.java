@@ -100,6 +100,12 @@ public class FoodsNutrientsService {
             for(int j = 0; j < nutrientsDtoList.size(); j++) {
                 if(nutrientsDtoList.get(j).getNutrientId() == ENERGY_ID)
                     nutrientsConsumed.addCalories(nutrientsDtoList.get(j).getValue());
+                if(nutrientsDtoList.get(j).getNutrientId() == CARBOHYDRATE_ID)
+                    nutrientsConsumed.addCarbohydrated(nutrientsDtoList.get(j).getValue());
+                if(nutrientsDtoList.get(j).getNutrientId() == FAT_ID)
+                    nutrientsConsumed.addFat(nutrientsDtoList.get(j).getValue());
+                if(nutrientsDtoList.get(j).getNutrientId() == PROTEIN_ID)
+                    nutrientsConsumed.addProtein(nutrientsDtoList.get(j).getValue());
             }
         }
         return nutrientsConsumed;
