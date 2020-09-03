@@ -2,6 +2,7 @@ package com.karolk.service;
 
 import com.karolk.api.model.NutrientsApi;
 import com.karolk.dto.FoodEntryDto;
+import com.karolk.dto.FoodsDto;
 import com.karolk.dto.FoodsNutrientsDto;
 import com.karolk.dto.NutrientsDto;
 import com.karolk.exception.InvalidFoodsException;
@@ -16,6 +17,7 @@ import com.karolk.repository.NutrientsRepository;
 import com.karolk.util.FoodsNutrientsMapper;
 import com.karolk.util.NutrientsMapper;
 import com.karolk.util.Round;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -86,4 +88,28 @@ public class FoodsNutrientsService {
         }
         return savedFoodNutrientsList;
     }
+
+    public Double findCaloriesConsumedInADay(Long userId, String date) {
+        List<FoodEntryDto> foodEntryDtoList = findFoodsNutrientsForFoodEntry(userId, date);
+        Double caloriesConsumed;
+        for(int i = 0; i < foodEntryDtoList.size(); i++) {
+            foodEntryDtoList.get(i).getFoodInfo().
+        }
+        foodEntryDtoList.stream()
+                .map(FoodEntryDto::getFoodInfo)
+                .collect(Collectors.toList())
+                .stream()
+                .map(FoodsDto::getNutrientsDtoList)
+                .collect(Collectors.toList())
+                .stream()
+                .forEach(nutrientsDtoList -> {
+                    nutrientsDtoList.stream()
+                            .map(nutrientsDto -> {
+                                if(nutrientsDto.getNutrientId() == 1008);
+                                caloriesConsumed += nutrientsDto.getValue();
+                                return caloriesConsumed;
+                            });
+                });
+    }
 }
+
