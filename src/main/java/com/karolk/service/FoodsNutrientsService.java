@@ -91,25 +91,15 @@ public class FoodsNutrientsService {
 
     public Double findCaloriesConsumedInADay(Long userId, String date) {
         List<FoodEntryDto> foodEntryDtoList = findFoodsNutrientsForFoodEntry(userId, date);
-        Double caloriesConsumed;
+        Double caloriesConsumed = (double) 0;
         for(int i = 0; i < foodEntryDtoList.size(); i++) {
-            foodEntryDtoList.get(i).getFoodInfo().
+            List<NutrientsDto> nutrientsDtoList = foodEntryDtoList.get(i).getFoodInfo().getNutrientsDtoList();
+            for(int j = 0; j < nutrientsDtoList.size(); j++) {
+                if(nutrientsDtoList.get(j).getNutrientId() == 1008)
+                    caloriesConsumed += nutrientsDtoList.get(j).getValue();
+            }
         }
-        foodEntryDtoList.stream()
-                .map(FoodEntryDto::getFoodInfo)
-                .collect(Collectors.toList())
-                .stream()
-                .map(FoodsDto::getNutrientsDtoList)
-                .collect(Collectors.toList())
-                .stream()
-                .forEach(nutrientsDtoList -> {
-                    nutrientsDtoList.stream()
-                            .map(nutrientsDto -> {
-                                if(nutrientsDto.getNutrientId() == 1008);
-                                caloriesConsumed += nutrientsDto.getValue();
-                                return caloriesConsumed;
-                            });
-                });
+        return caloriesConsumed;
     }
 }
 
