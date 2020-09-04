@@ -21,7 +21,7 @@ export class DoughnutChartComponent implements OnInit {
   public chartType: string = 'doughnut';
 
   public chartDatasets: Array<any> = [
-    { data: [this.nutrientsConsumed.fat, this.nutrientsConsumed.protein, this.nutrientsConsumed.carbohydrated], label: 'Macro Nutrients For Today' }
+    { data: [this.nutrientsConsumed?.fat, this.nutrientsConsumed?.protein, this.nutrientsConsumed?.carbohydrated], label: 'Macro Nutrients For Today' }
   ];
 
   public chartLabels: Array<any> = ['CarboHydrates', 'Protein', 'Fat'];
