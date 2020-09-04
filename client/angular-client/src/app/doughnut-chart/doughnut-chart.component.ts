@@ -15,7 +15,12 @@ export class DoughnutChartComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.dataService.sharedData.subscribe(data => this.nutrientsConsumed = data);
+    this.dataService.sharedData.subscribe((data: any) => {
+      this.nutrientsConsumed = data;
+      console.log("Data from dough chart component from OnInit")
+      console.log(this.nutrientsConsumed);
+      console.log(this.nutrientsConsumed?.fat);
+    });
   }
 
   public chartType: string = 'doughnut';
