@@ -17,9 +17,7 @@ import com.karolk.util.Round;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -51,7 +49,8 @@ public class FoodsNutrientsService {
                 .collect(Collectors.toList());
     }
 
-    public List<FoodEntryDto> findFoodsNutrientsForFoodEntry(Long userId, String date) {
+    public Map findFoodsNutrientsForFoodEntry(Long userId, String date) {
+        Map foodNutrientsMap = new HashMap();
         List<FoodEntry> foodEntryList = foodEntryService.findFoodEntriesEntityByUserIdAndDate(userId, date);
         List<FoodEntryDto> foodEntryDtoList = foodEntryService.getFoodEntryDtos(foodEntryList);
         List<FoodsNutrients> foodsNutrientsList;
@@ -67,7 +66,10 @@ public class FoodsNutrientsService {
             System.out.println("Nutrients list from the foodEntryDto");
             foodEntryDtoList.get(i).getFoodInfo().getNutrientsDtoList();
         }
-        return foodEntryDtoList;
+        foodNutrientsMap.put("foodEntryList", foodEntryDtoList);
+        NutrientsConsumed nutrientsConsumed = findCaloriesConsumedInADay(userId, date, foodEntryDtoList);
+        foodNutrientsMap.put("nutrientsConsumed", nutrientsConsumed);
+        return foodNutrientsMap;
     }
 
     public List<FoodsNutrientsDto> saveFoodNutrients(List<NutrientsApi> nutrientsApiList, Foods foods, FoodEntry foodEntry) {
@@ -91,8 +93,8 @@ public class FoodsNutrientsService {
         return savedFoodNutrientsList;
     }
 
-    public NutrientsConsumed findCaloriesConsumedInADay(Long userId, String date) {
-        List<FoodEntryDto> foodEntryDtoList = findFoodsNutrientsForFoodEntry(userId, date);
+    public NutrientsConsumed findCaloriesConsumedInADay(Long userId, String date, List<FoodEntryDto> foodEntryDtoList) {
+//        List<FoodEntryDto> foodEntryDtoList = (List<FoodEntryDto>) findFoodsNutrientsForFoodEntry(userId, date).get("foodEntryList");
         Double caloriesConsumed = (double) 0;
         NutrientsConsumed nutrientsConsumed = new NutrientsConsumed();
         for(int i = 0; i < foodEntryDtoList.size(); i++) {

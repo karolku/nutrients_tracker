@@ -1,3 +1,4 @@
+import { DashboardComponent } from './../dashboard/dashboard.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,11 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./doughnut-chart.component.scss']
 })
 export class DoughnutChartComponent {
+  nutrientsConsumed = {
+    'fat': 0,
+    'protein': 0,
+    'carbohydrated': 0
+  }
+  
+  constructor(private dashboard: DashboardComponent){
+  }
 
   public chartType: string = 'doughnut';
 
   public chartDatasets: Array<any> = [
-    { data: [250, 150, 80], label: 'Macro Nutrients For Today' }
+    { data: [this.nutrientsConsumed.fat, this.nutrientsConsumed.protein, this.nutrientsConsumed.carbohydrated], label: 'Macro Nutrients For Today' }
   ];
 
   public chartLabels: Array<any> = ['CarboHydrates', 'Protein', 'Fat'];

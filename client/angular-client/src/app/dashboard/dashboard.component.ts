@@ -10,6 +10,7 @@ export class DashboardComponent implements OnInit {
   foodEntries: any[];
   foodInfo: any[] = [];
   isEntryEmpty: boolean;
+  nutrientsConsumed: any;
   caloriesDemand = localStorage.getItem('caloriesDemand');
 
   constructor(private foodEntryService: FoodEntryService) { }
@@ -59,8 +60,10 @@ export class DashboardComponent implements OnInit {
   getFoodEntriesByDateAndUserId(date) {
     this.foodEntryService.getFoodEntryByUserIdAndDate(date)
       .subscribe((response: any) => {
-        this.foodEntries = response;
+        this.foodEntries = response.foodEntryList;
+        this.nutrientsConsumed = response.nutrientsConsumed;
         console.log(this.foodEntries);
+        console.log(this.nutrientsConsumed);
         if(this.foodEntries.length === 0)
             this.isEntryEmpty = true;
         else
