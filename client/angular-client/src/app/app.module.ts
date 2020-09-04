@@ -1,3 +1,4 @@
+import { DataService } from './services/shared/data.service';
 import { FoodEntryService } from './services/food-entry.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/authentication.service';
@@ -57,7 +58,7 @@ import { DoughnutChartComponent } from './doughnut-chart/doughnut-chart.componen
     AuthGuardService,
     FoodEntryService,
     SignupComponent,
-    DashboardComponent
+    DataService
   ],
   bootstrap: [AppComponent]
 })
