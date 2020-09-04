@@ -20,16 +20,17 @@ export class DoughnutChartComponent implements OnInit {
       console.log("Data from dough chart component from OnInit")
       console.log(this.nutrientsConsumed);
       console.log(this.nutrientsConsumed?.fat);
+      this.updateChartData();
     });
   }
 
   public chartType: string = 'doughnut';
 
   public chartDatasets: Array<any> = [
-    { data: [this.nutrientsConsumed?.fat, this.nutrientsConsumed?.protein, this.nutrientsConsumed?.carbohydrated], label: 'Macro Nutrients For Today' }
+    { data: [10, 10, 10], label: 'Macro Nutrients For Today' }
   ];
 
-  public chartLabels: Array<any> = ['CarboHydrates', 'Protein', 'Fat'];
+  public chartLabels: Array<any> = ['Protein', 'Fat', 'Carbohydrates'];
 
   public chartColors: Array<any> = [
     {
@@ -44,4 +45,10 @@ export class DoughnutChartComponent implements OnInit {
   };
   public chartClicked(e: any): void { }
   public chartHovered(e: any): void { }
+
+  updateChartData() {
+    this.chartDatasets = [
+      { data: [this.nutrientsConsumed?.protein,this.nutrientsConsumed?.fat, this.nutrientsConsumed?.carbohydrated], label: 'Macro nutrients for today' }
+    ]
+  }
 }
