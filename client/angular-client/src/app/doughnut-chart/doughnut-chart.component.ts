@@ -1,5 +1,5 @@
 import { DashboardComponent } from './../dashboard/dashboard.component';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-doughnut-chart',
@@ -7,12 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./doughnut-chart.component.scss']
 })
 export class DoughnutChartComponent {
-  nutrientsConsumed = {
-    'fat': 0,
-    'protein': 0,
-    'carbohydrated': 0
-  }
-  
+
+  nutrientsConsumed: any;
   constructor(private dashboard: DashboardComponent){
   }
 
