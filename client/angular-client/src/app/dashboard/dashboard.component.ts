@@ -73,8 +73,10 @@ export class DashboardComponent implements OnInit {
         console.log(this.nutrientsConsumed);
         if(this.foodEntries.length === 0)
             this.isEntryEmpty = true;
-        else
-            this.isEntryEmpty = false;
+        else {
+          this.isEntryEmpty = false;
+          this.updateSharedData();
+        }
       })
   }
 }
