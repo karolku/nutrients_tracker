@@ -1,3 +1,4 @@
+import { DataService } from './../services/shared/data.service';
 import { DashboardComponent } from './../dashboard/dashboard.component';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,10 +10,12 @@ import { Component, OnInit } from '@angular/core';
 export class DoughnutChartComponent implements OnInit {
 
   nutrientsConsumed: any;
-  constructor(private dashboard: DashboardComponent){
+  constructor(private dashboard: DashboardComponent,
+              private dataService: DataService){
   }
 
   ngOnInit(){
+    this.dataService.sharedData.subscribe(data => this.nutrientsConsumed = data);
   }
 
   public chartType: string = 'doughnut';
