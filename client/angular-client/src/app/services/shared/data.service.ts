@@ -11,4 +11,8 @@ export class DataService {
   sharedData = this.data.asObservable();
 
   constructor() { }
+
+  public nextData(data: any) {
+    this.data.next(data);
+  }
 }
