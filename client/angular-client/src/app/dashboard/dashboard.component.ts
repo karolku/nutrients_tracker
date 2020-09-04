@@ -1,3 +1,4 @@
+import { DataService } from './../services/shared/data.service';
 import { FoodEntryService } from './../services/food-entry.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,9 +14,11 @@ export class DashboardComponent implements OnInit {
   nutrientsConsumed: any;
   caloriesDemand = localStorage.getItem('caloriesDemand');
 
-  constructor(private foodEntryService: FoodEntryService) { }
+  constructor(private foodEntryService: FoodEntryService,
+              private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.dataService.sharedData.subscribe(data => this.nutrientsConsumed = data);
   }
 
   public chartType: string = 'bar';
