@@ -21,6 +21,10 @@ export class DashboardComponent implements OnInit {
     this.dataService.sharedData.subscribe(data => this.nutrientsConsumed = data);
   }
 
+  updateSharedData() {
+    this.dataService.nextData(this.nutrientsConsumed);
+  }
+
   public chartType: string = 'bar';
 
   public chartDatasets: Array<any> = [
