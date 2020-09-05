@@ -79,4 +79,8 @@ export class DashboardComponent implements OnInit {
         }
       })
   }
+
+  calculateRemainingCalories(consumed: number, goal: number): number {
+    return Math.round(goal - consumed); 
+  }
 }
