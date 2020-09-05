@@ -28,8 +28,8 @@
       </div>  
       <div class="overviewbox">
         <app-doughnut-chart class="dough-chart"></app-doughnut-chart>
-        <div class="dough-nutrients">
-            <div id="dough-nutrients-protein">Protein {{ nutrientsConsumed?.protein }} g</div> 
+        <div *ngIf="nutrientsConsumed" class="dough-nutrients">
+            <div id="dough-nutrients-protein"> Protein {{ nutrientsConsumed?.protein }} g</div> 
             <div id="dough-nutrients-fat">Fat {{ nutrientsConsumed?.fat }} g</div> 
             <div id="dough-nutrients-carbs">Fat {{ nutrientsConsumed?.carbohydrated }} g</div> 
         </div>
