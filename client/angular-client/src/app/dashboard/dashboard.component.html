@@ -1,6 +1,6 @@
 <div class="main-header">
     <div class="main-header-user"><h5>Goal for today {{ caloriesDemand }} kcal</h5></div>
-    <div class="main-header-user"><h5>Goal for today {{ caloriesDemand }} kcal</h5></div>
+    <div *ngIf="nutrientsConsumed" class="main-header-user"><h5>Remaining {{ caloriesDemand - nutrientsConsumed.calories }} kcal</h5></div>
     <div *ngIf="nutrientsConsumed" class="main-header-user"><h5>Calories consumed {{ nutrientsConsumed.calories }} kcal</h5></div>
 </div>
 <div class="main-overview">
