@@ -1,10 +1,12 @@
 <div class="main-header">
     <div class="main-header-user"><h5>Goal for today {{ caloriesDemand }} kcal</h5></div>
     <div *ngIf="nutrientsConsumed" 
-          class="main-header-user" [style.color]="calculateRemainingCalories(nutrientsConsumed.calories, caloriesDemand ) > 0 ? 'green' : 'red' ">
+          class="main-header-user" [style.color]="calculateRemainingCalories(nutrientsConsumed.calories, caloriesDemand ) < 0 ? 'red' : 'green' ">
           <div *ngIf="calculateRemainingCalories(nutrientsConsumed.calories, caloriesDemand ) > 0; then goalNotExceeded else goalExceeded"></div>
-          <ng-template #goalExceeded ><h5 >Goal exceeded by {{ calculateRemainingCalories(nutrientsConsumed.calories, caloriesDemand )}} kcal</h5></ng-template>
-          <ng-template #goalNotExceeded ><h5 >Remaining {{ calculateRemainingCalories(nutrientsConsumed.calories, caloriesDemand )}} kcal</h5></ng-template>
+            <ng-template #goalExceeded >
+                <h5>Goal exceeded by {{ calculateRemainingCalories(nutrientsConsumed.calories, caloriesDemand )}} kcal</h5></ng-template>
+            <ng-template #goalNotExceeded >
+                <h5>Remaining {{ calculateRemainingCalories(nutrientsConsumed.calories, caloriesDemand )}} kcal</h5></ng-template>
     </div>
     <div *ngIf="nutrientsConsumed" class="main-header-user"><h5>Calories consumed {{ nutrientsConsumed.calories }} kcal</h5></div>
 </div>
