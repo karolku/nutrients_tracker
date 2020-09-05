@@ -28,6 +28,11 @@
       </div>  
       <div class="overviewbox">
         <app-doughnut-chart class="dough-chart"></app-doughnut-chart>
+        <div class="dough-nutrients">
+            <div>Fat {{ nutrientsConsumed?.protein }} grams</div> 
+            <div>Fat {{ nutrientsConsumed?.fat }} grams</div> 
+            <div>Fat {{ nutrientsConsumed?.carbohydrated }} grams</div> 
+        </div>
     </div>   
 </div>
 <div class="main-info">
@@ -125,7 +130,7 @@
           </table>
     </div>
     <div class="info">
-      <table mdbTable mdbTableScroll scrollY="true" maxHeight="400" class="nutrients-table">
+      <table mdbTable mdbTableScroll scrollY="true" maxHeight="200" class="nutrients-table">
         <thead>
             <tr>
               <th scope="col"><strong>Nutrient Name</strong></th>
