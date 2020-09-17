@@ -28,7 +28,7 @@ public class TestUserService {
     UserRepository userRepository;
 
     @Test
-    public void findAllUsers() {
+    public void findAllUsersTest() {
         List<User> userList = new ArrayList<>();
         User user1 = new User("John", "Deep", User.Gender.MALE, LocalDate.of(1970,10,15),"pass1",
                 "john01@email.com", (double)78.5,(double)178.0, (double)1.2, 1600, true);
@@ -45,7 +45,7 @@ public class TestUserService {
     }
 
     @Test
-    public void saveUser() {
+    public void saveUserTest() {
         UserDto userDto = new UserDto("Tom", "Johnson", "MALE", "1990-10-20",
                 "tom@gmail.com", "psdpsd3e3", (double)90, (double)189,
                 "1.2", 0, "ddsfsdfj2123ssdfds22" );
