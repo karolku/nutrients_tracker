@@ -42,4 +42,13 @@ public class TestFoodsService {
         assertEquals(2, foodsList.size());
         verify(foodsRepository, times(1)).findAll();
     }
+
+    @Test
+    public void save() {
+        Foods foodToBeSaved = new Foods(3L,"Food 3", "Type1", "1103",
+                "2013-10-10", "CompanyX", "Ingrid3");
+
+        foodsService.save(foodToBeSaved);
+        verify(foodsRepository, times(1)).save(foodToBeSaved);
+    }
 }
