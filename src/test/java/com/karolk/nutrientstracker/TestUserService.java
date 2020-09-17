@@ -43,4 +43,19 @@ public class TestUserService {
         assertEquals(2,userList.size());
         verify(userRepository, times(1)).findAll();
     }
+
+    @Test
+    public void saveUser() {
+        UserDto userDto = new UserDto("Tom", "Johnson", "MALE", "1990-10-20",
+                "tom@gmail.com", "psdpsd3e3", (double)90, (double)189,
+                "1.2", 0, "ddsfsdfj2123ssdfds22" );
+
+        userService.save(userDto);
+
+        User userForRepository = new User("Tom", "Johnson", User.Gender.MALE, LocalDate.of(1990,10,20),
+                "psdpsd3e3", "tom@gmail.com", (double)90, (double)189, (double)1.2, 0, false);
+        userForRepository.setCaloriesDemand();
+
+        verify(userRepository, times(1)).save(userForRepository);
+    }
 }
