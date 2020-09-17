@@ -25,7 +25,7 @@ public class TestFoodsService {
     FoodsRepository foodsRepository;
 
     @Test
-    public void findAllFoods() {
+    public void findAllFoodsTest() {
         List<Foods> foodsList = new ArrayList<>();
         Foods food1 = new Foods(1L,"Food 1", "Type1", "1101",
                 "2010-10-10", "CompanyX", "Ingrid1");
@@ -44,7 +44,7 @@ public class TestFoodsService {
     }
 
     @Test
-    public void save() {
+    public void saveTest() {
         Foods foodToBeSaved = new Foods(3L,"Food 3", "Type1", "1103",
                 "2013-10-10", "CompanyX", "Ingrid3");
 
