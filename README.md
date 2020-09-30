@@ -26,4 +26,37 @@
 
 ## Installing
 
-Run the following command
+Project is build with Maven. In order to run the app the database has to be created and application.properties file requires infomration about the database. Java JPA with Hibernate implementation will take care of creating the tables.
+```
+spring.datasource.url= 
+spring.datasource.username= 
+spring.datasource.password=
+```
+In order to run the server application run
+
+```
+mvn clean install
+mvn spring-boot: run
+```
+
+In order to run the Angular client
+```
+ng serve
+```
+
+If there are problems with dependencies for the Angualr application try
+
+```
+npm install
+ng update
+npm update
+```
+## Built with
+<ul>
+  <li> <a href="https://angular.io">Angular</a> - Development platform for creating single-page applications.
+  <li> <a href="https://spring.io/projects/spring-boot">Srping Boot</a> - Java-based framework to build spring based applications with minimum configuration.
+  <li> <a href="https://spring.io/projects/spring-boot">Maven</a> - Management tool.
+</ul>
+
+## License
+The project is licensed under the MIT licence, check the LICENSE file for details.
