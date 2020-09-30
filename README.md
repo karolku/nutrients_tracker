@@ -18,6 +18,11 @@
 
 <p align="center">
 <img src="https://media.giphy.com/media/mkwCXfGWQDO5Uhn0O8/giphy.gif"></p>
+<br>
+<p>Users can display food entries for given days and check basic statistics about all the nutrients consumed.</p>
+<br>
+<p align="center">
+<img src="https://media.giphy.com/media/lnqf9bp0LwPpQz8fjQ/giphy.gif"></p>
 
 ## Installing
 
