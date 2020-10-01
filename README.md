@@ -11,16 +11,18 @@
   ## Description
   
   <p>
-  Web application that allows to track daily nutrients needs. This app aims to help people 
-  with autoimmune disease that try to improve their
-  health conditions with the use of diet.
-  Users can register/login, search for detailed products, check their nutrients as well as 
-  make food entires to be able to display the added products presented in a form of a dashboard 
-  with some key statistics. The system would check how much of each nutrients
-  they consumed and find their macro or micro nutrient deficits.
-  </br>
-  </br>
-  The appliction is build with a mobile first approach to make the mobile browsing as pleasant as the desktop experience. For the system the three-tier architecture was used with clear separation between the presentation, business and database layers allowing modular code development, were the presentation and business layers were communicating through the HTTP protocol and following REST architectural style.
+    Web application that allows to track daily nutrients needs. This app aims to help people 
+    with autoimmune disease that try to improve their
+    health conditions with the use of diet.
+    Users can register/login, search for detailed products, check their nutrients as well as 
+    make food entires to be able to display the added products presented in a form of a dashboard 
+    with some key statistics. The system would check how much of each nutrients
+    they consumed and find their macro or micro nutrient deficits.
+  </p>
+    <br>
+    <br>
+  <p>
+    The appliction is build with a mobile first approach to make the mobile browsing as pleasant as the desktop experience. For the system the three-tier   architecture was used with clear separation between the presentation, business and database layers allowing modular code development, were the presentation and business layers were communicating through the HTTP protocol and following REST architectural style.
   </p>
 </br>
 <p align="center">
