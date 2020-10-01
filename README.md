@@ -53,9 +53,9 @@ npm update
 ```
 ## Built with
 <ul>
-  <li> <a href="https://angular.io">Angular</a> - Development platform for creating single-page applications.
-  <li> <a href="https://spring.io/projects/spring-boot">Srping Boot</a> - Java-based framework to build spring based applications with minimum configuration.
-  <li> <a href="https://spring.io/projects/spring-boot">Maven</a> - Management tool.
+  <li> <a href="https://angular.io">Angular</a> - Development platform for creating single-page applications.</li>
+  <li> <a href="https://spring.io/projects/spring-boot">Spring Boot</a> - Java-based framework to build spring based applications with minimum configuration.</li>
+  <li> <a href="https://spring.io/projects/spring-boot">Maven</a> - Management tool.</li>
 </ul>
 
 ## License
